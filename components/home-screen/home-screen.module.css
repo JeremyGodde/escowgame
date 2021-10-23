@@ -1,0 +1,101 @@
+.home {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: IBM_Plex_Sans, sans-serif;
+
+    --home-red: firebrick;
+}
+
+.home h1,
+.home h3 {
+    color: white;
+    font-variant-caps: small-caps;
+    font-style: oblique 12deg;
+}
+
+.home p,
+.home button {
+    color: var(--home-red);
+    font-size: 16pt;
+}
+
+.home h1 {
+    font-size: 44pt;
+    font-weight: 900;
+    text-align: center;
+
+    width: 100%;
+    padding: 0.75em 0;
+    
+    background: url("/img/couloir/couloir_sombre.jpg") no-repeat center center, rgba(0,0,0,0.5);
+    background-size: cover;
+
+    opacity: 80%;
+
+    animation: title_shadow 8s ease 0s infinite;
+}
+
+@keyframes title_shadow {
+    0% {
+        text-shadow: rgba(0,0,0,0.75) 5px 5px 8px;
+    }
+    25% {
+        text-shadow: rgba(0,0,0,0.75) -5px 5px 8px;
+    }
+    50% {
+        text-shadow: rgba(0,0,0,0.75) -5px -5px 8px;
+    }
+    75% {
+        text-shadow: rgba(0,0,0,0.75) 5px -5px 8px;
+    }
+    100% {
+        text-shadow: rgba(0,0,0,0.75) 5px 5px 8px;
+    }
+}
+
+.home h3 {
+    font-size: 10pt;
+}
+
+.home p {
+    font-weight: bold;
+    text-align: center;
+
+    width: 60%;
+    
+    margin: 1.5em 0;
+}
+
+.home button {
+    margin-top: 1.5em;
+
+    background-color: transparent;
+    border: 0.25em var(--home-red) solid;
+    border-radius: 0.75em;
+
+    padding: 0.125em 3.5em;
+    
+    font-variant-caps: small-caps;
+
+    animation: button_scale 3s ease 0s infinite;
+
+    cursor: pointer;
+}
+
+
+@keyframes button_scale {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.075,1.075);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+.home *:not(button) {
+    cursor: default;
+}

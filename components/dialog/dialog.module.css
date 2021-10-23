@@ -1,0 +1,44 @@
+.dialog {
+    position: fixed;
+    bottom: 5em;
+    left: 5em;
+    width: calc(100% - 2*5em - 2*1.25em);
+    color: white;
+}
+
+.dialog .picture {
+    margin-left: 50px;
+    max-height: 250px;
+}
+
+.dialog .text_zone {
+    width: 100%;
+    background-color: rgba(0,0,0,0.25);
+    border: 2px solid silver;
+    border-radius: 2em;
+    padding: 0.25em 1.25em;
+}
+
+.dialog .text_zone p {
+    display: inline-block;
+    width: calc(100% - 2ch);
+}
+
+.dialog .text_zone .toggler {
+    width: 1ch;
+}
+
+.dialog .text_zone .toggler:after {
+    content: "▼";
+    animation: toggle_sign 1s ease 0s infinite;
+}
+
+@keyframes toggle_sign {
+    0% {
+        color: currentColor;
+    }
+
+    50% {
+        color: transparent;
+    }
+}

@@ -1,0 +1,61 @@
+.credits {
+    margin: 0;
+    height: max-content;
+    width: 100%;
+    font-family: IBM_Plex_Sans, sans-serif;
+    color: white;
+}
+
+.credits ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.credits li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.credits li > span {
+    width: calc(50% - 0.5ch);
+}
+
+.credits li > span:first-child {
+    text-align: right;
+}
+
+.credits li > span:last-child {
+    text-align: left;
+    margin-left: 1ch;
+}
+
+.credits ul,
+.credits h1,
+.credits h2,
+.credits h3 {
+    width: 100%;
+    text-align: center;
+}
+
+.credits h1,
+.credits h2,
+.credits h3 {
+    font-style: oblique 12deg;
+}
+
+.credits .name,
+.credits h1,
+.credits h2,
+.credits h3 {
+    font-variant-caps: small-caps;
+}
+
+.credits h1 {
+    font-size: 44pt;
+    font-weight: 900;
+}
+
+.credits .space {
+    margin-top: 10%;
+}
