@@ -4,18 +4,21 @@ import style from './credits.module.css'
 const ID = "generics"
 
 export default class Credits extends React.Component {
+    private genericsElement: HTMLElement
+    private timer: NodeJS.Timer
+    private y: number = 0
+
     constructor(props) {
         super(props)
-        this.state = {
-            y: 0
-        }
     }
 
     // on appellera cette fonction pour mettre fin au générique
-    end = (evt) => {
+    end = (evt: MouseEvent) => {
         // on empêche l'événement de clic de se propager aux autres éléments de la fenêtre
-        evt.stopPropagation()
-        evt.preventDefault()
+        if(evt !== undefined) {
+            evt.stopPropagation()
+            evt.preventDefault()
+        }
         // on défait le lien entre l'événement de clic et la fonction
         window.removeEventListener("click",this.end)
         // on supprime le timer du scrolling
@@ -26,12 +29,11 @@ export default class Credits extends React.Component {
 
     // on appellera cette fonction avec un timer pour donner l'effet scrolling d'un générique
     scroll = () => {
-        if (this.state.y > this.genericsElement.offsetHeight + 10) { // 10px après la fin
-            this.end()
+        if (this.y > this.genericsElement.offsetHeight + 10) { // 10px après la fin
+            this.end(undefined)
         } else {
-            this.setState({
-                y: this.state.y + 0.75 // chaque image est décalée de 0.75px vers le haut
-            })
+            this.y += 0.75 // chaque image est décalée de 0.75px vers le haut
+            this.setState({})
         }
     }
 
@@ -44,8 +46,8 @@ export default class Credits extends React.Component {
 
     render = () => {
         return (
-            <section id={ID} className={style.credits} style={{position: "fixed", top: `-${this.state.y}px`}}>
-                <h2 class={style.space}>Scénaristes</h2>
+            <section id={ID} className={style.credits} style={{position: "fixed", top: `-${this.y}px`}}>
+                <h2 className={style.space}>Scénaristes</h2>
                 <ul>
                     <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
                     <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>

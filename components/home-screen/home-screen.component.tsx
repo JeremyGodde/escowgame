@@ -1,8 +1,12 @@
 import React from 'react'
 import style from './home-screen.module.css'
 
-export default class HomeScreen extends React.Component {
-    constructor(props) {
+interface HomeScreenProps {
+    readonly moveToPlace: (id_place:number) => void
+}
+
+export default class HomeScreen extends React.Component<HomeScreenProps> {
+    constructor(props: HomeScreenProps) {
         super(props)
     }
 
