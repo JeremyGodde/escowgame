@@ -1,12 +1,12 @@
 import React from 'react'
 import HomeScreen from '../components/home-screen/home-screen.component'
-import Credits from '../components/credits/credits.component.tsx'
-import Dialog from '../components/dialog/dialog.component.tsx'
-import { frames_home_screen } from '../components/dialog/frame.component.tsx'
+import Credits from '../components/credits/credits.component'
+import Dialog from '../components/dialog/dialog.component'
+import DialogStruct, { frames_home_screen } from '../structures/dialog/dialog.structure'
 
 export default class Index extends React.Component {
     private place: number = 0
-    private dialog_test: Dialog
+    private dialog_test: DialogStruct
 
     constructor(props) {
         super(props)

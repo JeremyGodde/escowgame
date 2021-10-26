@@ -3,7 +3,11 @@ import style from './credits.module.css'
 
 const ID = "generics"
 
-export default class Credits extends React.Component {
+interface CreditsProps {
+    readonly moveToPlace: (id_place:number) => void
+}
+
+export default class Credits extends React.Component<CreditsProps> {
     private genericsElement: HTMLElement
     private timer: NodeJS.Timer
     private y: number = 0
