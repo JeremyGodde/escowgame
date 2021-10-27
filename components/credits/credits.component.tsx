@@ -1,5 +1,7 @@
 import React from 'react'
 import style from './credits.module.css'
+import Sound from '../sound/sound.component'
+import SoundStruct from '../../structures/ambiant/sound.structure'
 
 const ID = "generics"
 
@@ -11,9 +13,15 @@ export default class Credits extends React.Component<CreditsProps> {
     private genericsElement: HTMLElement
     private timer: NodeJS.Timer
     private y: number = 0
+    private sound: SoundStruct
 
     constructor(props) {
         super(props)
+        this.sound = {
+            src: "/sound/bruitage1.wav",
+            isLoop: false,
+            timer: 1.5
+        }
     }
 
     // on appellera cette fonction pour mettre fin au générique
@@ -51,6 +59,7 @@ export default class Credits extends React.Component<CreditsProps> {
     render = () => {
         return (
             <section id={ID} className={style.credits} style={{position: "fixed", top: `-${this.y}px`}}>
+                <Sound value={this.sound}/>
                 <h2 className={style.space}>Scénaristes</h2>
                 <ul>
                     <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
