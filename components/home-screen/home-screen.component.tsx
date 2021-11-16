@@ -1,17 +1,14 @@
 import React from 'react'
+import DefaultProps from '../../structures/props.structure'
 import style from './home-screen.module.css'
 
-interface HomeScreenProps {
-    readonly moveToPlace: (id_place:number) => void
-}
-
-export default class HomeScreen extends React.Component<HomeScreenProps> {
-    constructor(props: HomeScreenProps) {
+export default class HomeScreen extends React.Component<DefaultProps> {
+    constructor(props: DefaultProps) {
         super(props)
     }
 
     play = () => {
-        this.props.moveToPlace(1)
+        this.props.player.move(1)
     }
 
     render = () => {

@@ -1,17 +1,20 @@
 import React from 'react'
-import SoundStruct from '../../structures/ambiant/sound.structure'
+import SoundStruct from '../../structures/immersion/sound.structure'
+import VolumeStruct from '../../structures/immersion/volume.structure'
+import DefaultProps from '../../structures/props.structure'
 
-interface SoundProps {
-    value: SoundStruct
+interface SoundProps  extends DefaultProps {
+    readonly value: SoundStruct
 }
 
 /*
-    <Sound value={...} />
+    <Sound player={...} value={...} />
 */
 
 export default class Sound extends React.Component<SoundProps> {
     private audio: React.RefObject<HTMLAudioElement> = React.createRef<HTMLAudioElement>()
     private value: SoundStruct
+    private after_nodes: React.ReactNode = undefined
 
     constructor(props: SoundProps) {
         super(props)
@@ -20,19 +23,29 @@ export default class Sound extends React.Component<SoundProps> {
 
     end = () => {
         this.audio.current.removeEventListener("ended",this.end)
-        if (this.value.next !== undefined) {
-            this.value = this.value.next
-            this.load()
+        if (this.value.after !== undefined) {
+            this.after_nodes = this.value.after.do(this.props.player)
+            this.setState({}) // on met à jour l'affichage
         }
     }
+
+    setVolume = (volume: VolumeStruct) => {
+        this.audio.current.volume = volume.set
+    }    
 
     play = () => {
         if (this.audio === undefined) {
             return
         }
-        
+
         this.audio.current.addEventListener("ended",this.end)
-        this.audio.current.loop = this.value.isLoop
+        if (this.value.volumes !== undefined) {
+            this.value.volumes.forEach(volume => {
+                setTimeout(this.setVolume, volume.when*1000, volume);
+                // when est en seconde, la fonction attend des millisecondes
+            })
+        }
+        this.audio.current.loop = this.value.is_loop
         this.audio.current.play()
     }
 
@@ -50,7 +63,13 @@ export default class Sound extends React.Component<SoundProps> {
 
     render = () => {
         return (
+            <>
                 <audio ref={this.audio} />
+                {
+                    this.after_nodes !== undefined &&
+                    this.after_nodes
+                }
+            </>
         )
     }
 }

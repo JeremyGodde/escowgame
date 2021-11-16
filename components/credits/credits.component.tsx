@@ -1,27 +1,20 @@
 import React from 'react'
 import style from './credits.module.css'
 import Sound from '../sound/sound.component'
-import SoundStruct from '../../structures/ambiant/sound.structure'
+import DefaultProps from '../../structures/props.structure'
+
+/* Données de jeu */
+import { credits_sound } from '../../donnees/sounds.donnee'
 
 const ID = "generics"
 
-interface CreditsProps {
-    readonly moveToPlace: (id_place:number) => void
-}
-
-export default class Credits extends React.Component<CreditsProps> {
+export default class Credits extends React.Component<DefaultProps> {
     private genericsElement: HTMLElement
     private timer: NodeJS.Timer
     private y: number = 0
-    private sound: SoundStruct
 
-    constructor(props) {
+    constructor(props: DefaultProps) {
         super(props)
-        this.sound = {
-            src: "/sound/bruitage1.wav",
-            isLoop: false,
-            timer: 1.5
-        }
     }
 
     // on appellera cette fonction pour mettre fin au générique
@@ -36,7 +29,7 @@ export default class Credits extends React.Component<CreditsProps> {
         // on supprime le timer du scrolling
         clearInterval(this.timer)
         // on change de lieu (retour à l'écran d'accueil)
-        this.props.moveToPlace(0)
+        this.props.player.move(0)
     }
 
     // on appellera cette fonction avec un timer pour donner l'effet scrolling d'un générique
@@ -59,7 +52,7 @@ export default class Credits extends React.Component<CreditsProps> {
     render = () => {
         return (
             <section id={ID} className={style.credits} style={{position: "fixed", top: `-${this.y}px`}}>
-                <Sound value={this.sound}/>
+                <Sound player={this.props.player} value={credits_sound}/>
                 <h2 className={style.space}>Scénaristes</h2>
                 <ul>
                     <li><span>Clara</span> <span className={style.name}>Grellier</span></li>

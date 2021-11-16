@@ -1,15 +1,16 @@
 import React from 'react'
 import style from './dialog.module.css'
-import DialogStruct from '../../structures/dialog/dialog.structure'
+import DialogStruct from '../../structures/immersion/dialog.structure'
+import DefaultProps from '../../structures/props.structure'
 
 /*
     Ce fichier définit le composent HTML suivant :
-    <Dialog value={...}/>
+    <Dialog player={...} value={...}/>
  */
 
 // Structure qui définit les attributs du composent
-interface DialogProps {
-    readonly value: DialogStruct
+interface DialogProps extends DefaultProps {
+    value: DialogStruct
 }
 
 // Déclaration du composent
@@ -22,6 +23,7 @@ export default class Dialog extends React.Component<DialogProps> {
             this.current_index_frame
     */
     private current_index_frame: number = null
+    private after_nodes: React.ReactNode = undefined
 
     // nécessaire
     // initialise les valeurs reçues en attributs
@@ -66,10 +68,10 @@ export default class Dialog extends React.Component<DialogProps> {
             // s'il n'y a plus d'autres frames alors on a fini
             this.current_index_frame = undefined
             window.removeEventListener("click",this.click) // on supprime la capture du clic
-            if (this.props.value.afterDo !== undefined) {
+            if (this.props.value.after !== undefined) {
                 // si la fin du dialogue doit déclencher une action
+                this.after_nodes = this.props.value.after.do(this.props.player) // on réalise cette action puis on s'arrête
                 this.setState({}) // on met à jour l'affichage
-                this.props.value.afterDo() // on réalise cette action puis on s'arrête
                 return
             }
         }
@@ -123,31 +125,39 @@ export default class Dialog extends React.Component<DialogProps> {
     */
     render = () => {
         return (
-            // si on a commencé le dialogue on peut afficher le composent
-            this.current_index_frame !== undefined &&
-            this.current_index_frame !== null &&
-            <div className={style.dialog}>
-                {
-                    // si la frame a une image alors on l'affiche
-                    this.props.value.frames[this.current_index_frame].img !== undefined &&
-                    <img
-                        className={style.picture}
-                        src={this.props.value.frames[this.current_index_frame].img}
-                    />
-                }
-                <div className={style.text_zone}>
-                    <p>
-                        {
-                            // dans la zone de texte on affiche le texte de la frame
-                            this.props.value.frames[this.current_index_frame].text
-                        }
-                    </p>
+            <>
+            {
+                // si on a commencé le dialogue on peut afficher le composent
+                this.current_index_frame !== undefined &&
+                this.current_index_frame !== null &&
+                <div className={style.dialog}>
                     {
-                        // on ajoute un truc qui clignote en guise de signe passeur
+                        // si la frame a une image alors on l'affiche
+                        this.props.value.frames[this.current_index_frame].img !== undefined &&
+                        <img
+                            className={style.picture}
+                            src={this.props.value.frames[this.current_index_frame].img}
+                        />
                     }
-                    <span className={style.toggler}></span>
+                    <div className={style.text_zone}>
+                        <p>
+                            {
+                                // dans la zone de texte on affiche le texte de la frame
+                                this.props.value.frames[this.current_index_frame].text
+                            }
+                        </p>
+                        {
+                            // on ajoute un truc qui clignote en guise de signe passeur
+                        }
+                        <span className={style.toggler}></span>
+                    </div>
                 </div>
-            </div>
+            }
+            {
+                this.after_nodes !== undefined &&
+                this.after_nodes
+            }
+            </>
         )
     }
 }
