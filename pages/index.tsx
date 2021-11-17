@@ -5,7 +5,7 @@ import Dialog from '../components/dialog/dialog.component'
 import Player from '../structures/player/player.structure'
 
 /* Données de jeu */
-import { test_dialog } from '../donnees/dialogs.donnee'
+import { scene_1_dialog_1 } from '../donnees/dialogs.donnee'
 import { CREDITS_ID, HOME_SCREEN_ID } from '../donnees/rooms.donnee'
 
 export default class Index extends React.Component<{},{player: Player},any> {
@@ -28,7 +28,7 @@ export default class Index extends React.Component<{},{player: Player},any> {
                     <HomeScreen player={this.state.player}/>
                 ) || (
                     this.state.player.getRoom() === 1 &&
-                    <Dialog player={this.state.player} value={test_dialog}/>
+                    <Dialog player={this.state.player} value={scene_1_dialog_1}/>
                 ) || (
                     this.state.player.getRoom() === CREDITS_ID &&
                     <Credits player={this.state.player}/>

@@ -7,7 +7,10 @@ export default class HomeScreen extends React.Component<DefaultProps> {
         super(props)
     }
 
-    play = () => {
+    play = (evt: React.MouseEvent) => {
+        evt.preventDefault()
+        evt.stopPropagation()
+        
         this.props.player.move(1)
     }
 

@@ -4,6 +4,8 @@
     left: 5em;
     width: calc(100% - 2*5em - 2*1.25em);
     color: white;
+
+    font-family: IBM_Plex_Sans, Arial, Helvetica, sans-serif;
 }
 
 .dialog .picture {
@@ -19,9 +21,18 @@
     padding: 0.25em 1.25em;
 }
 
+.dialog .text_zone h3 {
+    margin: 0;
+    text-decoration: underline;
+}
+
 .dialog .text_zone p {
     display: inline-block;
     width: calc(100% - 2ch);
+}
+
+.dialog .text_zone p.narrator {
+    font-style: italic;
 }
 
 .dialog .text_zone .toggler {
@@ -40,5 +51,11 @@
 
     50% {
         color: transparent;
+    }
+}
+
+@keyframes letter {
+    from {
+        width: 0;
     }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import style from './dialog.module.css'
 import DialogStruct from '../../structures/immersion/dialog.structure'
 import DefaultProps from '../../structures/props.structure'
+import { NARRATEUR } from '../../donnees/dialogs.donnee'
 
 /*
     Ce fichier définit le composent HTML suivant :
@@ -124,26 +125,40 @@ export default class Dialog extends React.Component<DialogProps> {
 
     */
     render = () => {
+        let current_frame = 
+            this.current_index_frame !== undefined &&
+            this.current_index_frame !== null
+                ? this.props.value.frames[this.current_index_frame]
+                : undefined
+        
         return (
             <>
             {
                 // si on a commencé le dialogue on peut afficher le composent
-                this.current_index_frame !== undefined &&
-                this.current_index_frame !== null &&
+                current_frame !== undefined &&
                 <div className={style.dialog}>
                     {
                         // si la frame a une image alors on l'affiche
-                        this.props.value.frames[this.current_index_frame].img !== undefined &&
+                        current_frame.img !== undefined &&
                         <img
                             className={style.picture}
-                            src={this.props.value.frames[this.current_index_frame].img}
+                            src={current_frame.img}
                         />
                     }
                     <div className={style.text_zone}>
-                        <p>
+                        {
+                            current_frame.character !== NARRATEUR &&
+                            <h3>{current_frame.character}</h3>
+                        }
+                        <p
+                            className={
+                                // si c'est le narrateur qui parle on utilise un style particulier
+                                current_frame.character === NARRATEUR ? style.narrator : ''
+                            }
+                        >
                             {
                                 // dans la zone de texte on affiche le texte de la frame
-                                this.props.value.frames[this.current_index_frame].text
+                                current_frame.text
                             }
                         </p>
                         {
