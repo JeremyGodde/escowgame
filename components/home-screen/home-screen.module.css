@@ -2,7 +2,6 @@
     margin: 0;
     height: 100%;
     width: 100%;
-    font-family: IBM_Plex_Sans, sans-serif;
 
     --home-red: firebrick;
 }
@@ -28,7 +27,7 @@
     width: 100%;
     padding: 0.75em 0;
     
-    background: url("/img/couloir/couloir_sombre.jpg") no-repeat center center, rgba(0,0,0,0.5);
+    background: url("/img/indoor/couloir 4.png") no-repeat center center, rgba(0,0,0,0.5);
     background-size: cover;
 
     opacity: 80%;

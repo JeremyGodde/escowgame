@@ -1,0 +1,46 @@
+.room {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+
+    --menu-hz-padding: 4px;
+    --menu-width: calc(2*var(--menu-hz-padding) + 32px)
+}
+
+.room .playground {
+    height: 100%;
+    width: 100%;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+
+.room .playground .menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: var(--menu-width);
+
+    padding: var(--menu-hz-padding);
+
+    background-color: rgba(24, 24, 24, 0.7);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room .playground .menu .img {
+    cursor: pointer;
+}

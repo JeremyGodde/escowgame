@@ -1,15 +1,14 @@
-import AfterDoAction from "../structures/action/after-do-action.structure"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import Dialog from "../structures/immersion/dialog.structure"
-import { CREDITS_ID } from "./rooms.donnee"
+import { CREDITS_ID, EXTERIEUR_3, EXTERIEUR_3bis } from "./list_ids_room.donnee"
+import { EXTERIEUR_2 } from "./list_ids_room.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
-const scene_1_dialog_4: Dialog = {
-    timer: 1,
+export const exterieur_3bis_dialog: Dialog = {
     after: new AfterMoveToRoom(CREDITS_ID),
     frames: [
         {
@@ -31,9 +30,9 @@ const scene_1_dialog_4: Dialog = {
     ]
 }
 
-const scene_1_dialog_3: Dialog = {
+export const exterieur_3_dialog: Dialog = {
     timer: 1,
-    after: new AfterPlayDialog(scene_1_dialog_4),
+    after: new AfterMoveToRoom(EXTERIEUR_3bis),
     frames: [
         {
             character: JOUEUR,
@@ -46,9 +45,9 @@ const scene_1_dialog_3: Dialog = {
     ]
 }
 
-const scene_1_dialog_2: Dialog = {
+export const exterieur_2_dialog: Dialog = {
     timer: 1,
-    after: new AfterPlayDialog(scene_1_dialog_3),
+    after: new AfterMoveToRoom(EXTERIEUR_3),
     frames: [
         {
             character: JOUEUR,
@@ -57,8 +56,9 @@ const scene_1_dialog_2: Dialog = {
     ]
 }
 
-export const scene_1_dialog_1: Dialog = {
-    after: new AfterPlayDialog(scene_1_dialog_2),
+export const exterieur_1_dialog: Dialog = {
+    timer: 1,
+    after: new AfterMoveToRoom(EXTERIEUR_2),
     frames: [
         {
             character: JOUEUR,

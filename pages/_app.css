@@ -1,6 +1,21 @@
 @font-face {
-    font-family: IBM_Plex_Sans;
-    src: url("/font/ibm-plex-sans.regular.ttf");
+    font-family: B612MonoBold;
+    src: url("/font/B612Mono-Bold.ttf");
+}
+
+@font-face {
+    font-family: B612MonoBoldItalic;
+    src: url("/font/B612Mono-BoldItalic.ttf");
+}
+
+@font-face {
+    font-family: B612MonoItalic;
+    src: url("/font/B612Mono-Italic.ttf");
+}
+
+@font-face {
+    font-family: B612Mono;
+    src: url("/font/B612Mono-Regular.ttf");
 }
 
 html, body  {
@@ -15,6 +30,7 @@ html {
 
 body {
     background-color: black;
+    font-family: B612Mono, Arial, Helvetica, sans-serif;
 }
 
 body,

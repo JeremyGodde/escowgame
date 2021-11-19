@@ -4,8 +4,6 @@
     left: 5em;
     width: calc(100% - 2*5em - 2*1.25em);
     color: white;
-
-    font-family: IBM_Plex_Sans, Arial, Helvetica, sans-serif;
 }
 
 .dialog .picture {
@@ -15,8 +13,8 @@
 
 .dialog .text_zone {
     width: 100%;
-    background-color: rgba(0,0,0,0.25);
-    border: 2px solid silver;
+    background-color: rgba(24, 24, 24, 0.7);
+    border: 2px solid rgba(47, 47, 47, 1);
     border-radius: 2em;
     padding: 0.25em 1.25em;
 }
@@ -32,7 +30,14 @@
 }
 
 .dialog .text_zone p.narrator {
-    font-style: italic;
+    font-family: B612MonoItalic, Arial, Helvetica, sans-serif;
+}
+
+.dialog .text_zone p:not(.narrator)::before {
+    content: "« ";
+}
+.dialog .text_zone p:not(.narrator)::after {
+    content: " »";
 }
 
 .dialog .text_zone .toggler {

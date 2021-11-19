@@ -61,8 +61,22 @@ export default class Credits extends React.Component<DefaultProps> {
                     <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
                     <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
                 </ul>
-                <h2>Crédits images</h2>
+                <h2>Crédits photographiques</h2>
+                <h4>Banques libres de droits</h4>
+                <ul>
+                </ul>
+                <h4>Travail de la photographie</h4>
+                <ul>
+                    <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
+                </ul>
                 <h2>Crédits sons</h2>
+                <h4>Banques libres de droits</h4>
+                <ul>
+                </ul>
+                <h4>Travail du son</h4>
+                <ul>
+                    <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
+                </ul>
                 <h2>Nous remercions</h2>
                 <ul>
                     <li><span>Serge</span> <span className={style.name}>Bouchardon</span></li>

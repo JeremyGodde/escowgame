@@ -146,10 +146,6 @@ export default class Dialog extends React.Component<DialogProps> {
                         />
                     }
                     <div className={style.text_zone}>
-                        {
-                            current_frame.character !== NARRATEUR &&
-                            <h3>{current_frame.character}</h3>
-                        }
                         <p
                             className={
                                 // si c'est le narrateur qui parle on utilise un style particulier
