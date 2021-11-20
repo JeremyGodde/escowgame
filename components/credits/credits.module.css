@@ -32,27 +32,38 @@
 .credits ul,
 .credits h1,
 .credits h2,
-.credits h3 {
+.credits h3,
+.credits h4 {
     width: 100%;
     text-align: center;
 }
 
 .credits h1,
 .credits h2,
-.credits h3 {
+.credits h3,
+.credits h4 {
     font-style: oblique 12deg;
 }
 
 .credits .name,
 .credits h1,
 .credits h2,
-.credits h3 {
+.credits h3,
+.credits h4 {
     font-variant-caps: small-caps;
 }
 
 .credits h1 {
     font-size: 44pt;
     font-weight: 900;
+}
+
+.credits h2 {
+    margin-top: 0.5rem;
+}
+
+.credits h4 {
+    margin: 0.1rem;
 }
 
 .credits .space {

@@ -1,10 +1,6 @@
 import React from 'react'
 import style from './credits.module.css'
-import Sound from '../sound/sound.component'
 import DefaultProps from '../../structures/props.structure'
-
-/* Données de jeu */
-import { credits_sound } from '../../donnees/sounds.donnee'
 
 const ID = "generics"
 
@@ -46,37 +42,54 @@ export default class Credits extends React.Component<DefaultProps> {
     componentDidMount = () => {
         this.genericsElement = document.getElementById(ID)
         window.addEventListener("click",this.end)
-        this.timer = setInterval(this.scroll,10) // 1 image toutes les 10 ms => 100 fps
+        this.timer = setInterval(this.scroll,16) // 1 image toutes les 16 ms => 62.5 fps
     }
 
     render = () => {
         return (
             <section id={ID} className={style.credits} style={{position: "fixed", top: `-${this.y}px`}}>
-                <Sound player={this.props.player} value={credits_sound}/>
                 <h2 className={style.space}>Scénaristes</h2>
                 <ul>
-                    <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
                     <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>
+                    <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
                     <li><span>Margaux</span> <span className={style.name}>Gressel</span></li>
                     <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
                     <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
                 </ul>
+                
                 <h2>Crédits photographiques</h2>
                 <h4>Banques libres de droits</h4>
                 <ul>
+                    <li>Unsplash, Licence Unsplash,<br/>https://unsplash.com/</li>
                 </ul>
                 <h4>Travail de la photographie</h4>
                 <ul>
                     <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
+                    <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
                 </ul>
-                <h2>Crédits sons</h2>
+                
+                <h2>Crédits sonores</h2>
                 <h4>Banques libres de droits</h4>
                 <ul>
+                    <li>LaSonotheque.fr, Licence CC0 1.0 universel,<br/>https://lasonotheque.org/</li>
+                    <li>Sond Fishing Bruitages, Licence LESF,<br/>https://sound-fishing.net/bruitages.html</li>
                 </ul>
                 <h4>Travail du son</h4>
                 <ul>
                     <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
                 </ul>
+               
+                <h2>Crédits maquettes</h2>
+                <ul>
+                    <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
+                    <li><span>Margaux</span> <span className={style.name}>Gressel</span></li>
+                </ul>
+                
+                <h2>Crédits moteur de jeu</h2>
+                <ul>
+                    <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>
+                </ul>
+                
                 <h2>Nous remercions</h2>
                 <ul>
                     <li><span>Serge</span> <span className={style.name}>Bouchardon</span></li>
