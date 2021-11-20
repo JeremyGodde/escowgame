@@ -33,7 +33,7 @@ export default class Credits extends React.Component<DefaultProps> {
         if (this.y > this.genericsElement.offsetHeight + 10) { // 10px après la fin
             this.end(undefined)
         } else {
-            this.y += 0.75 // chaque image est décalée de 0.75px vers le haut
+            this.y += 0.5 // chaque image est décalée de 0.50px vers le haut
             this.setState({})
         }
     }
@@ -42,7 +42,7 @@ export default class Credits extends React.Component<DefaultProps> {
     componentDidMount = () => {
         this.genericsElement = document.getElementById(ID)
         window.addEventListener("click",this.end)
-        this.timer = setInterval(this.scroll,16) // 1 image toutes les 16 ms => 62.5 fps
+        this.timer = setInterval(this.scroll,10) // 1 image toutes les 10 ms => 100 fps
     }
 
     render = () => {
