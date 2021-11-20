@@ -59,8 +59,131 @@
     }
 }
 
-@keyframes letter {
-    from {
-        width: 0;
+.dialog .set_buttons {
+    position: absolute;
+    right: calc(1.25rem + 2%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+}
+
+.dialog .set_buttons button {
+    color: white;
+    font-family: B612Mono, Arial, Helvetica, sans-serif;
+    background-color: rgba(24, 24, 24, 0.7);
+    border: 2px solid rgba(47, 47, 47, 1);
+    border-radius: 2em;
+    padding: 0.25em 0.75em;
+    width: 100%;
+    cursor: pointer;
+}
+
+.dialog .set_buttons button:hover {
+    animation: flash ease-out 4s 1s infinite;
+}
+
+@keyframes flash {
+    0% {
+        background: linear-gradient(137deg, rgba(24, 24, 24, 0.7));
+    }
+    76% {
+        background: linear-gradient(
+            137deg,
+            rgba(151, 151, 151, 0.7) -10%,
+            rgba(24, 24, 24, 0.7) 12%);
+    }
+    78% {
+        background: linear-gradient(
+            137deg,
+            rgba(151, 151, 151, 0.7) 0%,
+            rgba(24, 24, 24, 0.7) 22%);
+    }
+    80% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) -12%,
+            rgba(151, 151, 151, 0.7) 10%,
+            rgba(24, 24, 24, 0.7) 32%
+        );
+    }
+    82% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) -2%,
+            rgba(151, 151, 151, 0.7) 20%,
+            rgba(24, 24, 24, 0.7) 42%
+        );
+    }
+    84% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 8%,
+            rgba(151, 151, 151, 0.7) 30%,
+            rgba(24, 24, 24, 0.7) 52%
+        );
+    }
+    86% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 18%,
+            rgba(151, 151, 151, 0.7) 40%,
+            rgba(24, 24, 24, 0.7) 62%
+        );
+    }
+    88% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 28%,
+            rgba(151, 151, 151, 0.7) 50%,
+            rgba(24, 24, 24, 0.7) 72%
+        );
+    }
+    90% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 38%,
+            rgba(151, 151, 151, 0.7) 60%,
+            rgba(24, 24, 24, 0.7) 82%
+        );
+    }
+    92% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 48%,
+            rgba(151, 151, 151, 0.7) 70%,
+            rgba(24, 24, 24, 0.7) 92%
+        );
+    }
+    94% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 58%,
+            rgba(151, 151, 151, 0.7) 80%,
+            rgba(24, 24, 24, 0.7) 102%
+        );
+    }
+    96% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 68%,
+            rgba(151, 151, 151, 0.7) 90%,
+            rgba(24, 24, 24, 0.7) 112%
+        );
+    }
+    98% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 78%,
+            rgba(151, 151, 151, 0.7) 100%
+        );
+    }
+    100% {
+        background: linear-gradient(
+            137deg,
+            rgba(24, 24, 24, 0.7) 88%,
+            rgba(151, 151, 151, 0.7) 110%
+        );
     }
 }

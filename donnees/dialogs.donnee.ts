@@ -1,15 +1,96 @@
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import Dialog from "../structures/immersion/dialog.structure"
-import { CREDITS_ID, EXTERIEUR_3, EXTERIEUR_3bis } from "./list_ids_room.donnee"
+import { 
+    CREDITS_ID,
+    EXTERIEUR_3,
+    EXTERIEUR_3bis,
+    USINE_EXTERIEUR_1
+} from "./list_ids_room.donnee"
 import { EXTERIEUR_2 } from "./list_ids_room.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
-export const exterieur_3bis_dialog: Dialog = {
+export const usine_exterieur_1bis_dialog: Dialog = {
+    timer: 1,
     after: new AfterMoveToRoom(CREDITS_ID),
+    frames: [
+        {
+            character: JOUEUR,
+            text: "Mais où est ce que tu m’as emmené ? Quel est cet endroit ?... Peut-être devrais-je rebrousser chemin..."
+        },
+        {
+            character: CHIEN,
+            text: "Non, attends ne pars pas !"
+        },
+        {
+            character: JOUEUR,
+            text: "Pardon ?? Qui me parle ????"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "C’est moi, devant toi !"
+        },
+        {
+            character: JOUEUR,
+            text: "Je dois rêver, ce n’est pas possible, que se passe t-il ici ??!!!"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Si je t’aborde c’est parce qu’il y a une urgence à l’intérieur, j’ai vraiment besoin de toi! S’il te plaît, n’ai pas peur et suis moi..."
+        },
+        {
+            character: JOUEUR,
+            text: "Comment pourrais-je faire confiance à un chien qui parle, et comment pourrais-je y croire ??"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "S’il te plaît, tu dois me faire confiance, je te promets de ne te faire aucun mal. Je veux juste que tu découvres la vérité sur ce que font subir les humains aux animaux et que tu nous aides... Suis moi."
+        },
+        {
+            character: JOUEUR,
+            text: "Je dois être en train de faire un cauchemar. Je vais quand même y jeter un œil, mais si ça ne m’inspire pas confiance je ferais demi-tour."
+        }
+    ]
+}
+
+export const usine_exterieur_1_dialog: Dialog = {
+    timer: 1,
+    after: new AfterPlayDialog(usine_exterieur_1bis_dialog),
+    frames: [
+        {
+            character: JOUEUR,
+            text: "Mais quel est ce bâtiment ? Je ne l’avais jamais vu auparavant, cela ressemble à une usine… C’est un peu effrayant de nuit..."
+        }
+    ]
+}
+
+const exterieur_4_dialog_follow_dog: Dialog = {
+    after: new AfterMoveToRoom(USINE_EXTERIEUR_1),
+    frames: [
+        {
+            character: JOUEUR,
+            text: "Je ne peux pas le laisser là !"
+        }
+    ]
+}
+
+const exterieur_4_dialog_back_home: Dialog = {
+    after: new AfterMoveToRoom(CREDITS_ID),
+    frames: [
+        {
+            character: JOUEUR,
+            text: "Je dois rentrer chez moi, tant pis pour lui."
+        }
+    ]
+}
+
+export const exterieur_3bis_dialog: Dialog = {
     frames: [
         {
             character: NARRATEUR,
@@ -17,7 +98,11 @@ export const exterieur_3bis_dialog: Dialog = {
         },
         {
             character: JOUEUR,
-            text: "Je devrais peut-être faire demi-tour… Oh mais pourquoi se met-il à pleurer ??"
+            text: "Je devrais peut-être faire demi-tour…"
+        },
+        {
+            character: JOUEUR,
+            text: "Oh mais pourquoi se met-il à pleurer ??"
         },
         {
             character: NARRATEUR,
@@ -25,7 +110,17 @@ export const exterieur_3bis_dialog: Dialog = {
         },
         {
             character: NARRATEUR,
-            text: "Il fait nuit mais ce chien vous intrigue énormément. Que décidez vous ?\nAVERTISSEMENT : La suite du jeu contient des images susceptibles de choquer la sensibilité des plus fragiles. Si vous ne souhaitez pas continuer l’aventure, ne suivez pas le chien."
+            text: "Il fait nuit mais ce chien vous intrigue énormément. Que décidez vous ?",
+            choice: [
+                {
+                    proposition: "Suivre le chien",
+                    after: new AfterPlayDialog(exterieur_4_dialog_follow_dog)
+                },
+                {
+                    proposition: "Rentrer à la maison",
+                    after: new AfterPlayDialog(exterieur_4_dialog_back_home)
+                }
+            ]
         }
     ]
 }

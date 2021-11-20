@@ -4,14 +4,18 @@ import {
     exterieur_1_dialog,
     exterieur_2_dialog,
     exterieur_3_dialog,
-    exterieur_3bis_dialog
+    exterieur_3bis_dialog,
+    usine_exterieur_1_dialog,
+    usine_exterieur_1bis_dialog
 } from "./dialogs.donnee"
 import {
     HOME_SCREEN_ID,
     EXTERIEUR_1,
     EXTERIEUR_2,
     EXTERIEUR_3,
-    EXTERIEUR_3bis
+    EXTERIEUR_3bis,
+    USINE_EXTERIEUR_1,
+    USINE_EXTERIEUR_1bis
 } from "./list_ids_room.donnee"
 
 export const all_rooms: Array<Room> = [
@@ -54,5 +58,25 @@ export const all_rooms: Array<Room> = [
             return true
         },
         dialog: exterieur_3bis_dialog
+    },
+    {
+        id: USINE_EXTERIEUR_1,
+        id_exit: HOME_SCREEN_ID,
+        src: "/img/outdoor/Usine.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: usine_exterieur_1_dialog
+    },
+    {
+        id: USINE_EXTERIEUR_1bis,
+        id_exit: HOME_SCREEN_ID,
+        src: "/img/outdoor/Usine.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: usine_exterieur_1bis_dialog
     }
 ]
