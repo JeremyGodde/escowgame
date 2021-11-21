@@ -18,6 +18,16 @@ import {
     USINE_EXTERIEUR_1bis
 } from "./list_ids_room.donnee"
 
+import {
+    exterieur_1_sound,
+    exterieur_2_sound,
+    exterieur_3_sound, 
+    exterieur_3bis_1_sound,
+    exterieur_3bis_2_sound,
+    usine_exterieur_1_sound
+} from "./sounds.donnee"
+
+
 export const all_rooms: Array<Room> = [
     {
         id: EXTERIEUR_1,
@@ -27,7 +37,9 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        sounds:[exterieur_1_sound],
         dialog: exterieur_1_dialog
+
     },
     {
         id: EXTERIEUR_2,
@@ -37,6 +49,7 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        sounds: [exterieur_2_sound],
         dialog: exterieur_2_dialog
     },
     {
@@ -47,6 +60,7 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        sounds : [exterieur_3_sound],
         dialog: exterieur_3_dialog
     },
     {
@@ -57,6 +71,7 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        sounds: [exterieur_3bis_1_sound],
         dialog: exterieur_3bis_dialog
     },
     {
@@ -67,6 +82,7 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        sounds: [usine_exterieur_1_sound],
         dialog: usine_exterieur_1_dialog
     },
     {
