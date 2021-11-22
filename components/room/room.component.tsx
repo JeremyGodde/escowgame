@@ -1,6 +1,7 @@
 import React from 'react'
 import DefaultProps from '../../structures/props.structure'
 import RoomStruct from '../../structures/space/room.structure'
+import Zone from '../../structures/space/zone.structure'
 import Dialog from '../dialog/dialog.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
@@ -10,6 +11,8 @@ interface RoomProps extends DefaultProps {
 }
 
 export default class Room extends React.Component<RoomProps> {
+    private after_nodes: React.ReactNode = undefined
+
     constructor(props: RoomProps) {
         super(props)
 
@@ -20,6 +23,14 @@ export default class Room extends React.Component<RoomProps> {
         evt.stopPropagation()
 
         this.props.player.move(this.props.value.id_exit)
+    }
+
+    zoneActivated = (zone:Zone, evt: React.MouseEvent) => {
+        evt.preventDefault()
+        evt.stopPropagation()
+
+       this.after_nodes = zone.click.do(this.props.player)
+       this.setState({})
     }
 
     componentDidMount = () => {
@@ -40,6 +51,22 @@ export default class Room extends React.Component<RoomProps> {
                         this.props.value.sounds.map(sound => 
                             <Sound player={this.props.player} value={sound}/>
                         )
+                    }
+                    {
+                        this.props.value.zones !== undefined &&
+                        this.props.value.zones.length &&
+                        this.props.value.zones.map(zone => 
+                            <img className={style.zones} src={zone.svg} style={{
+                                left: `${zone.x}%`,
+                                bottom: `${zone.y}%`,
+                                height: `${zone.h}%`,
+                                width: `${zone.w}%`
+                            }} onClick={(e) => this.zoneActivated(zone,e)}/>
+                        )
+                    }
+                    {
+                        this.after_nodes !== undefined &&
+                        this.after_nodes
                     }
                     <div className={style.menu}>
                         <img src="/img/icons/list.svg"/>

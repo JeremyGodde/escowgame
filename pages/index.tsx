@@ -37,6 +37,8 @@ export default class Index extends React.Component<{},{player: Player},any> {
                             if(room.open_if(this.state.player)) {       // et on vérifie que la pièce peut être ouverte)
                                                                         // et on l'affiche
                             return <Room player={this.state.player} value={room}/>
+                            
+                            
                             } else {                                    // si la pièce ne peut pas encore être ouverte
                                 // rester dans la pièce où on était et
                                 // dialogue de on peut pas ouvrir

@@ -3,5 +3,5 @@
 */
 export default interface Volume {
     when: number // secondes
-    set: number  // pourcentage
+    set: number  // pourcentage (entre 0 et 1)
 }

@@ -2,6 +2,7 @@ import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import Dialog from "../structures/immersion/dialog.structure"
 import { 
+    COULOIR_1,
     CREDITS_ID,
     EXTERIEUR_3,
     EXTERIEUR_3bis,
@@ -15,7 +16,7 @@ export const JOUEUR = "Vous"
 
 export const usine_exterieur_1bis_dialog: Dialog = {
     timer: 1,
-    after: new AfterMoveToRoom(CREDITS_ID),
+    after: new AfterMoveToRoom(COULOIR_1),
     frames: [
         {
             character: JOUEUR,

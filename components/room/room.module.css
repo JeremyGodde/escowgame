@@ -44,3 +44,9 @@
 .room .playground .menu .img {
     cursor: pointer;
 }
+
+.room .playground .zones {
+    position: absolute;
+    cursor: pointer;
+    border: red 4px dashed;
+}

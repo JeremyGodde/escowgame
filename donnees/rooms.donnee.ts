@@ -1,3 +1,4 @@
+import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
 import {
@@ -15,7 +16,9 @@ import {
     EXTERIEUR_3,
     EXTERIEUR_3bis,
     USINE_EXTERIEUR_1,
-    USINE_EXTERIEUR_1bis
+    USINE_EXTERIEUR_1bis,
+    COULOIR_1,
+    CREDITS_ID
 } from "./list_ids_room.donnee"
 
 import {
@@ -94,5 +97,35 @@ export const all_rooms: Array<Room> = [
             return true
         },
         dialog: usine_exterieur_1bis_dialog
+    },
+    {
+        id: USINE_EXTERIEUR_1bis,
+        id_exit: HOME_SCREEN_ID,
+        src: "/img/outdoor/Usine.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: usine_exterieur_1bis_dialog
+    },
+    {
+        id: COULOIR_1,
+        id_exit: HOME_SCREEN_ID,
+        src: "/img/indoor/couloir 4.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        zones: [
+            {
+                x: 50,
+                y: 50,
+                h: 10,
+                w: 5,
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: "/img/icons/journal-text.svg"
+            }
+        ]
     }
+
 ]

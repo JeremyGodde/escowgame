@@ -8,6 +8,6 @@ export default interface Sound {
     timer?: number           // secondes
     src: string              // chemin fichier audio
     is_loop: boolean         // est une boucle
-    after?: AfterDoAction   // A CHANGER
+    after?: AfterDoAction   
     volumes?: Array<Volume>  // ensemble de réglage du volume
 }

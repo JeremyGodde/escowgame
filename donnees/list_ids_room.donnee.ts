@@ -9,3 +9,4 @@ export const EXTERIEUR_3 = 3
 export const EXTERIEUR_3bis = 3.5
 export const USINE_EXTERIEUR_1 = 4
 export const USINE_EXTERIEUR_1bis = 4.5
+export const COULOIR_1 = 6
