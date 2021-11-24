@@ -18,7 +18,10 @@ import {
     USINE_EXTERIEUR_1,
     USINE_EXTERIEUR_1bis,
     COULOIR_1,
-    CREDITS_ID
+    BUREAU_8,
+    BUREAU_12,
+    BUREAU_13,
+    CREDITS_ID, 
 } from "./list_ids_room.donnee"
 
 import {
@@ -111,12 +114,12 @@ export const all_rooms: Array<Room> = [
     {
         id: COULOIR_1,
         id_exit: HOME_SCREEN_ID,
-        src: "/img/indoor/couloir 4.png",
+        src: "/img/indoor/couloir_1.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
         },
-        zones: [
+        /*zones: [
             {
                 x: 50,
                 y: 50,
@@ -125,7 +128,35 @@ export const all_rooms: Array<Room> = [
                 click: new AfterMoveToRoom(CREDITS_ID),
                 svg: "/img/icons/journal-text.svg"
             }
-        ]
-    }
+        ]*/
+    },
+    {
+        id: BUREAU_8,
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_8.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        }
+    },
+    {
+        id: BUREAU_12,
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_12.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte (A CHANGER)
+            return true
+        }
+    },
+    {
+        id: BUREAU_13,
+        id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
+        src: "/img/indoor/bureau_12.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        }
+    },
+
 
 ]
