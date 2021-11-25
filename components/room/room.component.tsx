@@ -3,6 +3,7 @@ import DefaultProps from '../../structures/props.structure'
 import RoomStruct from '../../structures/space/room.structure'
 import Zone from '../../structures/space/zone.structure'
 import Dialog from '../dialog/dialog.component'
+import Item from '../item/item.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
 
@@ -63,6 +64,13 @@ export default class Room extends React.Component<RoomProps> {
                                 width: `${zone.w}%`
                             }} onClick={(e) => this.zoneActivated(zone,e)}/>
                         )
+                    }
+                    {
+                        this.props.value.items !== undefined &&
+                        this.props.value.items.length &&
+                        this.props.value.items.map(item => 
+                                <Item value={item} player={this.props.player}/>
+                            )
                     }
                     {
                         this.after_nodes !== undefined &&

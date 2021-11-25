@@ -33,7 +33,8 @@
 
     padding: var(--menu-hz-padding);
 
-    background-color: rgba(24, 24, 24, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-left: rgb(255,255,255) 3px solid;
 
     display: flex;
     flex-direction: column;

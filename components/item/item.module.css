@@ -5,3 +5,15 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.item.clickable {
+    cursor: pointer;
+}
+
+.item.draggable:not(.selected) {
+    cursor: grab;
+}
+
+.item.draggable.selected {
+    cursor: grabbing;
+}

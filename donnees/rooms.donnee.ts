@@ -119,6 +119,17 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        items: [
+            {
+                x: 50,
+                y: 50,
+                w: 10,
+                h: 5,
+                img: "/img/dog/chien_face.png",
+                collectable: false,
+                draggable: true,
+            }
+        ],
         /*zones: [
             {
                 x: 50,

@@ -1,3 +1,4 @@
+import Item from '../game/item.structure'
 import Dialog from '../immersion/dialog.structure'
 import Sound from '../immersion/sound.structure'
 import Player from '../player/player.structure'
@@ -11,4 +12,5 @@ export default interface Room {
     sounds?: Array<Sound>
     dialog?: Dialog
     zones?: Array<Zone>
+    items?: Array<Item>
 }
