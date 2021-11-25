@@ -1,0 +1,7 @@
+.item {
+    position: absolute;
+    
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
