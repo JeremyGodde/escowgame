@@ -68,7 +68,9 @@ export default class Room extends React.Component<RoomProps> {
                     {
                         this.props.value.items !== undefined &&
                         this.props.value.items.length &&
-                        this.props.value.items.map(item => 
+                        this.props.value.items.filter( item =>
+                            !this.props.player.owned(item)
+                        ).map(item => 
                                 <Item value={item} player={this.props.player}/>
                             )
                     }

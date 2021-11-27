@@ -126,8 +126,8 @@ export const all_rooms: Array<Room> = [
                 w: 10,
                 h: 5,
                 img: "/img/dog/chien_face.png",
-                collectable: false,
-                draggable: true,
+                collectable: true,
+                draggable: false,
             }
         ],
         /*zones: [

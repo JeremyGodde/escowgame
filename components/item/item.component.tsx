@@ -17,19 +17,23 @@ export default class Item extends React.Component<ItemProps> {
     constructor(props: ItemProps) {
         super(props)
         this.class = style.item
-        if (this.props.value.collectable === true) {
+        if (this.props.value.collectable === true && !this.props.value.draggable) {
             this.class += " " + style.clickable
         }
-        if(this.props.value.draggable === true) {
+        if(!this.props.value.collectable && this.props.value.draggable === true) {
             this.class += " " + style.draggable
         }
-        this.y = this.props.value.x
+        this.x = this.props.value.x
         this.y = this.props.value.y
     }
 
     collect = (evt: MouseEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
+
+        this.props.player.collect(this.props.value)
+        this.class += " " + style.deleted
+        this.setState({})
     }
 
     select = (selected:boolean, evt: MouseEvent) => {
@@ -37,7 +41,11 @@ export default class Item extends React.Component<ItemProps> {
         evt.stopPropagation()
 
         this.selected = selected
-        this.class = this.selected ? this.class + " " + style.selected : this.class;
+        if (selected) {
+            this.class = this.class + " " + style.selected
+         } else {
+            this.class = this.class.replaceAll(" " + style.selected,"")
+         }
         this.setState({})
     }
 
@@ -49,20 +57,20 @@ export default class Item extends React.Component<ItemProps> {
         evt.preventDefault()
         evt.stopPropagation()
 
-        this.x += evt.movementX / window.screen.availWidth
-        this.y += evt.movementY / window.screen.availHeight
+        this.x += (105*evt.movementX) / window.screen.width
+        this.y += (-105*evt.movementY) / window.screen.height
 
         this.setState({})
     }
 
     componentDidMount = () => {        
-        if (this.props.value.collectable === true) {
+        if (this.props.value.collectable === true && !this.props.value.draggable) {
             this.self.current.addEventListener("click", this.collect)
         }
-        if (this.props.value.draggable === true) {
+        if (this.props.value.collectable === false && this.props.value.draggable === true) {
             this.self.current.addEventListener("mousedown", (e) => this.select(true,e))
             this.self.current.addEventListener("mouseup", (e) => this.select(false,e))
-            window.addEventListener("move",this.move)
+            window.addEventListener("mousemove",this.move)
         }
     }
 

@@ -17,3 +17,7 @@
 .item.draggable.selected {
     cursor: grabbing;
 }
+
+.item.clickable.deleted {
+    display: none;
+}
