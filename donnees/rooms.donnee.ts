@@ -1,3 +1,4 @@
+import Zones from "../public/img/zones/zones.component"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
@@ -167,29 +168,17 @@ export const all_rooms: Array<Room> = [
         },
           zones: [
             {
-                x: 20.625,
-                y: 40.12876,
-                h: 27.6824,
-                w: 12.6,
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: "/img/icons/Local technique_affiche gauche.svg"
+                svg: Zones.LocalTechniqueAfficheGauche
             },
             {
-                x: 55.35368217,
-                y: 38.24289406,
-                h: 49.09560724,
-                w: 34.01162791,
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: "/img/icons/Local technique_affiche droite.svg"
+                svg: Zones.LocalTechniqueAfficheDroite
             },
-            {
-                x: 39.475,
-                y: 12.44635,
-                h: 5.436337625,
-                w: 4.075,
+            /*
                 click: new AfterMoveToRoom(CREDITS_ID),
                 svg: "/img/icons/Local technique_papier.svg"
-            }
+            }*/
         ],
         sounds: [local_technique_sound],
     },

@@ -51,12 +51,7 @@ export default class Room extends React.Component<RoomProps> {
                         this.props.value.zones !== undefined &&
                         this.props.value.zones.length &&
                         this.props.value.zones.map(zone => 
-                            <img className={style.zones} src={zone.svg} style={{
-                                left: `${zone.x}%`,
-                                bottom: `${zone.y}%`,
-                                height: `${zone.h}%`,
-                                width: `${zone.w}%`
-                            }} onClick={(e) => this.zoneActivated(zone,e)}/>
+                            zone.svg({onClick: (e) => this.zoneActivated(zone,e)})
                         )
                     }
                     {
