@@ -169,11 +169,19 @@ export const all_rooms: Array<Room> = [
           zones: [
             {
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.LocalTechniqueAfficheGauche
+                svg: Zones.LocalTechniqueAfficheGauche,
+                x:810,
+                y:1122,
+                w:522,
+                h:819
             },
             {
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.LocalTechniqueAfficheDroite
+                svg: Zones.LocalTechniqueAfficheDroite,
+                x:2285,
+                y:888,
+                w:1424,
+                h:1152
             },
             /*
                 click: new AfterMoveToRoom(CREDITS_ID),

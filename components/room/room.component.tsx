@@ -2,6 +2,7 @@ import React from 'react'
 import DefaultProps from '../../structures/props.structure'
 import RoomStruct from '../../structures/space/room.structure'
 import Zone from '../../structures/space/zone.structure'
+import Zones from '../../public/img/zones/zones.component'
 import Dialog from '../dialog/dialog.component'
 import Item from '../item/item.component'
 import Menu from '../menu/menu.component'
@@ -14,6 +15,7 @@ interface RoomProps extends DefaultProps {
 
 export default class Room extends React.Component<RoomProps> {
     private after_nodes: React.ReactNode = undefined
+    private ref: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>()
 
     constructor(props: RoomProps) {
         super(props)
@@ -35,7 +37,10 @@ export default class Room extends React.Component<RoomProps> {
     render = () => {
         return (
             <section className={style.room}>
-                <div className={style.playground} style={{backgroundImage: `url('${this.props.value.src}')`}}>
+                <div
+                    className={style.playground}
+                    ref={this.ref}
+                    style={{backgroundImage: `url('${this.props.value.src}')`}}>
                     {
                         this.props.value.dialog !== undefined &&
                         <Dialog player={this.props.player} value={this.props.value.dialog}/>
@@ -51,7 +56,15 @@ export default class Room extends React.Component<RoomProps> {
                         this.props.value.zones !== undefined &&
                         this.props.value.zones.length &&
                         this.props.value.zones.map(zone => 
-                            zone.svg({onClick: (e) => this.zoneActivated(zone,e)})
+                            <Zones.Zone
+                                value={zone.svg}
+                                roomRef={this.ref}
+                                onClick={(e) => this.zoneActivated(zone,e)}
+                                x={zone.x}
+                                y={zone.y}
+                                w={zone.w}
+                                h={zone.h}
+                            />
                         )
                     }
                     {

@@ -24,7 +24,7 @@
     position: relative;
 }
 
-.room .playground .zones {
+.room .playground .svg {
     position: absolute;
     cursor: pointer;
     border: red 4px dashed;
