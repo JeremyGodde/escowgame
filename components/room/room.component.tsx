@@ -4,6 +4,7 @@ import RoomStruct from '../../structures/space/room.structure'
 import Zone from '../../structures/space/zone.structure'
 import Dialog from '../dialog/dialog.component'
 import Item from '../item/item.component'
+import Menu from '../menu/menu.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
 
@@ -17,13 +18,6 @@ export default class Room extends React.Component<RoomProps> {
     constructor(props: RoomProps) {
         super(props)
 
-    }
-
-    exit = (evt: React.MouseEvent) => {
-        evt.preventDefault()
-        evt.stopPropagation()
-
-        this.props.player.move(this.props.value.id_exit)
     }
 
     zoneActivated = (zone:Zone, evt: React.MouseEvent) => {
@@ -78,10 +72,7 @@ export default class Room extends React.Component<RoomProps> {
                         this.after_nodes !== undefined &&
                         this.after_nodes
                     }
-                    <div className={style.menu}>
-                        <img src="/img/icons/list.svg"/>
-                        <img src="/img/icons/box-arrow-right.svg" onClick={this.exit}/>
-                    </div>
+                    <Menu player={this.props.player} id_exit={this.props.value.id_exit}/>
                 </div>
             </section>
         )

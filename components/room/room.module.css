@@ -24,28 +24,6 @@
     position: relative;
 }
 
-.room .playground .menu {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: var(--menu-width);
-
-    padding: var(--menu-hz-padding);
-
-    background-color: rgba(0, 0, 0, 0.5);
-    border-left: rgb(255,255,255) 3px solid;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.room .playground .menu .img {
-    cursor: pointer;
-}
-
 .room .playground .zones {
     position: absolute;
     cursor: pointer;
