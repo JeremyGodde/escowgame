@@ -160,19 +160,35 @@ export const all_rooms: Array<Room> = [
     {
         id: LOCAL_TECHNIQUE,
         id_exit: COULOIR_1, 
-        src: "/img/indoor/local_technique.png",
+        src: "/img/indoor/local_technique.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
             return true
         },
           zones: [
             {
-                x: 0,
-                y: 0,
-                h: 100,
-                w: 100,
+                x: 20.625,
+                y: 40.12876,
+                h: 27.6824,
+                w: 12.6,
                 click: new AfterMoveToRoom(CREDITS_ID),
                 svg: "/img/icons/Local technique_affiche gauche.svg"
+            },
+            {
+                x: 55.35368217,
+                y: 38.24289406,
+                h: 49.09560724,
+                w: 34.01162791,
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: "/img/icons/Local technique_affiche droite.svg"
+            },
+            {
+                x: 39.475,
+                y: 12.44635,
+                h: 5.436337625,
+                w: 4.075,
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: "/img/icons/Local technique_papier.svg"
             }
         ],
         sounds: [local_technique_sound],
