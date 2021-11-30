@@ -11,6 +11,11 @@ export const bureau_12_sound: Sound = {
     is_loop: true
 }
 
+export const local_technique_sound: Sound = {
+    src: "/sound/Local_technique.wav", 
+    is_loop: true
+}
+
 export const bureau_8_sound: Sound = {
     src: "/sound/Bureau_8.wav",
     is_loop: true
