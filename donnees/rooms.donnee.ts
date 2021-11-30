@@ -21,6 +21,7 @@ import {
     BUREAU_8,
     BUREAU_12,
     BUREAU_13,
+    LOCAL_TECHNIQUE,
     CREDITS_ID, 
 } from "./list_ids_room.donnee"
 
@@ -30,7 +31,11 @@ import {
     exterieur_3_sound, 
     exterieur_3bis_1_sound,
     exterieur_3bis_2_sound,
-    usine_exterieur_1_sound
+    usine_exterieur_1_sound, 
+    bureau_8_sound,
+    local_technique_sound,
+    bureau_12_sound,
+    bureau_13_sound
 } from "./sounds.donnee"
 
 
@@ -83,7 +88,7 @@ export const all_rooms: Array<Room> = [
     {
         id: USINE_EXTERIEUR_1,
         id_exit: HOME_SCREEN_ID,
-        src: "/img/outdoor/Usine.png",
+        src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
@@ -94,42 +99,22 @@ export const all_rooms: Array<Room> = [
     {
         id: USINE_EXTERIEUR_1bis,
         id_exit: HOME_SCREEN_ID,
-        src: "/img/outdoor/Usine.png",
+        src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
         },
         dialog: usine_exterieur_1bis_dialog
     },
-    {
-        id: USINE_EXTERIEUR_1bis,
-        id_exit: HOME_SCREEN_ID,
-        src: "/img/outdoor/Usine.png",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte
-            return true
-        },
-        dialog: usine_exterieur_1bis_dialog
-    },
+  
     {
         id: COULOIR_1,
         id_exit: HOME_SCREEN_ID,
-        src: "/img/indoor/couloir_1.png",
+        src: "/img/indoor/couloir_1.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
         },
-        items: [
-            {
-                x: 50,
-                y: 50,
-                w: 10,
-                h: 5,
-                img: "/img/dog/chien_face.png",
-                collectable: true,
-                draggable: false,
-            }
-        ],
         /*zones: [
             {
                 x: 50,
@@ -148,7 +133,8 @@ export const all_rooms: Array<Room> = [
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
-        }
+        },
+        sounds: [bureau_8_sound],
     },
     {
         id: BUREAU_12,
@@ -157,7 +143,8 @@ export const all_rooms: Array<Room> = [
         open_if: (player: Player): boolean => {
             // toujours ouverte (A CHANGER)
             return true
-        }
+        },
+        sounds: [bureau_12_sound],
     },
     {
         id: BUREAU_13,
@@ -166,7 +153,29 @@ export const all_rooms: Array<Room> = [
         open_if: (player: Player): boolean => {
             // toujours ouverte 
             return true
-        }
+        },
+        sounds: [bureau_13_sound],
+    },
+
+    {
+        id: LOCAL_TECHNIQUE,
+        id_exit: COULOIR_1, 
+        src: "/img/indoor/local_technique.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+          zones: [
+            {
+                x: 0,
+                y: 0,
+                h: 100,
+                w: 100,
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: "/img/icons/Local technique_affiche gauche.svg"
+            }
+        ],
+        sounds: [local_technique_sound],
     },
 
 
