@@ -15,7 +15,6 @@ interface RoomProps extends DefaultProps {
 
 export default class Room extends React.Component<RoomProps> {
     private after_nodes: React.ReactNode = undefined
-    private ref: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>()
 
     constructor(props: RoomProps) {
         super(props)
@@ -39,7 +38,6 @@ export default class Room extends React.Component<RoomProps> {
             <section className={style.room}>
                 <div
                     className={style.playground}
-                    ref={this.ref}
                     style={{backgroundImage: `url('${this.props.value.src}')`}}>
                     {
                         this.props.value.dialog !== undefined &&
@@ -53,17 +51,17 @@ export default class Room extends React.Component<RoomProps> {
                         )
                     }
                     {
-                        this.props.value.zones !== undefined &&
-                        this.props.value.zones.length &&
-                        this.props.value.zones.map(zone => 
+                        this.props.value['zones'] !== undefined &&
+                        this.props.value['zones'].length &&
+                        this.props.value['zones'].map(zone => 
                             <Zones.Zone
                                 value={zone.svg}
-                                roomRef={this.ref}
                                 onClick={(e) => this.zoneActivated(zone,e)}
                                 x={zone.x}
                                 y={zone.y}
                                 w={zone.w}
                                 h={zone.h}
+                                roomDim={this.props.value['dim']}
                             />
                         )
                     }

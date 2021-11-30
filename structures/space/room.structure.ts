@@ -11,6 +11,10 @@ export default interface Room {
     open_if: (player:Player) => boolean
     sounds?: Array<Sound>
     dialog?: Dialog
-    zones?: Array<Zone>
     items?: Array<Item>
+    zones?: Array<Zone>
+    dim?: {
+        w: number
+        h:number
+    }
 }

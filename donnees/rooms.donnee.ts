@@ -166,7 +166,11 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte 
             return true
         },
-          zones: [
+        dim: {
+            w: 4128,
+            h: 2322
+        },
+        zones: [
             {
                 click: new AfterMoveToRoom(CREDITS_ID),
                 svg: Zones.LocalTechniqueAfficheGauche,
@@ -182,6 +186,14 @@ export const all_rooms: Array<Room> = [
                 y:888,
                 w:1424,
                 h:1152
+            },
+            {
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.LocalTechniquePapier,
+                x:1579,
+                y:348,
+                w:163,
+                h:152
             },
             /*
                 click: new AfterMoveToRoom(CREDITS_ID),

@@ -26,6 +26,10 @@
 
 .room .playground .svg {
     position: absolute;
+    fill: rgba(0,255,0,0.1);
+}
+
+.room .playground .svg polygon,
+.room .playground .svg ellipse {
     cursor: pointer;
-    border: red 4px dashed;
 }
