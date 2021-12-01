@@ -1,4 +1,4 @@
-import Zones from "../public/img/zones/zones.component"
+import Zones from "../components/zones/zones.component"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
@@ -116,16 +116,6 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
-        /*zones: [
-            {
-                x: 50,
-                y: 50,
-                h: 10,
-                w: 5,
-                click: new AfterMoveToRoom(CREDITS_ID),
-                svg: "/img/icons/journal-text.svg"
-            }
-        ]*/
     },
     {
         id: BUREAU_8,
@@ -171,34 +161,54 @@ export const all_rooms: Array<Room> = [
             h: 2322
         },
         zones: [
-            {
+            { //affiche gauche
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.LocalTechniqueAfficheGauche,
-                x:810,
-                y:1122,
-                w:522,
-                h:819
+                svg: Zones.Rect,
+                pos: {
+                    x:815,
+                    y:1180
+                },
+                dim: {
+                    w:522,
+                    h:800
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.06,
+                    topRight: 0.1
+                }
             },
-            {
+            { //affiche droite
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.LocalTechniqueAfficheDroite,
-                x:2285,
-                y:888,
-                w:1424,
-                h:1152
+                svg: Zones.Rect,
+                pos: {
+                    x:2265,
+                    y:853
+                },
+                dim: {
+                    w:1424,
+                    h:1147
+                },
+                angulars: {
+                    topLeft: 0.375,
+                    bottomLeft: 0.07,
+                    bottomRight: 0,
+                    topRight: 0
+                }
             },
-            {
+            { //boulette de papier
                 click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.LocalTechniquePapier,
-                x:1579,
-                y:348,
-                w:163,
-                h:152
+                svg: Zones.Circ,
+                pos: {
+                    x:1579,
+                    y:338
+                },
+                dim: {
+                    w:163,
+                    h:162
+                }
             },
-            /*
-                click: new AfterMoveToRoom(CREDITS_ID),
-                svg: "/img/icons/Local technique_papier.svg"
-            }*/
         ],
         sounds: [local_technique_sound],
     },

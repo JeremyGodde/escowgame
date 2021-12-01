@@ -23,8 +23,8 @@ export default class Item extends React.Component<ItemProps> {
         if(!this.props.value.collectable && this.props.value.draggable === true) {
             this.class += " " + style.draggable
         }
-        this.x = this.props.value.x
-        this.y = this.props.value.y
+        this.x = this.props.value.pos.x
+        this.y = this.props.value.pos.y
     }
 
     collect = (evt: MouseEvent) => {
@@ -82,8 +82,8 @@ export default class Item extends React.Component<ItemProps> {
                 style={{
                     bottom: `${this.y}%`,
                     left: `${this.x}%`,
-                    width: `${this.props.value.w}%`,
-                    height: `${this.props.value.h}%`,
+                    width: `${this.props.value.dim.w}%`,
+                    height: `${this.props.value.dim.h}%`,
                     backgroundImage: `url('${this.props.value.img}')`,
                 }}
             >

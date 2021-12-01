@@ -2,7 +2,7 @@ import React from 'react'
 import DefaultProps from '../../structures/props.structure'
 import RoomStruct from '../../structures/space/room.structure'
 import Zone from '../../structures/space/zone.structure'
-import Zones from '../../public/img/zones/zones.component'
+import Zones from '../zones/zones.component'
 import Dialog from '../dialog/dialog.component'
 import Item from '../item/item.component'
 import Menu from '../menu/menu.component'
@@ -57,10 +57,9 @@ export default class Room extends React.Component<RoomProps> {
                             <Zones.Zone
                                 value={zone.svg}
                                 onClick={(e) => this.zoneActivated(zone,e)}
-                                x={zone.x}
-                                y={zone.y}
-                                w={zone.w}
-                                h={zone.h}
+                                pos={zone.pos}
+                                dim={zone.dim}
+                                angulars={zone.angulars}
                                 roomDim={this.props.value['dim']}
                             />
                         )
