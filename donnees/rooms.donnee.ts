@@ -107,7 +107,6 @@ export const all_rooms: Array<Room> = [
         },
         dialog: usine_exterieur_1bis_dialog
     },
-  
     {
         id: COULOIR_1,
         id_exit: HOME_SCREEN_ID,
@@ -116,16 +115,62 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        zones: [
+            { //porte 1 -> bureau 8
+                click: new AfterMoveToRoom(BUREAU_8),
+                svg: Zones.Rect,
+                pos: {
+                    x:258,
+                    y:0
+                },
+                dim: {
+                    w:450,
+                    h:2150
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0.19
+                }
+            },
+            { //porte 2 -> local_technique
+                click: new AfterMoveToRoom(LOCAL_TECHNIQUE),
+                svg: Zones.Rect,
+                pos: {
+                    x:3342,
+                    y:0
+                },
+                dim: {
+                    w:670,
+                    h:2500
+                },
+                angulars: {
+                    topLeft: 0.3,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
     },
     {
         id: BUREAU_8,
         id_exit: COULOIR_1,
-        src: "/img/indoor/bureau_8.png",
+        src: "/img/indoor/bureau_8.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
         },
         sounds: [bureau_8_sound],
+        dim: {
+            w: 6000,
+            h: 4000
+        },
     },
     {
         id: BUREAU_12,
@@ -136,18 +181,25 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds: [bureau_12_sound],
+        dim: {
+            w: 4897,
+            h: 3265
+        },
     },
     {
         id: BUREAU_13,
         id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
-        src: "/img/indoor/bureau_12.png",
+        src: "/img/indoor/bureau_13.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
             return true
         },
         sounds: [bureau_13_sound],
+        dim: {
+            w: 4032,
+            h: 3024
+        },
     },
-
     {
         id: LOCAL_TECHNIQUE,
         id_exit: COULOIR_1, 
