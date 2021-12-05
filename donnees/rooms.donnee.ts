@@ -265,6 +265,27 @@ export const all_rooms: Array<Room> = [
             w: 4897,
             h: 3265
         },
+        zones: [
+            {//écran d'ordinateur -> Enigme 2
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.RectRotate,
+                pos: {
+                    x:2430,
+                    y:1700
+                },
+                dim: {
+                    w:410,
+                    h:335
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                    rotate: "7deg"
+                }
+            }
+        ]
     },
     {
         id: BUREAU_13,
