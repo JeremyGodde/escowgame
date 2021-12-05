@@ -51,3 +51,8 @@ export const exterieur_1_sound: Sound = {
     src: "/sound/Exterieur_1.wav",
     is_loop: true
 }
+
+export const message_telephone_sound: Sound = {
+    src: "/sound/Message_telephone.wav",
+    is_loop: false
+}

@@ -1,5 +1,6 @@
 import Zones from "../components/zones/zones.component"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
+import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
 import {
@@ -36,7 +37,8 @@ import {
     bureau_8_sound,
     local_technique_sound,
     bureau_12_sound,
-    bureau_13_sound
+    bureau_13_sound,
+    message_telephone_sound
 } from "./sounds.donnee"
 
 
@@ -232,7 +234,7 @@ export const all_rooms: Array<Room> = [
                 }
             },
             {//téléphone -> Message
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterPlaySound(message_telephone_sound),
                 svg: Zones.RectRotate,
                 pos: {
                     x:3625,
