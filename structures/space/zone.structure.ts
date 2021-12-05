@@ -23,6 +23,6 @@ export interface ZoneSVGProps extends DrawingProperties {
 }
 
 export default interface Zone extends DrawingProperties {
-    svg: React.FunctionComponent<ZoneSVGProps>
+    svg: React.FunctionComponent<{key: string, draw: ZoneSVGProps}>
     click: AfterDoAction
 }

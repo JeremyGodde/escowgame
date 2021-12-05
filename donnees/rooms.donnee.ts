@@ -11,6 +11,7 @@ import {
     usine_exterieur_1bis_dialog
 } from "./dialogs.donnee"
 import {
+    NONE,
     HOME_SCREEN_ID,
     EXTERIEUR_1,
     EXTERIEUR_2,
@@ -31,7 +32,6 @@ import {
     exterieur_2_sound,
     exterieur_3_sound, 
     exterieur_3bis_1_sound,
-    exterieur_3bis_2_sound,
     usine_exterieur_1_sound, 
     bureau_8_sound,
     local_technique_sound,
@@ -43,7 +43,7 @@ import {
 export const all_rooms: Array<Room> = [
     {
         id: EXTERIEUR_1,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Findejournée1.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -58,7 +58,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_2,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Findejournée2.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -73,7 +73,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_3,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Findejournée3.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -88,7 +88,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_3bis,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Findejournée3_chien.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -103,7 +103,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: USINE_EXTERIEUR_1,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -118,7 +118,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: USINE_EXTERIEUR_1bis,
-        id_exit: HOME_SCREEN_ID,
+        id_exit: NONE,
         src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte

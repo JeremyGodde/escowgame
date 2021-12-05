@@ -63,13 +63,13 @@ export default class Sound extends React.Component<SoundProps> {
 
     render = () => {
         return (
-            <>
+            <div key={this.value.src}>
                 <audio ref={this.audio} />
                 {
                     this.after_nodes !== undefined &&
                     this.after_nodes
                 }
-            </>
+            </div>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import style from './menu.module.css'
 import DefaultProps from "../../structures/props.structure"
-import { HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
+import { HOME_SCREEN_ID, NONE } from "../../donnees/list_ids_room.donnee"
 
 interface MenuProps extends DefaultProps {
     id_exit: number
@@ -32,6 +32,9 @@ export default class Menu extends React.Component<MenuProps> {
 
     render = () => {
         return (
+        <>
+        {
+            this.props.id_exit !== NONE &&
             <>
             {
                 this.props.id_exit !== HOME_SCREEN_ID &&
@@ -45,11 +48,13 @@ export default class Menu extends React.Component<MenuProps> {
                     onClick={this.exit}
                 />
             }
-            <div className={style.menu}>
-                <img src="/img/icons/list.svg"/>
-                <img src="/img/icons/box-arrow-right.svg"/>
-            </div>
+                <div className={style.menu}>
+                    <img src="/img/icons/list.svg"/>
+                    <img src="/img/icons/box-arrow-right.svg"/>
+                </div>
             </>
+        }
+        </>
         )
     }
 }

@@ -1,4 +1,5 @@
 // pièces de présentation
+export const NONE = -2
 export const HOME_SCREEN_ID = 0
 export const CREDITS_ID = -1
 

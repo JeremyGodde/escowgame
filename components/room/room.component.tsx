@@ -98,8 +98,9 @@ export default class Room extends React.Component<RoomProps> {
                         this.offset !== undefined &&
                         this.props.value['zones'] !== undefined &&
                         this.props.value['zones'].length &&
-                        this.props.value['zones'].map(zone => 
+                        this.props.value['zones'].map((zone,index) => 
                             <Zones.Zone
+                                key={`${this.props.value.id}_zone_${index}`}
                                 value={zone.svg}
                                 onClick={(e) => this.zoneActivated(zone,e)}
                                 pos={zone.pos}
