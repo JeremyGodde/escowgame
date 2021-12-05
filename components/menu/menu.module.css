@@ -19,3 +19,12 @@
 .menu .img {
     cursor: pointer;
 }
+
+.exit_button {
+    position: absolute;
+        
+    height: var(--menu-width);
+    width: var(--menu-width);
+
+    cursor: pointer;
+}

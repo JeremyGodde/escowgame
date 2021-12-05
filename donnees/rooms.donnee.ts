@@ -50,8 +50,11 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds:[exterieur_1_sound],
-        dialog: exterieur_1_dialog
-
+        dialog: exterieur_1_dialog,
+        dim: {
+            w: 1228,
+            h: 768
+        }
     },
     {
         id: EXTERIEUR_2,
@@ -62,7 +65,11 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds: [exterieur_2_sound],
-        dialog: exterieur_2_dialog
+        dialog: exterieur_2_dialog,
+        dim: {
+            w: 1170,
+            h: 780
+        }
     },
     {
         id: EXTERIEUR_3,
@@ -73,7 +80,11 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds : [exterieur_3_sound],
-        dialog: exterieur_3_dialog
+        dialog: exterieur_3_dialog,
+        dim: {
+            w: 1074,
+            h: 806
+        }
     },
     {
         id: EXTERIEUR_3bis,
@@ -84,7 +95,11 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds: [exterieur_3bis_1_sound],
-        dialog: exterieur_3bis_dialog
+        dialog: exterieur_3bis_dialog,
+        dim: {
+            w: 1074,
+            h: 716
+        }
     },
     {
         id: USINE_EXTERIEUR_1,
@@ -95,7 +110,11 @@ export const all_rooms: Array<Room> = [
             return true
         },
         sounds: [usine_exterieur_1_sound],
-        dialog: usine_exterieur_1_dialog
+        dialog: usine_exterieur_1_dialog,
+        dim: {
+            w: 5184,
+            h: 3456
+        }
     },
     {
         id: USINE_EXTERIEUR_1bis,
@@ -105,7 +124,11 @@ export const all_rooms: Array<Room> = [
             // toujours ouverte
             return true
         },
-        dialog: usine_exterieur_1bis_dialog
+        dialog: usine_exterieur_1bis_dialog,
+        dim: {
+            w: 5184,
+            h: 3456
+        }
     },
     {
         id: COULOIR_1,

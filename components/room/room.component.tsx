@@ -15,10 +15,14 @@ interface RoomProps extends DefaultProps {
 
 export default class Room extends React.Component<RoomProps> {
     private after_nodes: React.ReactNode = undefined
+    private ratio: number
+    private offset: {
+        x: number
+        y: number
+    }
 
     constructor(props: RoomProps) {
         super(props)
-
     }
 
     zoneActivated = (zone:Zone, evt: React.MouseEvent) => {
@@ -29,8 +33,48 @@ export default class Room extends React.Component<RoomProps> {
        this.setState({})
     }
 
+    resize = () => {
+        if (document === null || document.documentElement === null) {
+            setTimeout(this.resize,10)
+            return
+        }
+
+        const ratio = {
+            w: document.documentElement.offsetWidth/this.props.value.dim.w,
+            h: document.documentElement.offsetHeight/this.props.value.dim.h
+        }
+
+        if(ratio.h < ratio.w) {
+            // limitée par la hauteur
+            // => ratio.h est la proportion à répercuter partout
+            this.ratio = ratio.h
+            this.offset = {
+                x: (document.documentElement.offsetWidth - this.props.value.dim.w*ratio.h)/2,
+                y: 0
+            }
+        } else if(ratio.h > ratio.w) {
+            // limitée par la largeur
+            // => ratio.w est la proportion à répercuter partout
+            this.ratio = ratio.w
+            this.offset = {
+                y: (document.documentElement.offsetHeight - this.props.value.dim.h*ratio.w)/2,
+                x: 0
+            }
+        } else {
+            // pile la bonne taille (dimensions identiques)
+            // => ratio.h et ratio.w sont égaux ici
+            this.ratio = ratio.w
+            this.offset = {
+                x: 0,
+                y: 0
+            }
+        }
+        this.setState({})
+    }
+
     componentDidMount = () => {
-        
+        this.resize()
+        window.addEventListener("resize",this.resize)
     }
 
     render = () => {
@@ -51,6 +95,7 @@ export default class Room extends React.Component<RoomProps> {
                         )
                     }
                     {
+                        this.offset !== undefined &&
                         this.props.value['zones'] !== undefined &&
                         this.props.value['zones'].length &&
                         this.props.value['zones'].map(zone => 
@@ -60,7 +105,8 @@ export default class Room extends React.Component<RoomProps> {
                                 pos={zone.pos}
                                 dim={zone.dim}
                                 angulars={zone.angulars}
-                                roomDim={this.props.value['dim']}
+                                ratio={this.ratio}
+                                offset={this.offset}
                             />
                         )
                     }
@@ -77,7 +123,14 @@ export default class Room extends React.Component<RoomProps> {
                         this.after_nodes !== undefined &&
                         this.after_nodes
                     }
-                    <Menu player={this.props.player} id_exit={this.props.value.id_exit}/>
+                    {
+                        this.offset !== undefined &&
+                        <Menu
+                            player={this.props.player}
+                            id_exit={this.props.value.id_exit}
+                            offset={this.offset}
+                        />
+                    }
                 </div>
             </section>
         )

@@ -1,9 +1,14 @@
 import React from "react"
 import style from './menu.module.css'
 import DefaultProps from "../../structures/props.structure"
+import { HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
 
 interface MenuProps extends DefaultProps {
     id_exit: number
+    offset: {
+        x: number
+        y: number
+    }
 }
 
 export default class Menu extends React.Component<MenuProps> {
@@ -28,8 +33,18 @@ export default class Menu extends React.Component<MenuProps> {
     render = () => {
         return (
             <>
-            <img src="/img/icons/arrow-left-circle-fill.svg" onClick={this.exit}/>
-
+            {
+                this.props.id_exit !== HOME_SCREEN_ID &&
+                <img
+                    className={style.exit_button}
+                    src="/img/icons/arrow-left-circle-fill.svg"
+                    style={{
+                        left:`${4 + this.props.offset.x}px`,
+                        top:`${4 + this.props.offset.y}px`
+                    }}
+                    onClick={this.exit}
+                />
+            }
             <div className={style.menu}>
                 <img src="/img/icons/list.svg"/>
                 <img src="/img/icons/box-arrow-right.svg"/>

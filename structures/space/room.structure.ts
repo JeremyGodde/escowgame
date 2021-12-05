@@ -13,7 +13,7 @@ export default interface Room {
     dialog?: Dialog
     items?: Array<Item>
     zones?: Array<Zone>
-    dim?: {
+    dim: {
         w: number
         h:number
     }

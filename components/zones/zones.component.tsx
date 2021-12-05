@@ -4,9 +4,10 @@ import { DrawingProperties, ZoneSVGProps } from '../../structures/space/zone.str
 
 export interface ZoneProps extends ZoneSVGProps{
     value: React.FunctionComponent<ZoneSVGProps>
-    roomDim: {
-        w: number
-        h: number
+    ratio: number
+    offset: {
+        x: number
+        y: number
     }
 }
 
@@ -15,63 +16,22 @@ class Zone extends React.Component<ZoneProps> {
     
     constructor(props) {
         super(props)
+        console.log(props.pos,props.dim,props.ratio,props.offset)
         this.drawingProperties = {
-            pos: {x:0,y:0},
-            dim: {w:0,h:0}
+            pos: {
+                x: props.pos.x * props.ratio + props.offset.x,
+                y: props.pos.y * props.ratio + props.offset.y
+            },
+            dim: {
+                w: props.dim.w * props.ratio,
+                h: props.dim.h * props.ratio
+            },
+            angulars: props.angulars
         }
-    }
-    
-    resize = () => {
-        if (document === null || document.documentElement === null) {
-            setTimeout(this.resize,10)
-            return
-        }
-
-        const ratio = {
-            w: document.documentElement.offsetWidth/this.props.roomDim.w,
-            h: document.documentElement.offsetHeight/this.props.roomDim.h
-        }
-        const ratio_zoom = ratio.h/ratio.w
-
-        if(ratio_zoom < 1) {
-            // limitée par la hauteur
-            // => ratio.h est la proportion à répercuter partout
-
-            const offset =  (document.documentElement.offsetWidth - this.props.roomDim.w*ratio.h)/2
-
-            this.drawingProperties.pos.x = this.props.pos.x * ratio.h + offset
-            this.drawingProperties.pos.y = this.props.pos.y * ratio.h
-            
-            this.drawingProperties.dim.h = this.props.dim.h * ratio.h
-            this.drawingProperties.dim.w = this.props.dim.w * ratio.h
-        } else if(ratio_zoom > 1) {
-            // limitée par la largeur
-            // => ratio.w est la proportion à répercuter partout
-            const offset = (document.documentElement.offsetHeight - this.props.roomDim.h*ratio.w)/2
-            
-            this.drawingProperties.pos.x = this.props.pos.x * ratio.w
-            this.drawingProperties.pos.y = this.props.pos.y * ratio.w + offset
-            
-            this.drawingProperties.dim.h = this.props.dim.h * ratio.w
-            this.drawingProperties.dim.w = this.props.dim.w * ratio.w
-        } else {
-            // pile la bonne taille (dimensions identiques)
-            // => ratio.h et ratio.w sont égaux ici
-            this.drawingProperties.pos.x = this.props.pos.x * ratio.h
-            this.drawingProperties.pos.y = this.props.pos.y * ratio.w
-
-            this.drawingProperties.dim.h = this.props.dim.h * ratio.h
-            this.drawingProperties.dim.w = this.props.dim.w * ratio.w
-        }
-
-        this.drawingProperties.angulars = this.props.angulars
-
-        this.setState({})
     }
 
     componentDidMount = () => {
-        setTimeout(this.resize,10)
-        window.addEventListener("resize",this.resize)
+
     }
     
     render = () => {
