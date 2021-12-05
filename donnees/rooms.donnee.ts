@@ -194,6 +194,63 @@ export const all_rooms: Array<Room> = [
             w: 6000,
             h: 4000
         },
+        zones: [
+            {//écran d'ordinateur -> Enigme finale
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.Rect,
+                pos: {
+                    x:510,
+                    y:1200
+                },
+                dim: {
+                    w:2565,
+                    h:1700
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.21,
+                    topRight: 0.215
+                }
+            },
+            {//tableau de liège -> Enigme 1
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.Rect,
+                pos: {
+                    x:3100,
+                    y:1200
+                },
+                dim: {
+                    w:700,
+                    h:1050
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.17,
+                    topRight: 0.015
+                }
+            },
+            {//téléphone -> Message
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.RectRotate,
+                pos: {
+                    x:3625,
+                    y:815
+                },
+                dim: {
+                    w:505,
+                    h:205
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 1.25,
+                    bottomRight: 0,
+                    topRight: 1.25,
+                    rotate: '-15deg'
+                }
+            }
+        ]
     },
     {
         id: BUREAU_12,

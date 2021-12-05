@@ -14,7 +14,8 @@ export interface DrawingProperties {
         topLeft: number,
         topRight: number,
         bottomRight: number,
-        bottomLeft: number
+        bottomLeft: number,
+        rotate?: string 
     }
 }
 

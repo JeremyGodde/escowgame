@@ -82,6 +82,42 @@ function Rect(props:{key:string, draw:ZoneSVGProps}) {
     )
 }
 
+function RectRotate(props:{key:string, draw:ZoneSVGProps}) {
+    if (props.draw.angulars === undefined) {
+        props.draw.angulars = {
+            topLeft: 0,
+            bottomLeft: 0,
+            bottomRight: 0,
+            topRight: 0
+        }
+    }
+
+    return (
+        <svg
+            key={props.key}
+            className={style.svg}
+            style={{
+                left:`${props.draw.pos.x}px`,
+                bottom:`${props.draw.pos.y}px`,
+                width:`${props.draw.dim.w}px`,
+                height:`${props.draw.dim.h}px`,
+                transform: `rotate(${props.draw.angulars.rotate})`
+            }}
+            xmlns="http://www.w3.org/2000/svg"
+        >
+        <polygon
+            onClick={props.draw.onClick}
+            points={
+                `${props.draw.dim.w*props.draw.angulars.topLeft/2},0 ` +
+                `${props.draw.dim.w*props.draw.angulars.bottomLeft/2},${props.draw.dim.h} ` +
+                `${props.draw.dim.w*(1-props.draw.angulars.bottomRight/2)},${props.draw.dim.h} ` +
+                `${props.draw.dim.w*(1-props.draw.angulars.topRight/2)},0`
+            }
+        />
+        </svg>
+    )
+}
+
 function Circ(props:{key:string, draw:ZoneSVGProps}) {
     return (
         <svg
@@ -111,5 +147,6 @@ function Circ(props:{key:string, draw:ZoneSVGProps}) {
 export default {
     Zone,
     Rect,
+    RectRotate,
     Circ
 }
