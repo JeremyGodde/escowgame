@@ -15,3 +15,6 @@ export const BUREAU_8 = 7
 export const BUREAU_12 = 8
 export const BUREAU_13 = 9
 export const LOCAL_TECHNIQUE = 10
+export const BUREAU_INACCESSIBLE = 11
+export const BUREAU_INACCESSIBLE_ZOOM = 12
+export const PORTE_VEROUILLEE = 13

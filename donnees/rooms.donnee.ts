@@ -25,7 +25,9 @@ import {
     BUREAU_12,
     BUREAU_13,
     LOCAL_TECHNIQUE,
-    CREDITS_ID, 
+    CREDITS_ID,
+    BUREAU_INACCESSIBLE,
+    BUREAU_INACCESSIBLE_ZOOM, 
 } from "./list_ids_room.donnee"
 
 import {
@@ -231,7 +233,7 @@ export const all_rooms: Array<Room> = [
                     bottomLeft: 0,
                     bottomRight: 0.17,
                     topRight: 0.015
-                }
+                },
             },
             {//téléphone -> Message
                 click: new AfterPlaySound(message_telephone_sound),
@@ -367,6 +369,50 @@ export const all_rooms: Array<Room> = [
         ],
         sounds: [local_technique_sound],
     },
-
-
+    {
+        id: BUREAU_INACCESSIBLE,
+        id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
+        src: "/img/indoor/bureau_inaccessible.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 8778,
+            h: 6000
+        },
+        zones: [
+            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ? 
+                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
+                svg: Zones.Rect,
+                pos: {
+                    x:0,
+                    y:0
+                },
+                dim: {
+                    w:8778,
+                    h:6000
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
+    },
+    {
+        id: BUREAU_INACCESSIBLE_ZOOM,
+        id_exit: BUREAU_INACCESSIBLE, 
+        src: "/img/indoor/bureau_inaccessible_zoom.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte ??
+            return true
+        },
+        dim: {
+            w: 6378,
+            h: 3860
+        },
+    },
 ]

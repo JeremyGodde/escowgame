@@ -6,14 +6,14 @@ import Room from '../components/room/room.component'
 
 /* Données de jeu */
 import { all_rooms } from '../donnees/rooms.donnee'
-import { COULOIR_1, CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
+import { BUREAU_INACCESSIBLE, BUREAU_8, CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
 
 export default class Index extends React.Component<{},{player: Player},any> {
     constructor(props) {
         super(props)
         this.state = {
             player: new Player(
-                COULOIR_1,                      // identifiant de la salle dans laquelle commencer
+                BUREAU_INACCESSIBLE,                      // identifiant de la salle dans laquelle commencer
                 (p: Player) => this.setState({player: p})
             )
         }
