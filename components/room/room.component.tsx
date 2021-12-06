@@ -1,14 +1,12 @@
 import React from 'react'
 import DefaultProps from '../../structures/props.structure'
 import RoomStruct from '../../structures/space/room.structure'
-import Zone from '../../structures/space/zone.structure'
 import Zones from '../zones/zones.component'
 import Dialog from '../dialog/dialog.component'
 import Item from '../item/item.component'
 import Menu from '../menu/menu.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
-import AfterDoAction from '../../structures/action/after-do-action.structure'
 
 interface RoomProps extends DefaultProps {
     value: RoomStruct
@@ -108,12 +106,20 @@ export default class Room extends React.Component<RoomProps> {
                         )
                     }
                     {
+                        this.offset !== undefined &&
                         this.props.value.items !== undefined &&
                         this.props.value.items.length &&
                         this.props.value.items.filter( item =>
                             !this.props.player.owned(item)
-                        ).map(item => 
-                                <Item value={item} player={this.props.player}/>
+                        ).map((item,index) => 
+                                <Item
+                                    value={item}
+                                    player={this.props.player}
+                                    key={`${this.props.value.id}_item_${index}`}
+                                    refresh={this.refresh}
+                                    ratio={this.ratio}
+                                    offset={this.offset}
+                                />
                             )
                     }
                     {

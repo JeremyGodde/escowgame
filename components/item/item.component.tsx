@@ -1,18 +1,25 @@
 import React from 'react'
 import ItemStruct from '../../structures/game/item.structure'
 import DefaultProps from '../../structures/props.structure'
+import { DrawingProperties } from '../../structures/space/zone.structure'
 import style from './item.module.css'
 
 export interface ItemProps extends DefaultProps {
     value: ItemStruct
+    key: string
+    ratio: number
+    refresh: (after_nodes:React.ReactNode) => void
+    offset: {
+        x: number
+        y: number
+    }
 }
 
 export default class Item extends React.Component<ItemProps> {
     private self: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>()
+    private drawingProperties: DrawingProperties
     private selected: boolean = false
     private class: string
-    private x: number
-    private y: number
 
     constructor(props: ItemProps) {
         super(props)
@@ -23,8 +30,17 @@ export default class Item extends React.Component<ItemProps> {
         if(!this.props.value.collectable && this.props.value.draggable === true) {
             this.class += " " + style.draggable
         }
-        this.x = this.props.value.pos.x
-        this.y = this.props.value.pos.y
+
+        this.drawingProperties = {
+            pos: {
+                x: props.value.pos.x * props.ratio + props.offset.x,
+                y: props.value.pos.y * props.ratio + props.offset.y
+            },
+            dim: {
+                w: props.value.dim.w * props.ratio,
+                h: props.value.dim.h * props.ratio
+            }
+        }
     }
 
     collect = (evt: MouseEvent) => {
@@ -57,10 +73,21 @@ export default class Item extends React.Component<ItemProps> {
         evt.preventDefault()
         evt.stopPropagation()
 
-        this.x += (105*evt.movementX) / window.screen.width
-        this.y += (-105*evt.movementY) / window.screen.height
+        const dx = evt.movementX
+        const dy = -evt.movementY
 
-        this.setState({})
+        if (
+            dx + this.drawingProperties.pos.x < document.documentElement.offsetWidth - this.props.offset.x &&
+            dx + this.drawingProperties.pos.x > this.props.offset.x &&
+            dy + this.drawingProperties.pos.y < document.documentElement.offsetHeight - this.props.offset.y &&
+            dy + this.drawingProperties.pos.x > this.props.offset.y
+        ) {
+            this.drawingProperties.pos.x += dx
+            this.drawingProperties.pos.y += dy
+            this.setState({})
+        } else {
+            this.select(false,evt)
+        }
     }
 
     componentDidMount = () => {        
@@ -80,14 +107,13 @@ export default class Item extends React.Component<ItemProps> {
                 className={this.class}
                 ref={this.self}
                 style={{
-                    bottom: `${this.y}%`,
-                    left: `${this.x}%`,
-                    width: `${this.props.value.dim.w}%`,
-                    height: `${this.props.value.dim.h}%`,
+                    bottom: `${this.drawingProperties.pos.y}px`,
+                    left: `${this.drawingProperties.pos.x}px`,
+                    width: `${this.drawingProperties.dim.w}px`,
+                    height: `${this.drawingProperties.dim.h}px`,
                     backgroundImage: `url('${this.props.value.img}')`,
                 }}
             >
-
             </div>
         )
     }

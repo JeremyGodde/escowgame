@@ -3,12 +3,12 @@
 */
 export default interface Item {
     pos: {
-        x: number // pourcentage
-        y: number // pourcentage
+        x: number // px
+        y: number // px
     }
     dim: {
-        w: number // pourcentage
-        h: number // pourcentage
+        w: number // px
+        h: number // px
     }
     img: string
     collectable: boolean // peut être ramassé

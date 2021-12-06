@@ -371,7 +371,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_INACCESSIBLE,
-        id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
+        id_exit: COULOIR_1,
         src: "/img/indoor/bureau_inaccessible.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
@@ -382,7 +382,7 @@ export const all_rooms: Array<Room> = [
             h: 6000
         },
         zones: [
-            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ? 
+            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
                 click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
                 svg: Zones.Rect,
                 pos: {
