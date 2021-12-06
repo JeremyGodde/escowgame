@@ -1,11 +1,14 @@
 import React from 'react'
 import style from '../room/room.module.css'
-import { DrawingProperties, ZoneSVGProps } from '../../structures/space/zone.structure'
+import ZoneStruct, { DrawingProperties, ZoneSVGProps } from '../../structures/space/zone.structure'
+import DefaultProps from '../../structures/props.structure'
+import AfterDoAction from '../../structures/action/after-do-action.structure'
 
-export interface ZoneProps extends ZoneSVGProps{
-    value: React.FunctionComponent<{key: string, draw: ZoneSVGProps}>
+export interface ZoneProps extends DefaultProps{
+    value: ZoneStruct
     key: string
     ratio: number
+    refresh: (after_nodes:React.ReactNode) => void
     offset: {
         x: number
         y: number
@@ -15,19 +18,26 @@ export interface ZoneProps extends ZoneSVGProps{
 class Zone extends React.Component<ZoneProps> {
     private drawingProperties: DrawingProperties
     
-    constructor(props) {
+    constructor(props: ZoneProps) {
         super(props)
         this.drawingProperties = {
             pos: {
-                x: props.pos.x * props.ratio + props.offset.x,
-                y: props.pos.y * props.ratio + props.offset.y
+                x: props.value.pos.x * props.ratio + props.offset.x,
+                y: props.value.pos.y * props.ratio + props.offset.y
             },
             dim: {
-                w: props.dim.w * props.ratio,
-                h: props.dim.h * props.ratio
+                w: props.value.dim.w * props.ratio,
+                h: props.value.dim.h * props.ratio
             },
-            angulars: props.angulars
+            angulars: props.value.angulars
         }
+    }
+
+    activated = (after:AfterDoAction, evt: React.MouseEvent) => {
+        evt.preventDefault()
+        evt.stopPropagation()
+
+       this.props.refresh(after.do(this.props.player))
     }
 
     componentDidMount = () => {
@@ -35,10 +45,15 @@ class Zone extends React.Component<ZoneProps> {
     }
     
     render = () => {
-        return this.props.value({
+        return this.props.value.svg({
             key: this.props.key,
             draw:{
-                onClick: this.props.onClick,
+                onClick: this.props.value.click !== undefined
+                    ? (e: React.MouseEvent) => this.activated(this.props.value.click,e)
+                    : undefined,
+                onMouseOver: this.props.value.hover !== undefined
+                    ? (e: React.MouseEvent) => this.activated(this.props.value.hover,e)
+                    : undefined,
                 pos: this.drawingProperties.pos,
                 dim: this.drawingProperties.dim,
                 angulars: this.drawingProperties.angulars
@@ -71,6 +86,7 @@ function Rect(props:{key:string, draw:ZoneSVGProps}) {
         >
         <polygon
             onClick={props.draw.onClick}
+            onMouseOver={props.draw.onMouseOver}
             points={
                 `0,${props.draw.dim.h*props.draw.angulars.topLeft/2} ` +
                 `0,${props.draw.dim.h*(1-props.draw.angulars.bottomLeft/2)} ` +

@@ -8,6 +8,7 @@ import Item from '../item/item.component'
 import Menu from '../menu/menu.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
+import AfterDoAction from '../../structures/action/after-do-action.structure'
 
 interface RoomProps extends DefaultProps {
     value: RoomStruct
@@ -25,12 +26,9 @@ export default class Room extends React.Component<RoomProps> {
         super(props)
     }
 
-    zoneActivated = (zone:Zone, evt: React.MouseEvent) => {
-        evt.preventDefault()
-        evt.stopPropagation()
-
-       this.after_nodes = zone.click.do(this.props.player)
-       this.setState({})
+    refresh = (after_nodes: React.ReactNode) => {
+        this.after_nodes = after_nodes
+        this.setState({})
     }
 
     resize = () => {
@@ -100,12 +98,10 @@ export default class Room extends React.Component<RoomProps> {
                         this.props.value['zones'].length &&
                         this.props.value['zones'].map((zone,index) => 
                             <Zones.Zone
+                                value={zone}
+                                player={this.props.player}
                                 key={`${this.props.value.id}_zone_${index}`}
-                                value={zone.svg}
-                                onClick={(e) => this.zoneActivated(zone,e)}
-                                pos={zone.pos}
-                                dim={zone.dim}
-                                angulars={zone.angulars}
+                                refresh={this.refresh}
                                 ratio={this.ratio}
                                 offset={this.offset}
                             />

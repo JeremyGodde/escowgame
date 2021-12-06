@@ -20,10 +20,12 @@ export interface DrawingProperties {
 }
 
 export interface ZoneSVGProps extends DrawingProperties {
-    onClick: (e:React.MouseEvent) => void
+    onClick?: (e:React.MouseEvent) => void
+    onMouseOver?: (e:React.MouseEvent) => void
 }
 
 export default interface Zone extends DrawingProperties {
     svg: React.FunctionComponent<{key: string, draw: ZoneSVGProps}>
-    click: AfterDoAction
+    click?: AfterDoAction
+    hover?: AfterDoAction
 }
