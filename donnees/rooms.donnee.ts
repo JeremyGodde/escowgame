@@ -187,6 +187,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_8,
+        name: "Bureau 8",
         id_exit: COULOIR_1,
         src: "/img/indoor/bureau_8.jpg",
         open_if: (player: Player): boolean => {
@@ -259,6 +260,7 @@ export const all_rooms: Array<Room> = [
     {
         id: BUREAU_12,
         id_exit: COULOIR_1,
+        name: "Bureau 12",
         src: "/img/indoor/bureau_12.png",
         open_if: (player: Player): boolean => {
             // toujours ouverte (A CHANGER)
@@ -294,6 +296,7 @@ export const all_rooms: Array<Room> = [
     {
         id: BUREAU_13,
         id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
+        name: "Bureau 13",
         src: "/img/indoor/bureau_13.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
@@ -307,6 +310,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: LOCAL_TECHNIQUE,
+        name: "Local Technique",
         id_exit: COULOIR_1, 
         src: "/img/indoor/local_technique.jpg",
         open_if: (player: Player): boolean => {

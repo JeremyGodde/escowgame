@@ -7,6 +7,7 @@ import Item from '../item/item.component'
 import Menu from '../menu/menu.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
+import { HOME_SCREEN_ID, NONE } from '../../donnees/list_ids_room.donnee'
 
 interface RoomProps extends DefaultProps {
     value: RoomStruct
@@ -125,6 +126,21 @@ export default class Room extends React.Component<RoomProps> {
                     {
                         this.after_nodes !== undefined &&
                         this.after_nodes
+                    }
+                    {
+                        this.offset &&
+                        this.props.value.id_exit !== NONE &&
+                        this.props.value.id_exit !== HOME_SCREEN_ID &&
+                        this.props.value.name !== undefined &&
+                        <h2
+                            className={style.name}
+                            style={{
+                                left: `${64 + this.offset.x}px`,
+                                top: `4px`
+                            }}
+                        >
+                        {this.props.value.name}
+                        </h2>
                     }
                     {
                         this.offset !== undefined &&

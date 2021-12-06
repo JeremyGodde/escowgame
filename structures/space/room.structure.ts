@@ -7,6 +7,7 @@ import Zone from './zone.structure'
 export default interface Room {
     id: number
     id_exit: number
+    name?: string
     src: string
     open_if: (player:Player) => boolean
     sounds?: Array<Sound>

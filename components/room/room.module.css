@@ -35,3 +35,23 @@
 .room .playground .svg ellipse {
     cursor: pointer;
 }
+
+.room .playground .name {
+    position: absolute;
+    color: rgba(255,255,255,0.75);
+    margin: 0.25rem;
+    opacity: 0;
+    animation: fade 2s ease-in;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
