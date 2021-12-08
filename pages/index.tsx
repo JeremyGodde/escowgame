@@ -13,7 +13,7 @@ export default class Index extends React.Component<{},{player: Player},any> {
         super(props)
         this.state = {
             player: new Player(
-                BUREAU_INACCESSIBLE,                      // identifiant de la salle dans laquelle commencer
+                BUREAU_8,                      // identifiant de la salle dans laquelle commencer
                 (p: Player) => this.setState({player: p})
             )
         }

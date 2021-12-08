@@ -14,6 +14,15 @@ export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
+export const lunettes_dialog: Dialog = {
+    frames: [
+        {
+            character: CHIEN,
+            text: "Mais que fais-tu ? Ce ne sont que les lunettes de mon maître, n'y touche pas, cela ne va pas nous aider"
+        },
+    ]
+}
+
 export const usine_exterieur_1bis_dialog: Dialog = {
     timer: 1,
     after: new AfterMoveToRoom(COULOIR_1),

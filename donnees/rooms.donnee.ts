@@ -1,5 +1,6 @@
 import Zones from "../components/zones/zones.component"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
+import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
@@ -9,8 +10,10 @@ import {
     exterieur_3_dialog,
     exterieur_3bis_dialog,
     usine_exterieur_1_dialog,
-    usine_exterieur_1bis_dialog
+    usine_exterieur_1bis_dialog,
+    lunettes_dialog
 } from "./dialogs.donnee"
+import { postit_1, postit_2, postit_3, postit_4, postit_5 } from "./items.donnee"
 import {
     NONE,
     HOME_SCREEN_ID,
@@ -28,6 +31,7 @@ import {
     CREDITS_ID,
     BUREAU_INACCESSIBLE,
     BUREAU_INACCESSIBLE_ZOOM, 
+    TABLEAU_LIEGE
 } from "./list_ids_room.donnee"
 
 import {
@@ -219,7 +223,7 @@ export const all_rooms: Array<Room> = [
                 }
             },
             {//tableau de liège -> Enigme 1
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(TABLEAU_LIEGE),
                 svg: Zones.Rect,
                 pos: {
                     x:3100,
@@ -253,7 +257,27 @@ export const all_rooms: Array<Room> = [
                     bottomRight: 0,
                     topRight: 1.25,
                     rotate: '-15deg'
+                },
+            },
+            {//lunettes -> Dialogue
+                hover: new AfterPlayDialog(lunettes_dialog),
+                svg: Zones.RectRotate,
+                pos: {
+                     x:3815,
+                    y:1170
+                },
+                dim: {
+                     w:290,
+                    h:120
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                    rotate: '7deg'
                 }
+                
             }
         ]
     },
@@ -418,5 +442,20 @@ export const all_rooms: Array<Room> = [
             w: 6378,
             h: 3860
         },
+    },
+    {
+        id: TABLEAU_LIEGE,
+        id_exit: BUREAU_8,
+        src: "/img/indoor/tableau_liège.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        sounds:[bureau_8_sound],
+        dim: {
+            w: 1006,
+            h: 668
+        },
+        items: [postit_1, postit_2, postit_3, postit_4, postit_5]
     },
 ]
