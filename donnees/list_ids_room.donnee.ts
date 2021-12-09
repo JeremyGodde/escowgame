@@ -13,6 +13,7 @@ export const USINE_EXTERIEUR_1bis = 4.5
 export const COULOIR_1 = 6
 export const BUREAU_8 = 7
 export const BUREAU_12 = 8
+export const TABLEAU_LIEGE = 8.1
 export const BUREAU_13 = 9
 export const LOCAL_TECHNIQUE = 10
 export const BUREAU_INACCESSIBLE = 11
