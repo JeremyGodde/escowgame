@@ -263,7 +263,7 @@ export const all_rooms: Array<Room> = [
                 },
             },
             {//lunettes -> Dialogue
-                hover: new AfterPlayDialog(lunettes_dialog),
+                click: new AfterPlayDialog(lunettes_dialog),
                 svg: Zones.RectRotate,
                 pos: {
                      x:3815,
@@ -282,7 +282,7 @@ export const all_rooms: Array<Room> = [
                 }
                 
             },
-            {//papiers diversion 1-> Bruit feuilles TROUVER MOYEN ARRETER LE SON QUAND ON PASSE PLUS DESSUS
+            {//papiers diversion 1-> Bruit feuilles 
                 hover: new AfterPlaySound(papier1_sound),
                 svg: Zones.Rect,
                 pos: {

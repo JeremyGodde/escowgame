@@ -1,3 +1,5 @@
+import AfterDoAction from "../action/after-do-action.structure"
+
 /*
     un objet
 */
@@ -13,4 +15,5 @@ export default interface Item {
     img: string
     collectable: boolean // peut être ramassé
     draggable: boolean // peut être déplacé
+    after?: AfterDoAction
 }
