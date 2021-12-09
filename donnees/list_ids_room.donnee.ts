@@ -14,8 +14,11 @@ export const COULOIR_1 = 6
 export const BUREAU_8 = 7
 export const BUREAU_12 = 8
 export const TABLEAU_LIEGE = 8.1
+export const ORDINATEUR_BUREAU_8 = 8.2
+export const TELEPHONE_BUREAU_8 = 8.3
 export const BUREAU_13 = 9
 export const LOCAL_TECHNIQUE = 10
 export const BUREAU_INACCESSIBLE = 11
 export const BUREAU_INACCESSIBLE_ZOOM = 12
 export const PORTE_VEROUILLEE = 13
+

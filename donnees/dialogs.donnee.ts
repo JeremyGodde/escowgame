@@ -14,6 +14,15 @@ export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
+export const code_post_it_dialog: Dialog = {
+    frames: [
+        {
+            character: CHIEN,
+            text: "Cela ne ressemble pas à un mot de passe d'ordinateur, à quoi ce code peut-il bien servir ?"
+        },
+    ]
+}
+
 export const lunettes_dialog: Dialog = {
     frames: [
         {

@@ -92,7 +92,7 @@ export default class Item extends React.Component<ItemProps> {
 
     componentDidMount = () => {        
         if (this.props.value.collectable === true && !this.props.value.draggable) {
-            this.self.current.addEventListener("click", this.collect)
+            this.self.current.addEventListener("click", this.collect)            
         }
         if (this.props.value.collectable === false && this.props.value.draggable === true) {
             this.self.current.addEventListener("mousedown", (e) => this.select(true,e))

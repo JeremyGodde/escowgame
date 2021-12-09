@@ -31,7 +31,9 @@ import {
     CREDITS_ID,
     BUREAU_INACCESSIBLE,
     BUREAU_INACCESSIBLE_ZOOM, 
-    TABLEAU_LIEGE
+    TABLEAU_LIEGE,
+    ORDINATEUR_BUREAU_8,
+    TELEPHONE_BUREAU_8
 } from "./list_ids_room.donnee"
 
 import {
@@ -208,7 +210,7 @@ export const all_rooms: Array<Room> = [
         },
         zones: [
             {//écran d'ordinateur -> Enigme finale
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(ORDINATEUR_BUREAU_8),
                 svg: Zones.Rect,
                 pos: {
                     x:510,
@@ -244,7 +246,7 @@ export const all_rooms: Array<Room> = [
                 },
             },
             {//téléphone -> Message
-                click: new AfterPlaySound(message_telephone_sound),
+                click: new AfterMoveToRoom(TELEPHONE_BUREAU_8),
                 svg: Zones.RectRotate,
                 pos: {
                     x:3625,
@@ -518,5 +520,54 @@ export const all_rooms: Array<Room> = [
             h: 668
         },
         items: [postit_1, postit_2, postit_3, postit_4, postit_5]
+    },
+    {
+        id: ORDINATEUR_BUREAU_8,
+        id_exit: BUREAU_8,
+        src: "/img/indoor/ordinateur.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        sounds:[bureau_8_sound],
+        dim: {
+            w: 1277,
+            h: 951
+        },
+        /*zones: à ajouter quand on pourra écrire le mdp*/
+    },
+    {
+        id: TELEPHONE_BUREAU_8,
+        id_exit: BUREAU_8,
+        src: "/img/indoor/bureau_8_telephone.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        sounds:[bureau_8_sound],
+        dim: {
+            w: 6000,
+            h: 4000
+        },
+        zones: [
+            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
+                click: new AfterPlaySound(message_telephone_sound),
+                svg: Zones.Rect,
+                pos: {
+                    x:3094,
+                    y:1500
+                },
+                dim: {
+                    w:600,
+                    h:50
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]                   
     },
 ]
