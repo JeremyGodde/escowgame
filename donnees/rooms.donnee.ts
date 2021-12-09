@@ -44,7 +44,10 @@ import {
     local_technique_sound,
     bureau_12_sound,
     bureau_13_sound,
-    message_telephone_sound
+    message_telephone_sound,
+    papier1_sound,
+    papier2_sound,
+    papier3_sound
 } from "./sounds.donnee"
 
 
@@ -276,6 +279,64 @@ export const all_rooms: Array<Room> = [
                     bottomRight: 0,
                     topRight: 0,
                     rotate: '7deg'
+                }
+                
+            },
+            {//papiers diversion 1-> Bruit feuilles TROUVER MOYEN ARRETER LE SON QUAND ON PASSE PLUS DESSUS
+                hover: new AfterPlaySound(papier1_sound),
+                svg: Zones.Rect,
+                pos: {
+                     x:3160,
+                     y:2300
+                },
+                dim: {
+                     w:360,
+                     h:550
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                }
+                
+            },
+            {//papiers diversion 2-> Bruit feuilles 
+                hover: new AfterPlaySound(papier2_sound),
+                svg: Zones.RectRotate,
+                pos: {
+                     x:3840,
+                     y:1840
+                },
+                dim: {
+                     w:540,
+                     h:720
+                },
+                angulars: {
+                    topLeft: 0.2,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0.3,
+                    rotate: '3deg'
+                }
+                
+            },
+            {//papiers diversion 3-> Bruit feuilles 
+                hover: new AfterPlaySound(papier3_sound),
+                svg: Zones.Rect,
+                pos: {
+                     x:3540,
+                     y:2300
+                },
+                dim: {
+                     w:360,
+                     h:170
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
                 }
                 
             }

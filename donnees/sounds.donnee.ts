@@ -56,3 +56,15 @@ export const message_telephone_sound: Sound = {
     src: "/sound/Message_telephone.wav",
     is_loop: false
 }
+export const papier1_sound: Sound = {
+    src: "/sound/Papier1.wav",
+    is_loop: false
+}
+export const papier2_sound: Sound = {
+    src: "/sound/Papier2.wav",
+    is_loop: false
+}
+export const papier3_sound: Sound = {
+    src: "/sound/Papier3.wav",
+    is_loop: false
+}
