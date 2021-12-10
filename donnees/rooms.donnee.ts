@@ -217,18 +217,36 @@ export const all_rooms: Array<Room> = [
                     bottomLeft: 0,
                     bottomRight: 0.2,
                     topRight: 0.05
-                }
+                },
             },
+            { //porte 4 -> bureau inaccessible
+                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE),
+                svg: Zones.Rect,
+                pos: {
+                    x:1690,
+                    y:1000
+                },
+                dim: {
+                    w:50,
+                    h:550
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.2,
+                    topRight: 0.05
+                },
+            },  
             { //flèche -> couloir 2
                 click: new AfterMoveToRoom(COULOIR_2),
                 svg: Zones.Rect,
                 pos: {
-                    x:1990,
+                    x:1985,
                     y:1150
                 },
                 dim: {
-                    w:70,
-                    h:140
+                    w:55,
+                    h:110
                 },
                 angulars: {
                     topLeft: 0,
@@ -494,6 +512,52 @@ export const all_rooms: Array<Room> = [
         ]
     },
     {
+        id: BUREAU_INACCESSIBLE,
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_inaccessible.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 8778,
+            h: 6000
+        },
+        zones: [
+            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
+                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
+                svg: Zones.Rect,
+                pos: {
+                    x:0,
+                    y:0
+                },
+                dim: {
+                    w:8778,
+                    h:6000
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
+    },
+    {
+        id: BUREAU_INACCESSIBLE_ZOOM,
+        id_exit: COULOIR_1, 
+        src: "/img/indoor/bureau_inaccessible_zoom.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte ??
+            return true
+        },
+        dim: {
+            w: 6378,
+            h: 3860
+        },
+    },
+    {
         id: COULOIR_2,
         id_exit: COULOIR_1,
         src: "/img/indoor/couloir_2.jpg",
@@ -692,52 +756,6 @@ export const all_rooms: Array<Room> = [
             },
         ],
         sounds: [local_technique_sound],
-    },
-    {
-        id: BUREAU_INACCESSIBLE,
-        id_exit: COULOIR_1,
-        src: "/img/indoor/bureau_inaccessible.jpg",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte 
-            return true
-        },
-        dim: {
-            w: 8778,
-            h: 6000
-        },
-        zones: [
-            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
-                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
-                svg: Zones.Rect,
-                pos: {
-                    x:0,
-                    y:0
-                },
-                dim: {
-                    w:8778,
-                    h:6000
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-        ]
-    },
-    {
-        id: BUREAU_INACCESSIBLE_ZOOM,
-        id_exit: BUREAU_INACCESSIBLE, 
-        src: "/img/indoor/bureau_inaccessible_zoom.jpg",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte ??
-            return true
-        },
-        dim: {
-            w: 6378,
-            h: 3860
-        },
     },
     {
         id: TABLEAU_LIEGE,
