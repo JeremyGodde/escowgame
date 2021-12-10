@@ -2,6 +2,7 @@ import Zones from "../components/zones/zones.component"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import AfterPlaySound from "../structures/action/after-play-sound.structure"
+import Digicode from "../structures/game/digicode.structure"
 import Player from "../structures/player/player.structure"
 import Room from "../structures/space/room.structure"
 import {
@@ -64,9 +65,10 @@ import {
 } from "./sounds.donnee"
 
 
-export const all_rooms: Array<Room> = [
+export const all_rooms: Array<Room | Digicode> = [
     {
         id: EXTERIEUR_1,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Findejournée1.png",
         open_if: (player: Player): boolean => {
@@ -82,6 +84,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_2,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Findejournée2.png",
         open_if: (player: Player): boolean => {
@@ -97,6 +100,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_3,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Findejournée3.png",
         open_if: (player: Player): boolean => {
@@ -112,6 +116,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: EXTERIEUR_3bis,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Findejournée3_chien.png",
         open_if: (player: Player): boolean => {
@@ -127,6 +132,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: USINE_EXTERIEUR_1,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
@@ -142,6 +148,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: USINE_EXTERIEUR_1bis,
+        type: "ROOM",
         id_exit: NONE,
         src: "/img/outdoor/Usine.jpg",
         open_if: (player: Player): boolean => {
@@ -156,6 +163,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: COULOIR_1,
+        type: "ROOM",
         id_exit: HOME_SCREEN_ID,
         src: "/img/indoor/couloir_1.jpg",
         open_if: (player: Player): boolean => {
@@ -244,6 +252,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_8,
+        type: "ROOM",
         name: "Bureau 8",
         id_exit: COULOIR_1,
         src: "/img/indoor/bureau_8.jpg",
@@ -394,6 +403,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_12,
+        type: "ROOM",
         id_exit: COULOIR_1,
         name: "Bureau 12",
         src: "/img/indoor/bureau_12.png",
@@ -430,6 +440,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: PORTE_BUREAU_12,
+        type: "ROOM",
         id_exit: COULOIR_1,
         sounds: [couloir_1_sound],
         src: "/img/indoor/Porte_bureau_12.jpg",
@@ -464,40 +475,14 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: DIGICODE_BUREAU_12,
+        type: "DIGICODE",
         id_exit: PORTE_BUREAU_12,
-        sounds: [couloir_1_sound],
-        src: "/img/indoor/Digicode_bureau_12.png",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte 
-            return true
-        },
-        dim: {
-            w: 278,
-            h: 357
-        },
-        zones: [
-            { // ici il faudra détourer zone par zone. Pour l'instant -> bureau 12
-                click: new AfterMoveToRoom(BUREAU_12),
-                svg: Zones.Rect,
-                pos: {
-                    x:0,
-                    y:0
-                },
-                dim: {
-                    w:278,
-                    h:357
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-        ]
+        code: 245689,
+        //sounds: [couloir_1_sound],
     },
     {
         id: COULOIR_2,
+        type: "ROOM",
         id_exit: COULOIR_1,
         src: "/img/indoor/couloir_2.jpg",
         open_if: (player: Player): boolean => {
@@ -568,6 +553,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: SALLE_5,
+        type: "ROOM",
         id_exit: COULOIR_2, 
         name: "Salle 5",
         src: "/img/indoor/salle_5.jpg",
@@ -583,6 +569,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_13,
+        type: "ROOM",
         id_exit: COULOIR_2, 
         name: "Bureau 13",
         src: "/img/indoor/bureau_13.jpg",
@@ -598,6 +585,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: PORTE_BUREAU_13,
+        type: "ROOM",
         id_exit: COULOIR_2, 
         name: "Bureau 13",
         src: "/img/indoor/Porte_bureau_13.jpg",
@@ -633,6 +621,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: LOCAL_TECHNIQUE,
+        type: "ROOM",
         name: "Local Technique",
         id_exit: COULOIR_1, 
         src: "/img/indoor/local_technique.jpg",
@@ -698,6 +687,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: LOCAL_AFFICHE_1,
+        type: "ROOM",
         id_exit: LOCAL_TECHNIQUE,
         src: "/img/posters/Affiche.jpg",
         open_if: (player: Player): boolean => {
@@ -711,6 +701,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: LOCAL_AFFICHE_2,
+        type: "ROOM",
         id_exit: LOCAL_TECHNIQUE,
         src: "/img/posters/affiche-L214.jpg",
         open_if: (player: Player): boolean => {
@@ -724,6 +715,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_INACCESSIBLE,
+        type: "ROOM",
         id_exit: COULOIR_1,
         src: "/img/indoor/bureau_inaccessible.jpg",
         open_if: (player: Player): boolean => {
@@ -757,6 +749,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: BUREAU_INACCESSIBLE_ZOOM,
+        type: "ROOM",
         id_exit: NONE, 
         src: "/img/indoor/bureau_inaccessible_zoom.jpg",
         open_if: (player: Player): boolean => {
@@ -771,6 +764,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: TABLEAU_LIEGE,
+        type: "ROOM",
         id_exit: BUREAU_8,
         src: "/img/indoor/tableau_liège.jpg",
         open_if: (player: Player): boolean => {
@@ -786,6 +780,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: ORDINATEUR_BUREAU_8,
+        type: "ROOM",
         id_exit: BUREAU_8,
         src: "/img/indoor/ordinateur.png",
         open_if: (player: Player): boolean => {
@@ -801,6 +796,7 @@ export const all_rooms: Array<Room> = [
     },
     {
         id: TELEPHONE_BUREAU_8,
+        type: "ROOM",
         id_exit: BUREAU_8,
         src: "/img/indoor/bureau_8_telephone.jpg",
         open_if: (player: Player): boolean => {

@@ -7,6 +7,7 @@ import Room from '../components/room/room.component'
 /* Données de jeu */
 import { all_rooms } from '../donnees/rooms.donnee'
 import { BUREAU_INACCESSIBLE, BUREAU_8, CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
+import Digicode from '../components/digicode/digicode.component'
 
 export default class Index extends React.Component<{},{player: Player},any> {
     constructor(props) {
@@ -34,15 +35,19 @@ export default class Index extends React.Component<{},{player: Player},any> {
                     all_rooms.length >= 1 &&                            // et si all_rooms a au moins 1 pièce
                     all_rooms.map(room => {                             // alors on cherche parmis les pièces
                         if (this.state.player.getRoom() === room.id) {  // celle dans laquelle on se situe
-                            if(room.open_if(this.state.player)) {       // et on vérifie que la pièce peut être ouverte)
-                                                                        // et on l'affiche
-                            return <Room player={this.state.player} value={room}/>
-                            
-                            
-                            } else {                                    // si la pièce ne peut pas encore être ouverte
-                                // rester dans la pièce où on était et
-                                // dialogue de on peut pas ouvrir
-                                // >>>>>> SANS DOUTE UN MEILLEUR MOYEN DE FAIRE MAIS ON VERRA PLUS TARD
+                            if (room.type === "ROOM") { 
+                                if(room.open_if(this.state.player)) {       // et on vérifie que la pièce peut être ouverte)
+                                                                            // et on l'affiche
+                                return <Room player={this.state.player} value={room}/>
+                                
+                                
+                                } else {                                    // si la pièce ne peut pas encore être ouverte
+                                    // rester dans la pièce où on était et
+                                    // dialogue de on peut pas ouvrir
+                                    // >>>>>> SANS DOUTE UN MEILLEUR MOYEN DE FAIRE MAIS ON VERRA PLUS TARD
+                                }
+                            } else if (room.type === "DIGICODE") {
+                                return <Digicode player={this.state.player} value={room}/>
                             }
                         }
                     })

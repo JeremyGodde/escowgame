@@ -6,6 +6,7 @@ import Zone from './zone.structure'
 
 export default interface Room {
     id: number
+    type: "ROOM"
     id_exit: number
     name?: string
     src: string
