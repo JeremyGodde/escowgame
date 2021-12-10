@@ -15,4 +15,5 @@ export default interface Item {
     img: string
     collectable: boolean // peut être ramassé
     draggable: boolean // peut être déplacé
+    after_collect?: AfterDoAction // action à faire après avoir collecté
 }

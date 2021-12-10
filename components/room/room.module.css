@@ -31,8 +31,8 @@
     stroke-width: 2px;
 }
 
-.room .playground .svg polygon,
-.room .playground .svg ellipse {
+.room .playground .svg:not(.hover) polygon,
+.room .playground .svg:not(.hover) ellipse {
     cursor: pointer;
 }
 

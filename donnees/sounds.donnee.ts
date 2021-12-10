@@ -1,5 +1,13 @@
+import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Sound from "../structures/immersion/sound.structure"
+import { COULOIR_1 } from "./list_ids_room.donnee"
+
+export const bureau_inaccessible_sound: Sound = {
+    src: "/sound/Bureau_13.wav",  // SON A CHANGÉ
+    is_loop: false,
+    after: new AfterMoveToRoom(COULOIR_1)
+}
 
 export const bureau_13_sound: Sound = {
     src: "/sound/Bureau_13.wav", 

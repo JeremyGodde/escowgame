@@ -10,7 +10,7 @@ import {
     USINE_EXTERIEUR_1
 } from "./list_ids_room.donnee"
 import { EXTERIEUR_2 } from "./list_ids_room.donnee"
-import { local_technique_sound } from "./sounds.donnee"
+import { bureau_inaccessible_sound, local_technique_sound } from "./sounds.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
@@ -52,7 +52,7 @@ export const bureau_inaccessible: Dialog = {
             text: "Attends, j'entends quelque chose. Tends l'oreille."
         },
     ],
-    after: new AfterPlaySound(local_technique_sound) // à changer pour mettre le monologue
+    after: new AfterPlaySound(bureau_inaccessible_sound)
 }
 
 export const usine_exterieur_1bis_dialog: Dialog = {
