@@ -39,7 +39,9 @@ import {
     BUREAU_INACCESSIBLE_ZOOM, 
     TABLEAU_LIEGE,
     ORDINATEUR_BUREAU_8,
-    TELEPHONE_BUREAU_8
+    TELEPHONE_BUREAU_8,
+    LOCAL_AFFICHE_1,
+    LOCAL_AFFICHE_2
 } from "./list_ids_room.donnee"
 
 import {
@@ -644,7 +646,7 @@ export const all_rooms: Array<Room> = [
         },
         zones: [
             { //affiche gauche
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(LOCAL_AFFICHE_2),
                 svg: Zones.Rect,
                 pos: {
                     x:815,
@@ -662,7 +664,7 @@ export const all_rooms: Array<Room> = [
                 }
             },
             { //affiche droite
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(LOCAL_AFFICHE_1),
                 svg: Zones.Rect,
                 pos: {
                     x:2265,
@@ -693,6 +695,32 @@ export const all_rooms: Array<Room> = [
             },
         ],
         sounds: [local_technique_sound],
+    },
+    {
+        id: LOCAL_AFFICHE_1,
+        id_exit: LOCAL_TECHNIQUE,
+        src: "/img/posters/Affiche.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 600,
+            h: 450
+        },
+    },
+    {
+        id: LOCAL_AFFICHE_2,
+        id_exit: LOCAL_TECHNIQUE,
+        src: "/img/posters/affiche-L214.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 625,
+            h: 916
+        },
     },
     {
         id: BUREAU_INACCESSIBLE,
