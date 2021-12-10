@@ -20,6 +20,7 @@ export const code_post_it_dialog: Dialog = {
     frames: [
         {
             character: CHIEN,
+            img: "/img/dog/chien_face.png",
             text: "Cela ne ressemble pas à un mot de passe d'ordinateur, à quoi ce code peut-il bien servir ?"
         },
     ]
@@ -29,6 +30,7 @@ export const lunettes_dialog: Dialog = {
     frames: [
         {
             character: CHIEN,
+            img: "/img/dog/chien_face.png",
             text: "Mais que fais-tu ? Ce ne sont que les lunettes de mon maître, n'y touche pas, cela ne va pas nous aider"
         },
     ]

@@ -7,11 +7,18 @@
 }
 
 .dialog .picture {
-    margin-left: 50px;
-    max-height: 250px;
+    position: absolute;
+    bottom: -5em;
+    z-index: 500;
+    left: 50px;
+    max-height: 20em;
 }
 
 .dialog .text_zone {
+    position: absolute;
+    bottom: 0px;
+    z-index: 501;
+    left: 0px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     border: 3px solid rgb(255, 255, 255);
