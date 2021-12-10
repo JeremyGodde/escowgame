@@ -25,8 +25,13 @@ import {
     USINE_EXTERIEUR_1bis,
     COULOIR_1,
     BUREAU_8,
+    PORTE_BUREAU_12,
+    DIGICODE_BUREAU_12,
     BUREAU_12,
+    COULOIR_2,
+    SALLE_5,
     BUREAU_13,
+    PORTE_BUREAU_13,
     LOCAL_TECHNIQUE,
     CREDITS_ID,
     BUREAU_INACCESSIBLE,
@@ -41,10 +46,13 @@ import {
     exterieur_2_sound,
     exterieur_3_sound, 
     exterieur_3bis_1_sound,
-    usine_exterieur_1_sound, 
+    usine_exterieur_1_sound,
+    couloir_1_sound, 
     bureau_8_sound,
     local_technique_sound,
     bureau_12_sound,
+    couloir_2_sound,
+    salle_5_sound,
     bureau_13_sound,
     message_telephone_sound,
     papier1_sound,
@@ -155,6 +163,7 @@ export const all_rooms: Array<Room> = [
             w: 4000,
             h: 2796
         },
+        sounds:[couloir_1_sound],
         zones: [
             { //porte 1 -> bureau 8
                 click: new AfterMoveToRoom(BUREAU_8),
@@ -187,6 +196,42 @@ export const all_rooms: Array<Room> = [
                 },
                 angulars: {
                     topLeft: 0.3,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //porte 3 -> bureau 12
+                click: new AfterMoveToRoom(PORTE_BUREAU_12),
+                svg: Zones.Rect,
+                pos: {
+                    x:1442,
+                    y:726
+                },
+                dim: {
+                    w:60,
+                    h:890
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.2,
+                    topRight: 0.05
+                }
+            },
+            { //flèche -> couloir 2
+                click: new AfterMoveToRoom(COULOIR_2),
+                svg: Zones.Rect,
+                pos: {
+                    x:1990,
+                    y:1150
+                },
+                dim: {
+                    w:70,
+                    h:140
+                },
+                angulars: {
+                    topLeft: 0,
                     bottomLeft: 0,
                     bottomRight: 0,
                     topRight: 0
@@ -381,12 +426,165 @@ export const all_rooms: Array<Room> = [
         ]
     },
     {
+        id: PORTE_BUREAU_12,
+        id_exit: COULOIR_1,
+        sounds: [couloir_1_sound],
+        src: "/img/indoor/Porte_bureau_12.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 4833,
+            h: 3758
+        },
+        zones: [
+            { //digicode
+                click: new AfterMoveToRoom(DIGICODE_BUREAU_12),
+                svg: Zones.Rect,
+                pos: {
+                    x:2343,
+                    y:1400
+                },
+                dim: {
+                    w:170,
+                    h:240
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
+    },
+    {
+        id: DIGICODE_BUREAU_12,
+        id_exit: PORTE_BUREAU_12,
+        sounds: [couloir_1_sound],
+        src: "/img/indoor/Digicode_bureau_12.png",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 278,
+            h: 357
+        },
+        zones: [
+            { // ici il faudra détourer zone par zone. Pour l'instant -> bureau 12
+                click: new AfterMoveToRoom(BUREAU_12),
+                svg: Zones.Rect,
+                pos: {
+                    x:0,
+                    y:0
+                },
+                dim: {
+                    w:278,
+                    h:357
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
+    },
+    {
+        id: COULOIR_2,
+        id_exit: COULOIR_1,
+        src: "/img/indoor/couloir_2.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte -> a changer ce sera une condition
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_2_sound],
+        zones: [
+            { //porte 1 -> salle 5
+                click: new AfterMoveToRoom(SALLE_5),
+                svg: Zones.Rect,
+                pos: {
+                    x:240,
+                    y:0
+                },
+                dim: {
+                    w:460,
+                    h:2140
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0.19
+                }
+            },
+            { //porte 2 -> élevage
+                click: new AfterMoveToRoom(CREDITS_ID),
+                svg: Zones.Rect,
+                pos: {
+                    x:3400,
+                    y:0
+                },
+                dim: {
+                    w:670,
+                    h:2500
+                },
+                angulars: {
+                    topLeft: 0.3,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //porte 3 -> bureau 13
+                click: new AfterMoveToRoom(PORTE_BUREAU_13),
+                svg: Zones.Rect,
+                pos: {
+                    x:1442,
+                    y:726
+                },
+                dim: {
+                    w:60,
+                    h:890
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.2,
+                    topRight: 0.05
+                }
+            },
+        ]
+    },
+    {
+        id: SALLE_5,
+        id_exit: COULOIR_2, 
+        name: "Salle 5",
+        src: "/img/indoor/salle_5.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        sounds: [salle_5_sound],
+        dim: {
+            w: 4032,
+            h: 3024
+        },
+    },
+    {
         id: BUREAU_13,
-        id_exit: COULOIR_1, // A CHANGER, ce sera couloir 2
+        id_exit: COULOIR_2, 
         name: "Bureau 13",
         src: "/img/indoor/bureau_13.jpg",
         open_if: (player: Player): boolean => {
-            // toujours ouverte 
+            // toujours ouverte, à changer, il y aura la clef
             return true
         },
         sounds: [bureau_13_sound],
@@ -394,6 +592,41 @@ export const all_rooms: Array<Room> = [
             w: 4032,
             h: 3024
         },
+    },
+    {
+        id: PORTE_BUREAU_13,
+        id_exit: COULOIR_2, 
+        name: "Bureau 13",
+        src: "/img/indoor/Porte_bureau_13.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte, à changer, il y aura la clef
+            return true
+        },
+        sounds: [couloir_2_sound],
+        dim: {
+            w: 4833,
+            h: 3758
+        },
+        zones:[
+            { //on clique sur porte -> bureau 13
+                click: new AfterMoveToRoom(BUREAU_13),
+                svg: Zones.Rect,
+                pos: {
+                    x:1755,
+                    y:100
+                },
+                dim: {
+                    w:1330,
+                    h:2750
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
     },
     {
         id: LOCAL_TECHNIQUE,
