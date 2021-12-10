@@ -11,7 +11,8 @@ import {
     exterieur_3bis_dialog,
     usine_exterieur_1_dialog,
     usine_exterieur_1bis_dialog,
-    lunettes_dialog
+    lunettes_dialog,
+    bureau_inaccessible
 } from "./dialogs.donnee"
 import { postit_1, postit_2, postit_3, postit_4, postit_5 } from "./items.donnee"
 import {
@@ -706,29 +707,29 @@ export const all_rooms: Array<Room> = [
             h: 6000
         },
         zones: [
-            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
+            {
                 click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
                 svg: Zones.Rect,
                 pos: {
-                    x:0,
-                    y:0
+                    x:4800,
+                    y:2685
                 },
                 dim: {
-                    w:8778,
-                    h:6000
+                    w:1320,
+                    h:275
                 },
                 angulars: {
                     topLeft: 0,
-                    bottomLeft: 0,
+                    bottomLeft: 0.75,
                     bottomRight: 0,
-                    topRight: 0
+                    topRight: 0.35
                 }
             },
         ]
     },
     {
         id: BUREAU_INACCESSIBLE_ZOOM,
-        id_exit: BUREAU_INACCESSIBLE, 
+        id_exit: NONE, 
         src: "/img/indoor/bureau_inaccessible_zoom.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte ??
@@ -738,6 +739,7 @@ export const all_rooms: Array<Room> = [
             w: 6378,
             h: 3860
         },
+        dialog: bureau_inaccessible,
     },
     {
         id: TABLEAU_LIEGE,
