@@ -26,6 +26,15 @@ export const code_post_it_dialog: Dialog = {
     ]
 }
 
+export const digicode_broken_key_B_dialog: Dialog = {
+    frames: [
+        {
+            character: JOUEUR,
+            text: "Cette touche est cassée, impossible d'appuyer dessus"
+        }
+    ]
+}
+
 export const lunettes_dialog: Dialog = {
     frames: [
         {

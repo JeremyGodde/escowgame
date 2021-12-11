@@ -55,3 +55,7 @@
         opacity: 0;
     }
 }
+
+.room .playground .led {
+    position: absolute;
+}

@@ -495,56 +495,9 @@ export const all_rooms: Array<Room | Digicode> = [
         id: DIGICODE_BUREAU_12,
         type: "DIGICODE",
         id_exit: PORTE_BUREAU_12,
+        id_entrance: BUREAU_12,
         code: 245689,
         //sounds: [couloir_1_sound],
-    },
-    {
-        id: BUREAU_INACCESSIBLE,
-        type: 'ROOM',
-        id_exit: COULOIR_1,
-        src: "/img/indoor/bureau_inaccessible.jpg",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte 
-            return true
-        },
-        dim: {
-            w: 8778,
-            h: 6000
-        },
-        zones: [
-            { //la totalité de l'écran, on défini une zone plus restreinte pour zoomer ?
-                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE_ZOOM),
-                svg: Zones.Rect,
-                pos: {
-                    x:0,
-                    y:0
-                },
-                dim: {
-                    w:8778,
-                    h:6000
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-        ]
-    },
-    {
-        id: BUREAU_INACCESSIBLE_ZOOM,
-        type: 'ROOM',
-        id_exit: COULOIR_1, 
-        src: "/img/indoor/bureau_inaccessible_zoom.jpg",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte ??
-            return true
-        },
-        dim: {
-            w: 6378,
-            h: 3860
-        },
     },
     {
         id: COULOIR_2,

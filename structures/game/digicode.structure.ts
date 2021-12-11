@@ -3,4 +3,5 @@ export default interface Digicode {
     type: "DIGICODE"
     code: number
     id_exit: number
+    id_entrance: number
 }
