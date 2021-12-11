@@ -75,7 +75,7 @@ function Rect(props:{key:string, draw:ZoneSVGProps}) {
     return (
         <svg
             key={props.key}
-            className={style.svg}
+            className={style.svg+(props.draw.onMouseOver !== undefined ? " "+style.hover : "")}
             style={{
                 left:`${props.draw.pos.x}px`,
                 bottom:`${props.draw.pos.y}px`,
@@ -111,7 +111,7 @@ function RectRotate(props:{key:string, draw:ZoneSVGProps}) {
     return (
         <svg
             key={props.key}
-            className={style.svg}
+            className={style.svg+(props.draw.onMouseOver !== undefined ? " "+style.hover : "")}
             style={{
                 left:`${props.draw.pos.x}px`,
                 bottom:`${props.draw.pos.y}px`,
@@ -138,7 +138,7 @@ function Circ(props:{key:string, draw:ZoneSVGProps}) {
     return (
         <svg
             key={props.key}
-            className={style.svg}
+            className={style.svg+(props.draw.onMouseOver !== undefined ? " "+style.hover : "")}
             style={{
                 left:`${props.draw.pos.x}px`,
                 bottom:`${props.draw.pos.y}px`,

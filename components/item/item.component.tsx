@@ -49,7 +49,11 @@ export default class Item extends React.Component<ItemProps> {
 
         this.props.player.collect(this.props.value)
         this.class += " " + style.deleted
-        this.setState({})
+        if (this.props.value.after_collect !== undefined) {
+            this.props.refresh(this.props.value.after_collect.do(this.props.player))
+        } else {
+            this.setState({})
+        }
     }
 
     select = (selected:boolean, evt: MouseEvent) => {

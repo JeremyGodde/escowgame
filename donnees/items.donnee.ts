@@ -1,8 +1,5 @@
-import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
-import AfterPlaySound from "../structures/action/after-play-sound.structure"
-import Player from "../structures/player/player.structure"
-import Items from "../structures/game/item.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
+import Items from "../structures/game/item.structure"
 import { code_post_it_dialog} from "./dialogs.donnee"
 
 
@@ -62,6 +59,7 @@ export const postit_1: Items = {
         img: "/img/items/post-it_4.png",
         collectable: true, 
         draggable: false,
+        after_collect: new AfterPlayDialog(code_post_it_dialog)
     }
     export const postit_5: Items = {
         pos: {

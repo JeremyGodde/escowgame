@@ -1,5 +1,6 @@
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
+import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Dialog from "../structures/immersion/dialog.structure"
 import { 
     COULOIR_1,
@@ -9,6 +10,7 @@ import {
     USINE_EXTERIEUR_1
 } from "./list_ids_room.donnee"
 import { EXTERIEUR_2 } from "./list_ids_room.donnee"
+import { bureau_inaccessible_sound, local_technique_sound } from "./sounds.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
@@ -18,6 +20,7 @@ export const code_post_it_dialog: Dialog = {
     frames: [
         {
             character: CHIEN,
+            img: "/img/dog/chien_face.png",
             text: "Cela ne ressemble pas à un mot de passe d'ordinateur, à quoi ce code peut-il bien servir ?"
         },
     ]
@@ -27,9 +30,31 @@ export const lunettes_dialog: Dialog = {
     frames: [
         {
             character: CHIEN,
+            img: "/img/dog/chien_face.png",
             text: "Mais que fais-tu ? Ce ne sont que les lunettes de mon maître, n'y touche pas, cela ne va pas nous aider"
         },
     ]
+}
+
+export const bureau_inaccessible: Dialog = {
+    frames: [
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "On dirait que la porte est fermée. Je ne pense pas que tu puisses accéder à cette pièce..."
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Tu devrais essayer une autre porte."
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Attends, j'entends quelque chose. Tends l'oreille."
+        },
+    ],
+    after: new AfterPlaySound(bureau_inaccessible_sound)
 }
 
 export const usine_exterieur_1bis_dialog: Dialog = {
