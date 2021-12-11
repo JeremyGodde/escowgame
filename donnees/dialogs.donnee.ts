@@ -16,6 +16,27 @@ export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
+export const portes_fermees :Array<Dialog> = [
+    {
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Cette porte est fermée, essayons-en une autre"
+            },
+        ]
+    },
+    {
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Il doit nous manquer un code ou une clef pour ouvrir cette porte"
+            },
+        ]
+    }
+]
+
 export const code_post_it_dialog: Dialog = {
     frames: [
         {

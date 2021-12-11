@@ -646,7 +646,7 @@ export const all_rooms: Array<Room | Digicode> = [
         src: "/img/indoor/local_technique.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
-            return true
+            return false
         },
         dim: {
             w: 4128,

@@ -15,6 +15,7 @@ interface RoomProps extends DefaultProps {
 
 export default class Room extends React.Component<RoomProps> {
     private after_nodes: React.ReactNode = undefined
+    private id: number
     private ratio: number
     private offset: {
         x: number
@@ -23,6 +24,7 @@ export default class Room extends React.Component<RoomProps> {
 
     constructor(props: RoomProps) {
         super(props)
+        this.id = props.value.id
     }
 
     refresh = (after_nodes: React.ReactNode) => {
@@ -72,9 +74,21 @@ export default class Room extends React.Component<RoomProps> {
     componentDidMount = () => {
         this.resize()
         window.addEventListener("resize",this.resize)
+        window.addEventListener("fullscreenchange",this.resize)
+    }
+
+    componentDidUpdate = () => {
+        if (this.id !== this.props.value.id) {
+            this.resize()
+            this.id = this.props.value.id
+        }
     }
 
     render = () => {
+        if (this.id !== this.props.value.id) {
+            return <></>      
+        }
+
         return (
             <section className={style.room}>
                 <div

@@ -29,6 +29,7 @@ class AfterPushKey extends AfterDoAction {
 
 export default class Digicode extends React.Component<DigicodeProps> {
     private after_nodes: React.ReactNode = undefined
+    private id: number
     private ratio: number
     private offset: {
         x: number
@@ -191,6 +192,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
 
     constructor(props: DigicodeProps) {
         super(props)
+        this.id = props.value.id
     }
 
     refresh = (after_nodes: React.ReactNode) => {
@@ -272,7 +274,19 @@ export default class Digicode extends React.Component<DigicodeProps> {
         }
     }
 
+    componentDidUpdate = () => {
+        if(this.props.player.hasOpened(this.props.value.id_entrance)) {
+            this.props.player.move(this.props.value.id_entrance)
+        } else if (this.id !== this.props.value.id) {
+            this.resize()
+            this.id = this.props.value.id
+        }
+    }
+
     render = () => {
+        if (this.id !== this.props.value.id) {
+            return <></>      
+        }
         return (
             <section className={style.room}>
                 <div
