@@ -13,9 +13,11 @@ import {
     usine_exterieur_1_dialog,
     usine_exterieur_1bis_dialog,
     lunettes_dialog,
+    pistolet_abattage_dialogue,
     bureau_inaccessible
 } from "./dialogs.donnee"
-import { postit_1, postit_2, postit_3, postit_4, postit_5 } from "./items.donnee"
+import { postit_1, postit_2, postit_3, postit_4, postit_5,
+    clef, lait, lait2, pelle} from "./items.donnee"
 import {
     NONE,
     HOME_SCREEN_ID,
@@ -582,9 +584,31 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         sounds: [salle_5_sound],
         dim: {
-            w: 4032,
-            h: 3024
+            w: 6048,
+            h: 4024
         },
+        zones:[
+            { //pistolet d'abattage
+                click: new AfterPlayDialog(pistolet_abattage_dialogue),
+                svg: Zones.RectRotate,
+                pos: {
+                    x:1080,
+                    y:280
+                },
+                dim: {
+                    w:484,
+                    h:100
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                    rotate: '-7deg'
+                },   
+            },
+        ],
+        items: [lait, lait2, clef, pelle]
     },
     {
         id: BUREAU_13,
@@ -646,8 +670,7 @@ export const all_rooms: Array<Room | Digicode> = [
         src: "/img/indoor/local_technique.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte 
-            return false
-        },
+            return true        },
         dim: {
             w: 4128,
             h: 2322

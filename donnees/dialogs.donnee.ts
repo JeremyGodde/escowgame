@@ -16,6 +16,16 @@ export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
+export const pistolet_abattage_dialogue: Dialog = {
+    frames: [
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: ": Ah ça, c’est un vieux pistolet d’abattage. Il est ici car ça fait bien longtemps qu’ils n’en utilisent plus. Cela sert à étourdir les vaches avant de les abattre… Mais cela prend trop de temps selon eux, il faut tenir la cadence et abattre les vaches à la chaîne alors maintenant ils les laissent conscientes"
+        },
+    ]
+}
+
 export const portes_fermees :Array<Dialog> = [
     {
         frames: [
