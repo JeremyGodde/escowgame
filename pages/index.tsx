@@ -4,7 +4,7 @@ import Credits from '../components/credits/credits.component'
 import Player from '../structures/player/player.structure'
 
 /* Données de jeu */
-import { COULOIR_1, COULOIR_2, SALLE_5, CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
+import { COULOIR_1, COULOIR_2, SALLE_5, CREDITS_ID, HOME_SCREEN_ID, BUREAU_8 } from '../donnees/list_ids_room.donnee'
 
 export default class Index extends React.Component<{},{player: Player},any> {
     constructor(props) {

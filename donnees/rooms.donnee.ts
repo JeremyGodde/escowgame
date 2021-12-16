@@ -16,8 +16,8 @@ import {
     pistolet_abattage_dialogue,
     bureau_inaccessible
 } from "./dialogs.donnee"
-import { postit_1, postit_2, postit_3, postit_4, postit_5,
-    clef, lait, lait2, pelle} from "./items.donnee"
+import { postit_1, postit_2, postit_3, postit_4, postit_5,fermes_usines,
+    clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille, chaise,} from "./items.donnee"
 import {
     NONE,
     HOME_SCREEN_ID,
@@ -254,8 +254,8 @@ export const all_rooms: Array<Room | Digicode> = [
                 click: new AfterMoveToRoom(COULOIR_2),
                 svg: Zones.Rect,
                 pos: {
-                    x:1985,
-                    y:1150
+                    x:1975,
+                    y:1145
                 },
                 dim: {
                     w:55,
@@ -570,6 +570,24 @@ export const all_rooms: Array<Room | Digicode> = [
                     topRight: 0.05
                 }
             },
+            { //flèche -> couloir 1
+                click: new AfterMoveToRoom(COULOIR_1),
+                svg: Zones.Rect,
+                pos: {
+                    x:1925,
+                    y:110
+                },
+                dim: {
+                    w:90,
+                    h:150
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
         ]
     },
     {
@@ -608,7 +626,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 },   
             },
         ],
-        items: [lait, lait2, clef, pelle]
+        items: [lait, lait2, clef, pelle, carton, échelle, rateau, grille,paille, chaise]
     },
     {
         id: BUREAU_13,
@@ -818,7 +836,7 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 1006,
             h: 668
         },
-        items: [postit_1, postit_2, postit_3, postit_4, postit_5]
+        items: [fermes_usines,postit_2, postit_3, postit_4, postit_5]
     },
     {
         id: ORDINATEUR_BUREAU_8,

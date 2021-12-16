@@ -18,7 +18,7 @@ export const postit_1: Items = {
         draggable: true 
     }
 
-    export const postit_2: Items = {
+     export const postit_2: Items = {
         pos: {
             x: 400,
             y: 160
@@ -34,7 +34,7 @@ export const postit_1: Items = {
     }
     export const postit_3: Items = {
         pos: {
-            x: 800,
+            x: 200,
             y: 380
 
         },
@@ -75,6 +75,20 @@ export const postit_1: Items = {
         collectable: false, 
         draggable: true 
     }
+    export const fermes_usines: Items = {
+        pos: {
+            x: 27,
+            y: 20
+
+        },
+        dim: {
+            w:360,
+            h:660
+        },
+        img: "/img/items/fermes-usines.jpg",
+        collectable: false, 
+        draggable: true 
+    }
     export const pelle: Items = {
         pos: {
             x: 3950,
@@ -89,15 +103,15 @@ export const postit_1: Items = {
         collectable: false, 
         draggable: true 
     }
-    /*export const échelle: Items = {
+    export const échelle: Items = {
         pos: {
-            x: 560,
-            y: 460
+            x: 1640,
+            y: 200
 
         },
         dim: {
-            w:160,
-            h:160
+            w:480,
+            h:1820
         },
         img: "/img/items/échelle.png",
         collectable: false, 
@@ -105,22 +119,22 @@ export const postit_1: Items = {
     }
     export const carton: Items = {
         pos: {
-            x: 560,
-            y: 460
+            x: 200,
+            y: 50
 
         },
         dim: {
-            w:160,
-            h:160
+            w:850,
+            h:600
         },
         img: "/img/items/carton.png",
         collectable: false, 
         draggable: true 
-    }*/
+    }
     export const lait: Items = {
         pos: {
-            x: 3020,
-            y: 100
+            x: 3200,
+            y: 60
 
         },
         dim: {
@@ -131,9 +145,23 @@ export const postit_1: Items = {
         collectable: false, 
         draggable: true 
     }
+    export const grille: Items = {
+        pos: {
+            x: 4400,
+            y: 410
+
+        },
+        dim: {
+            w:1340,
+            h:970
+        },
+        img: "/img/items/grille.png",
+        collectable: false, 
+        draggable: true 
+    }
     export const lait2: Items = {
         pos: {
-            x: 770,
+            x: 755,
             y: 1720
 
         },
@@ -147,30 +175,56 @@ export const postit_1: Items = {
     }
     export const paille: Items = {
         pos: {
-            x: 5069,
-            y: 20
+            x: 0,
+            y: 0
 
         },
         dim: {
-            w:850,
-            h:600
+            w:1700,
+            h:1100
         },
         img: "/img/items/paille.png",
         collectable: false, 
         draggable: true 
     }
+    export const rateau: Items = {
+        pos: {
+            x: 2040,
+            y: 200
+        },
+        dim: {
+            w:1200,
+            h:1000
+        },
+        img: "/img/items/râteau.png",
+        collectable: false, 
+        draggable: true
+    }
+    export const chaise: Items = {
+        pos: {
+            x: 4790,
+            y: 0
+        },
+        dim: {
+            w:2220,
+            h:1080
+        },
+        img: "/img/items/chaise.png",
+        collectable: false, 
+        draggable: true
+    }
+
     export const clef: Items = {
         pos: {
-            x: 2560,
-            y: 60
+            x: 1410,
+            y: 10
 
         },
         dim: {
-            w:160,
-            h:160
+            w:200,
+            h:200
         },
         img: "/img/items/clef.png",
         collectable: true, 
         draggable: false
     }
- 
