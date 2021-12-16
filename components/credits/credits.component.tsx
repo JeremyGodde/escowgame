@@ -57,10 +57,24 @@ export default class Credits extends React.Component<DefaultProps> {
                     <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
                 </ul>
                 
-                <h2>Crédits photographiques</h2>
+                <h2 className={style.space}>Dialoguistes</h2>
+                <h4>Principale</h4>
+                <ul>
+                    <li><span>Margaux</span> <span className={style.name}>Gressel</span></li>
+                </ul>
+                <h4>Assistants</h4>
+                <ul>
+                    <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>
+                    <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
+                    <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
+                    <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
+                </ul>
+                
+                <h2 className={style.space}>Crédits photographiques</h2>
                 <h4>Banques libres de droits</h4>
                 <ul>
                     <li>Unsplash, Licence Unsplash,<br/>https://unsplash.com/</li>
+                    <li>Pixabay, Licence Pixabay,<br/>https://pixabay.com/</li>
                 </ul>
                 <h4>Travail de la photographie</h4>
                 <ul>
@@ -68,29 +82,40 @@ export default class Credits extends React.Component<DefaultProps> {
                     <li><span>Olivia</span> <span className={style.name}>Lasserre</span></li>
                 </ul>
                 
-                <h2>Crédits sonores</h2>
+                <h2 className={style.space}>Crédits sonores</h2>
                 <h4>Banques libres de droits</h4>
                 <ul>
                     <li>LaSonotheque.fr, Licence CC0 1.0 universel,<br/>https://lasonotheque.org/</li>
                     <li>Sond Fishing Bruitages, Licence LESF,<br/>https://sound-fishing.net/bruitages.html</li>
+                </ul>
+                <h4>Voix</h4>
+                <ul>
+                    <li><span>Jean <span className={style.name}>Lessieur</span>, employé</span> <span>Dorian <span className={style.name}>Clermont</span></span></li>
+                    <li><span>Mme. <span className={style.name}>MARTIN</span>, directrice</span> <span>Marianne <span className={style.name}>Guesneau</span></span></li>
                 </ul>
                 <h4>Travail du son</h4>
                 <ul>
                     <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
                 </ul>
                
-                <h2>Crédits maquettes</h2>
+                <h2 className={style.space}>Crédits maquettes</h2>
                 <ul>
                     <li><span>Clara</span> <span className={style.name}>Grellier</span></li>
                     <li><span>Margaux</span> <span className={style.name}>Gressel</span></li>
                 </ul>
                 
-                <h2>Crédits moteur de jeu</h2>
+                <h2 className={style.space}>Crédits développement</h2>
+                <h4>Moteur du jeu</h4>
                 <ul>
                     <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>
                 </ul>
+                <h4>Développement et test</h4>
+                <ul>
+                    <li><span>Jérémy</span> <span className={style.name}>Godde</span></li>
+                    <li><span>Marianne</span> <span className={style.name}>Guesneau</span></li>
+                </ul>
                 
-                <h2>Nous remercions</h2>
+                <h2 className={style.space}>Nous remercions</h2>
                 <ul>
                     <li><span>Serge</span> <span className={style.name}>Bouchardon</span></li>
                 </ul>
