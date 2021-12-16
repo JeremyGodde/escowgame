@@ -432,31 +432,24 @@ export const all_rooms: Array<Room | Digicode> = [
             return true
         },
         sounds: [bureau_12_sound],
+        videos: [
+            {
+                src: "/video/test.mp4",
+                pos: {
+                    x:2430,
+                    y:1698
+                },
+                dim: {
+                    w:410,
+                    h:345
+                },
+                rotate: '8deg'
+            }
+        ],
         dim: {
             w: 4897,
             h: 3265
         },
-        zones: [
-            {//écran d'ordinateur -> Enigme 2
-                click: new AfterMoveToRoom(CREDITS_ID),
-                svg: Zones.RectRotate,
-                pos: {
-                    x:2430,
-                    y:1700
-                },
-                dim: {
-                    w:410,
-                    h:335
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                    rotate: "7deg"
-                }
-            }
-        ]
     },
     {
         id: PORTE_BUREAU_12,

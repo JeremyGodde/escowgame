@@ -1,4 +1,5 @@
 import Item from '../game/item.structure'
+import Video from '../game/video.structure'
 import Dialog from '../immersion/dialog.structure'
 import Sound from '../immersion/sound.structure'
 import Player from '../player/player.structure'
@@ -12,6 +13,7 @@ export default interface Room {
     src: string
     open_if: (player:Player) => boolean
     sounds?: Array<Sound>
+    videos?: Array<Video>
     dialog?: Dialog
     items?: Array<Item>
     zones?: Array<Zone>

@@ -8,6 +8,7 @@ import Menu from '../menu/menu.component'
 import Sound from '../sound/sound.component'
 import style from './room.module.css'
 import { HOME_SCREEN_ID, NONE } from '../../donnees/list_ids_room.donnee'
+import Video from '../video/video.component'
 
 interface RoomProps extends DefaultProps {
     value: RoomStruct
@@ -107,62 +108,73 @@ export default class Room extends React.Component<RoomProps> {
                     }
                     {
                         this.offset !== undefined &&
-                        this.props.value['zones'] !== undefined &&
-                        this.props.value['zones'].length &&
-                        this.props.value['zones'].map((zone,index) => 
-                            <Zones.Zone
-                                value={zone}
-                                player={this.props.player}
-                                key={`${this.props.value.id}_zone_${index}`}
-                                refresh={this.refresh}
-                                ratio={this.ratio}
-                                offset={this.offset}
-                            />
-                        )
-                    }
-                    {
-                        this.offset !== undefined &&
-                        this.props.value.items !== undefined &&
-                        this.props.value.items.length &&
-                        this.props.value.items.filter( item =>
-                            !this.props.player.owned(item)
-                        ).map((item,index) => 
-                                <Item
-                                    value={item}
+                        <>{
+                            this.props.value.videos !== undefined &&
+                            this.props.value.videos.length &&
+                            this.props.value.videos.map(video => 
+                                <Video
                                     player={this.props.player}
-                                    key={`${this.props.value.id}_item_${index}`}
+                                    value={video}
+                                    offset={this.offset}
+                                    ratio={this.ratio}
+                                />
+                            )
+                        }
+                        {
+                            this.props.value['zones'] !== undefined &&
+                            this.props.value['zones'].length &&
+                            this.props.value['zones'].map((zone,index) => 
+                                <Zones.Zone
+                                    value={zone}
+                                    player={this.props.player}
+                                    key={`${this.props.value.id}_zone_${index}`}
                                     refresh={this.refresh}
                                     ratio={this.ratio}
                                     offset={this.offset}
                                 />
                             )
+                        }
+                        {
+                            this.props.value.items !== undefined &&
+                            this.props.value.items.length &&
+                            this.props.value.items.filter( item =>
+                                !this.props.player.owned(item)
+                            ).map((item,index) => 
+                                    <Item
+                                        value={item}
+                                        player={this.props.player}
+                                        key={`${this.props.value.id}_item_${index}`}
+                                        refresh={this.refresh}
+                                        ratio={this.ratio}
+                                        offset={this.offset}
+                                    />
+                                )
+                        }
+                        {
+                            this.props.value.id_exit !== NONE &&
+                            this.props.value.id_exit !== HOME_SCREEN_ID &&
+                            this.props.value.name !== undefined &&
+                            <h2
+                                className={style.name}
+                                style={{
+                                    left: `${64 + this.offset.x}px`,
+                                    top: `4px`
+                                }}
+                            >
+                            {this.props.value.name}
+                            </h2>
+                        }
+                        {
+                            <Menu
+                                player={this.props.player}
+                                id_exit={this.props.value.id_exit}
+                                offset={this.offset}
+                            />
+                        }</>
                     }
                     {
                         this.after_nodes !== undefined &&
                         this.after_nodes
-                    }
-                    {
-                        this.offset &&
-                        this.props.value.id_exit !== NONE &&
-                        this.props.value.id_exit !== HOME_SCREEN_ID &&
-                        this.props.value.name !== undefined &&
-                        <h2
-                            className={style.name}
-                            style={{
-                                left: `${64 + this.offset.x}px`,
-                                top: `4px`
-                            }}
-                        >
-                        {this.props.value.name}
-                        </h2>
-                    }
-                    {
-                        this.offset !== undefined &&
-                        <Menu
-                            player={this.props.player}
-                            id_exit={this.props.value.id_exit}
-                            offset={this.offset}
-                        />
                     }
                 </div>
             </section>

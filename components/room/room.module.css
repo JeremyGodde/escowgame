@@ -24,7 +24,8 @@
     position: relative;
 }
 
-.room .playground .svg {
+.room .playground .svg,
+.room .playground .video {
     position: absolute;
     fill: rgba(0,255,0,0.1);
     stroke: rgba(200,55,200,0.5);
@@ -32,8 +33,25 @@
 }
 
 .room .playground .svg:not(.hover) polygon,
-.room .playground .svg:not(.hover) ellipse {
+.room .playground .svg:not(.hover) ellipse,
+.room .playground .video:not(.playing) video {
     cursor: pointer;
+}
+
+.room .playground .video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(7, 7, 7);
+}
+.room .playground .video video {
+    width: 100%;
+    height: auto;
+}
+
+.room .playground .video.playing video {
+    cursor: none;
 }
 
 .room .playground .name {
