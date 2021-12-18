@@ -40,6 +40,10 @@ export const couloir_1_sound: Sound = {
     src: "/sound/Couloir1.wav",
     is_loop: true
 }
+export const couloir_1_entree_sound: Sound = {
+    src: "/sound/Couloir1_entree.wav",
+    is_loop: false
+}
 export const usine_exterieur_1_sound: Sound = {
     src: "/sound/Usine_exterieur_1.wav",
     is_loop: true
@@ -85,5 +89,9 @@ export const papier2_sound: Sound = {
 }
 export const papier3_sound: Sound = {
     src: "/sound/Papier3.wav",
+    is_loop: false
+}
+export const employé_sound: Sound = {
+    src: "/sound/Employe.wav",
     is_loop: false
 }

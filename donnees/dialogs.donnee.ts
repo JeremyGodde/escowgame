@@ -4,13 +4,14 @@ import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Dialog from "../structures/immersion/dialog.structure"
 import { 
     COULOIR_1,
+    COULOIR_1_CINEMATIQUE_ENTREE,
     CREDITS_ID,
     EXTERIEUR_3,
     EXTERIEUR_3bis,
     USINE_EXTERIEUR_1
 } from "./list_ids_room.donnee"
 import { EXTERIEUR_2 } from "./list_ids_room.donnee"
-import { bureau_inaccessible_sound, local_technique_sound } from "./sounds.donnee"
+import { bureau_inaccessible_sound, local_technique_sound,employé_sound } from "./sounds.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
@@ -94,12 +95,43 @@ export const bureau_inaccessible: Dialog = {
             text: "Attends, j'entends quelque chose. Tends l'oreille."
         },
     ],
-    after: new AfterPlaySound(bureau_inaccessible_sound)
+    after: new AfterPlaySound(employé_sound)
+}
+
+export const couloir_1_cinematique_entree_dialogue: Dialog = {
+    timer:4,
+    frames: [
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Mince, la porte s'est refermée, on ne peut plus l'ouvrir de l'intérieur !"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Nous sommes bloqués ! Nous allons devoir trouver un moyen de sortir d'ici !"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Il va falloir avertir quelqu'un à l'exterieur de notre présence pour qu'on vienne nous sortir d'ici."
+        },
+        {
+            character: JOUEUR,
+            text: "Mais je n'ai pas de réseau !"
+        },
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Allons explorer les différentes salles, nous allons bien y trouver un moyen de sortir, et par la même occasion tu verras les horreurs qui se passent ici."
+        },
+    ],
+    after: new AfterMoveToRoom(COULOIR_1)
 }
 
 export const usine_exterieur_1bis_dialog: Dialog = {
     timer: 1,
-    after: new AfterMoveToRoom(COULOIR_1),
+    after: new AfterMoveToRoom(COULOIR_1_CINEMATIQUE_ENTREE),
     frames: [
         {
             character: JOUEUR,

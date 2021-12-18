@@ -12,6 +12,7 @@ import {
     exterieur_3bis_dialog,
     usine_exterieur_1_dialog,
     usine_exterieur_1bis_dialog,
+    couloir_1_cinematique_entree_dialogue,
     lunettes_dialog,
     pistolet_abattage_dialogue,
     bureau_inaccessible
@@ -27,6 +28,7 @@ import {
     EXTERIEUR_3bis,
     USINE_EXTERIEUR_1,
     USINE_EXTERIEUR_1bis,
+    COULOIR_1_CINEMATIQUE_ENTREE,
     COULOIR_1,
     BUREAU_8,
     PORTE_BUREAU_12,
@@ -53,6 +55,7 @@ import {
     exterieur_3_sound, 
     exterieur_3bis_1_sound,
     usine_exterieur_1_sound,
+    couloir_1_entree_sound,
     couloir_1_sound, 
     bureau_8_sound,
     local_technique_sound,
@@ -162,6 +165,22 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 5184,
             h: 3456
         }
+    },
+    {
+        id: COULOIR_1_CINEMATIQUE_ENTREE,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/couloir_1.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_1_entree_sound],
+        dialog: couloir_1_cinematique_entree_dialogue,
     },
     {
         id: COULOIR_1,
@@ -434,7 +453,7 @@ export const all_rooms: Array<Room | Digicode> = [
         sounds: [bureau_12_sound],
         videos: [
             {
-                src: "/video/test.mp4",
+                src: "/video/cowspiracy.mp4",
                 pos: {
                     x:2430,
                     y:1698
