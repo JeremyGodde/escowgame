@@ -91,17 +91,18 @@ export const postit_1: Items = {
     }
     export const pelle: Items = {
         pos: {
-            x: 3950,
-            y: 700
+            x: 3650,
+            y: 400
 
         },
         dim: {
-            w:1150,
-            h:750
+            w:2250,
+            h:1200
         },
         img: "/img/items/pelle.png",
         collectable: false, 
-        draggable: true 
+        draggable: true,
+        rotate: '-70deg'
     }
     export const échelle: Items = {
         pos: {
@@ -134,7 +135,7 @@ export const postit_1: Items = {
     export const lait: Items = {
         pos: {
             x: 3200,
-            y: 60
+            y: 20
 
         },
         dim: {
@@ -189,31 +190,18 @@ export const postit_1: Items = {
     }
     export const rateau: Items = {
         pos: {
-            x: 2040,
-            y: 200
+            x: 1900,
+            y: -200
         },
         dim: {
-            w:1200,
-            h:1000
+            w:1500,
+            h:1300
         },
         img: "/img/items/râteau.png",
         collectable: false, 
-        draggable: true
+        draggable: true,
+        rotate:'-60deg'
     }
-    export const chaise: Items = {
-        pos: {
-            x: 4790,
-            y: 0
-        },
-        dim: {
-            w:2220,
-            h:1080
-        },
-        img: "/img/items/chaise.png",
-        collectable: false, 
-        draggable: true
-    }
-
     export const clef: Items = {
         pos: {
             x: 1410,

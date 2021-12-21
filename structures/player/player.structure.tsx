@@ -4,12 +4,14 @@ import Room from '../../components/room/room.component'
 import Digicode from '../../components/digicode/digicode.component'
 import RoomStruct from '../../structures/space/room.structure'
 import DigicodeStruct from '../../structures/game/digicode.structure'
+import SoundStruct from '../../structures/immersion/sound.structure'
 
 /* Données de jeu */
 import { all_rooms } from '../../donnees/rooms.donnee'
 import Dialog from "../../components/dialog/dialog.component"
 import { CREDITS_ID, HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
 import { portes_fermees } from "../../donnees/dialogs.donnee"
+import Sound from "../../components/sound/sound.component"
 
 /*
     un joueur
@@ -25,6 +27,7 @@ export default class Player {
     private inventory: Set<Item>
     private refresh: (p: Player) => void
     private after_nodes: React.ReactNode = undefined
+    private sounds: Array<SoundStruct> = undefined
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -53,8 +56,8 @@ export default class Player {
                 this.opened_room.add(id_room)
                 this.refresh(this)
             } else if (room.type === "ROOM") {
-               // const h = Math.floor(Math.random() * portes_fermees.length) 
-                // this.after_nodes = <Dialog player={this} value={portes_fermees[h]}/>
+                const h = Math.floor(Math.random() * portes_fermees.length) 
+                this.after_nodes = <Dialog player={this} value={portes_fermees[h]}/>
                 this.id_room = this.current_room.id
                 this.refresh(this)
             } else if (room.type === "DIGICODE") {
@@ -93,6 +96,10 @@ export default class Player {
     }
 
     public renderRoom = ():React.ReactNode => {
+        if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
+            this.sounds=this.current_room.sounds
+            console.log(this.current_room.id)
+        }
         return (
             <>
                 {
@@ -107,6 +114,13 @@ export default class Player {
                 {
                     this.after_nodes !== undefined &&
                     this.after_nodes
+                }
+                {
+                    this.sounds !== undefined &&
+                    this.sounds.length &&
+                    this.sounds.map(sound => 
+                        <Sound player={this} value={sound}/>
+                    )
                 }
             </>
         )

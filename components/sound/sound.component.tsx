@@ -50,6 +50,7 @@ export default class Sound extends React.Component<SoundProps> {
     }
 
     load = () => {
+        this.value = this.props.value
         this.audio.current.src = this.value.src
         this.audio.current.load()
         if(this.value.timer === undefined) {
@@ -60,6 +61,14 @@ export default class Sound extends React.Component<SoundProps> {
     }
 
     componentDidMount = this.load
+
+    componentDidUpdate = () => {
+        if(this.props.value.src !== this.value.src) {
+            this.audio.current.removeEventListener("ended",this.end)
+            this.audio.current.pause()
+            this.load()
+        }
+    }
 
     render = () => {
         return (

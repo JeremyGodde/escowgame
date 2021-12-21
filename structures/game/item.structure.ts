@@ -12,6 +12,7 @@ export default interface Item {
         w: number // px
         h: number // px
     }
+    rotate?: string
     img: string
     collectable: boolean // peut être ramassé
     draggable: boolean // peut être déplacé

@@ -3,12 +3,6 @@ import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Sound from "../structures/immersion/sound.structure"
 import { COULOIR_1 } from "./list_ids_room.donnee"
 
-export const bureau_inaccessible_sound: Sound = {
-    src: "/sound/Bureau_13.wav",  // SON A CHANGÉ
-    is_loop: false,
-    after: new AfterMoveToRoom(COULOIR_1)
-}
-
 export const bureau_13_sound: Sound = {
     src: "/sound/Bureau_13.wav", 
     is_loop: true
@@ -40,7 +34,7 @@ export const couloir_1_sound: Sound = {
     src: "/sound/Couloir1.wav",
     is_loop: true
 }
-export const couloir_1_entree_sound: Sound = {
+export const couloir_1_entree_sound: Sound = {//bruit porte qui claque
     src: "/sound/Couloir1_entree.wav",
     is_loop: false
 }
@@ -58,16 +52,6 @@ export const exterieur_3bis_1_sound: Sound = {
     src: "/sound/Exterieur_3bis_1.wav",
     is_loop: false,                              /* Il y a un bruit de frein au début donc pas boucle*/
     after: new AfterPlaySound(exterieur_3bis_2_sound) 
-}
-
-export const exterieur_3_sound: Sound = {
-    src: "/sound/Exterieur_3.wav",
-    is_loop: true
-}
-
-export const exterieur_2_sound: Sound = {
-    src: "/sound/Exterieur_2.wav",
-    is_loop: true
 }
 
 export const exterieur_1_sound: Sound = {

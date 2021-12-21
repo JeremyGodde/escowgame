@@ -115,7 +115,8 @@ export default class Item extends React.Component<ItemProps> {
                     left: `${this.drawingProperties.pos.x}px`,
                     width: `${this.drawingProperties.dim.w}px`,
                     height: `${this.drawingProperties.dim.h}px`,
-                    backgroundImage: `url('${this.props.value.img}')`,
+                    backgroundImage: `url('${this.props.value.img}')`, 
+                    transform: `rotate(${this.props.value.rotate})` 
                 }}
             >
             </div>

@@ -100,13 +100,6 @@ export default class Room extends React.Component<RoomProps> {
                         <Dialog player={this.props.player} value={this.props.value.dialog}/>
                     }
                     {
-                        this.props.value.sounds !== undefined &&
-                        this.props.value.sounds.length &&
-                        this.props.value.sounds.map(sound => 
-                            <Sound player={this.props.player} value={sound}/>
-                        )
-                    }
-                    {
                         this.offset !== undefined &&
                         <>{
                             this.props.value.videos !== undefined &&

@@ -18,7 +18,7 @@ import {
     bureau_inaccessible
 } from "./dialogs.donnee"
 import { postit_1, postit_2, postit_3, postit_4, postit_5,fermes_usines,
-    clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille, chaise,} from "./items.donnee"
+    clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille,} from "./items.donnee"
 import {
     NONE,
     HOME_SCREEN_ID,
@@ -35,6 +35,8 @@ import {
     DIGICODE_BUREAU_12,
     BUREAU_12,
     COULOIR_2,
+    PORTE_SALLE_5,
+    DIGICODE_SALLE_5,
     SALLE_5,
     BUREAU_13,
     PORTE_BUREAU_13,
@@ -50,9 +52,7 @@ import {
 } from "./list_ids_room.donnee"
 
 import {
-    exterieur_1_sound,
-    exterieur_2_sound,
-    exterieur_3_sound, 
+    exterieur_1_sound, 
     exterieur_3bis_1_sound,
     usine_exterieur_1_sound,
     couloir_1_entree_sound,
@@ -96,7 +96,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds: [exterieur_2_sound],
         dialog: exterieur_2_dialog,
         dim: {
             w: 1170,
@@ -112,7 +111,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds : [exterieur_3_sound],
         dialog: exterieur_3_dialog,
         dim: {
             w: 1074,
@@ -144,7 +142,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds: [usine_exterieur_1_sound],
         dialog: usine_exterieur_1_dialog,
         dim: {
             w: 5184,
@@ -445,7 +442,7 @@ export const all_rooms: Array<Room | Digicode> = [
         type: "ROOM",
         id_exit: COULOIR_1,
         name: "Bureau 12",
-        src: "/img/indoor/bureau_12.png",
+        src: "/img/indoor/bureau_12.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte (A CHANGER)
             return true
@@ -511,7 +508,6 @@ export const all_rooms: Array<Room | Digicode> = [
         id_exit: PORTE_BUREAU_12,
         id_entrance: BUREAU_12,
         code: 245689,
-        //sounds: [couloir_1_sound],
     },
     {
         id: COULOIR_2,
@@ -529,7 +525,7 @@ export const all_rooms: Array<Room | Digicode> = [
         sounds:[couloir_2_sound],
         zones: [
             { //porte 1 -> salle 5
-                click: new AfterMoveToRoom(SALLE_5),
+                click: new AfterMoveToRoom(PORTE_SALLE_5),
                 svg: Zones.Rect,
                 pos: {
                     x:240,
@@ -603,6 +599,47 @@ export const all_rooms: Array<Room | Digicode> = [
         ]
     },
     {
+        id: PORTE_SALLE_5,
+        type: "ROOM",
+        id_exit: COULOIR_2,
+        src: "/img/indoor/Porte_salle_5.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte 
+            return true
+        },
+        dim: {
+            w: 4833,
+            h: 3758
+        },
+        zones: [
+            { //digicode
+                click: new AfterMoveToRoom(DIGICODE_SALLE_5),
+                svg: Zones.Rect,
+                pos: {
+                    x:2343,
+                    y:1400
+                },
+                dim: {
+                    w:170,
+                    h:240
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+        ]
+    },
+    {
+        id: DIGICODE_SALLE_5,
+        type: "DIGICODE",
+        id_exit: PORTE_SALLE_5,
+        id_entrance: SALLE_5,
+        code: 17062,
+    },
+    {
         id: SALLE_5,
         type: "ROOM",
         id_exit: COULOIR_2, 
@@ -638,7 +675,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 },   
             },
         ],
-        items: [lait, lait2, clef, pelle, carton, échelle, rateau, grille,paille, chaise]
+        items: [lait, lait2, clef, pelle, carton, échelle, rateau, grille,paille]
     },
     {
         id: BUREAU_13,
@@ -666,7 +703,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte, à changer, il y aura la clef
             return true
         },
-        sounds: [couloir_2_sound],
         dim: {
             w: 4833,
             h: 3758
@@ -843,7 +879,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds:[bureau_8_sound],
         dim: {
             w: 1006,
             h: 668
@@ -859,7 +894,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds:[bureau_8_sound],
         dim: {
             w: 1277,
             h: 951
@@ -875,7 +909,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds:[bureau_8_sound],
         dim: {
             w: 6000,
             h: 4000

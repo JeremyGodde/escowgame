@@ -11,7 +11,7 @@ import {
     USINE_EXTERIEUR_1
 } from "./list_ids_room.donnee"
 import { EXTERIEUR_2 } from "./list_ids_room.donnee"
-import { bureau_inaccessible_sound, local_technique_sound,employé_sound } from "./sounds.donnee"
+import {employé_sound } from "./sounds.donnee"
 
 export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
