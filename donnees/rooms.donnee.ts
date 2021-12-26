@@ -15,7 +15,7 @@ import {
     couloir_1_cinematique_entree_dialogue,
     lunettes_dialog,
     pistolet_abattage_dialogue,
-    bureau_inaccessible
+    bureau_inaccessible,
 } from "./dialogs.donnee"
 import { postit_1, postit_2, postit_3, postit_4, postit_5,fermes_usines,
     clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille,} from "./items.donnee"
@@ -48,7 +48,10 @@ import {
     ORDINATEUR_BUREAU_8,
     TELEPHONE_BUREAU_8,
     LOCAL_AFFICHE_1,
-    LOCAL_AFFICHE_2
+    LOCAL_AFFICHE_2,
+    ELEVAGE_1,
+    ELEVAGE_2,
+    LOCAL_BOULETTE
 } from "./list_ids_room.donnee"
 
 import {
@@ -543,7 +546,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 }
             },
             { //porte 2 -> élevage
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(ELEVAGE_1),
                 svg: Zones.Rect,
                 pos: {
                     x:3400,
@@ -779,7 +782,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 }
             },
             { //boulette de papier
-                click: new AfterMoveToRoom(CREDITS_ID),
+                click: new AfterMoveToRoom(LOCAL_BOULETTE),
                 svg: Zones.Circ,
                 pos: {
                     x:1579,
@@ -819,6 +822,20 @@ export const all_rooms: Array<Room | Digicode> = [
         dim: {
             w: 625,
             h: 916
+        },
+    },
+    {
+        id: LOCAL_BOULETTE,
+        type: "ROOM",
+        id_exit: LOCAL_TECHNIQUE, 
+        src: "/img/posters/boulette.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte ??
+            return true
+        },
+        dim: {
+            w: 4128,
+            h: 2322
         },
     },
     {

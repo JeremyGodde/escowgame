@@ -31,4 +31,6 @@ export const LOCAL_AFFICHE_2 = 12.2
 export const BUREAU_INACCESSIBLE = 13
 export const BUREAU_INACCESSIBLE_ZOOM = 13.1
 export const PORTE_VEROUILLEE = 14
+export const ELEVAGE_1 = 15.1
+export const ELEVAGE_2 = 15.2
 
