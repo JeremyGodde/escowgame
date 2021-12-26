@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component<DefaultProps> {
         evt.preventDefault()
         evt.stopPropagation()
         
-        this.props.player.move(1)
+        this.props.player.start()
     }
 
     render = () => {

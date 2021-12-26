@@ -1,5 +1,5 @@
 import React from "react"
-import Item from "../game/item.structure"
+import ItemStruct from "../game/item.structure"
 import Room from '../../components/room/room.component'
 import Digicode from '../../components/digicode/digicode.component'
 import RoomStruct from '../../structures/space/room.structure'
@@ -12,6 +12,7 @@ import Dialog from "../../components/dialog/dialog.component"
 import { CREDITS_ID, HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
 import { portes_fermees } from "../../donnees/dialogs.donnee"
 import Sound from "../../components/sound/sound.component"
+import Item from "../../components/item/item.component"
 
 /*
     un joueur
@@ -22,20 +23,48 @@ type PLACE = RoomStruct | DigicodeStruct
 export default class Player {
     private id_room: number
     private current_room: PLACE
-    private solved_enigmas: Array<number>   // identifiants des énigmes résolues
+    private start_time: number = undefined
     private opened_room: Set<number>   // identifiants des pièces ouvertes
-    private inventory: Set<Item>
+    private inventory: Set<ItemStruct>
     private refresh: (p: Player) => void
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
+    private hint: string = undefined
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
         this.id_room = start_room
-        this.solved_enigmas = []
         this.inventory = new Set()
         this.opened_room = new Set()
         this.refresh = refresh
+    }
+
+    public start = () => {
+        this.start_time = (new Date()).getTime()
+        this.move(1)
+    }
+
+    public getTime = (): {
+        sec: number
+        node: React.ReactNode
+    } => {
+        if (this.start_time === undefined) {
+            return {sec:0,node:""}
+        }
+        const diff = (new Date()).getTime() - this.start_time
+        const duration = new Date(diff)
+        const mtz = duration.getTimezoneOffset()
+        const m = duration.getMinutes() + (60 * duration.getHours() + mtz)
+        const s = duration.getSeconds()
+        return {sec:s,node:<span>{m < 10 ? `0${m}` : m}<br/>{s < 10 ? `0${s}` : s}</span>}
+    }
+
+    public getDiary = (): string => {
+        return this.hint
+    }
+
+    public setDiary = (hint:string) => {
+        this.hint = hint
     }
 
     public move = (id_room:number):void =>  { 
@@ -72,13 +101,39 @@ export default class Player {
         return this.opened_room.has(id_room)
     }
 
-    public collect = (item: Item):void => {
+    public collect = (item: ItemStruct):React.ReactNode => {
         this.inventory.add(item)
         this.refresh(this)
+        if (item.after_collect !== undefined) {
+            return item.after_collect.do(this)
+        }
+        return undefined
     }
 
-    public owned = (item:Item):boolean => {
+    public owned = (item:ItemStruct):boolean => {
         return this.inventory.has(item)
+    }
+    
+    public DisplayItems = ():React.ReactNode => {
+        return Array.from(this.inventory.values()).map(
+            (item,indice) =>
+            <Item
+                key={`inventory_item_${indice}`}
+                value={{
+                    ...item,
+                    pos: {
+                        x:25+150*(indice%3),
+                        y:25+150*(indice - (indice%3))
+                    },
+                    collectable:false,
+                    draggable:true
+                }}
+                ratio={1}
+                refresh={()=>{}}
+                offset={{x:20,y:20}}
+                player={this}
+            />
+        )
     }
 
     public getRoom = () :number => {
@@ -98,7 +153,6 @@ export default class Player {
     public renderRoom = ():React.ReactNode => {
         if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
             this.sounds=this.current_room.sounds
-            console.log(this.current_room.id)
         }
         return (
             <>

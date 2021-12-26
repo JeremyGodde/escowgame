@@ -130,9 +130,7 @@ export default class Room extends React.Component<RoomProps> {
                         {
                             this.props.value.items !== undefined &&
                             this.props.value.items.length &&
-                            this.props.value.items.filter( item =>
-                                !this.props.player.owned(item)
-                            ).map((item,index) => 
+                            this.props.value.items.map((item,index) => 
                                     <Item
                                         value={item}
                                         player={this.props.player}
@@ -162,6 +160,10 @@ export default class Room extends React.Component<RoomProps> {
                                 player={this.props.player}
                                 id_exit={this.props.value.id_exit}
                                 offset={this.offset}
+                                dim={{
+                                    h: document.documentElement.offsetHeight - 2*this.offset.y,
+                                    w: document.documentElement.offsetWidth - 2*this.offset.x
+                                }}
                             />
                         }</>
                     }

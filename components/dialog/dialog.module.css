@@ -26,6 +26,14 @@
     padding: 0.25em 1.25em;
 }
 
+.dialog .text_zone.narrator {
+    border-color:rgb(21, 70, 230);
+}
+
+.dialog .text_zone.dog {
+    border-color:rgb(201, 68, 7);
+}
+
 .dialog .text_zone h3 {
     margin: 0;
     text-decoration: underline;
@@ -36,14 +44,14 @@
     width: calc(100% - 2ch);
 }
 
-.dialog .text_zone p.narrator {
+.dialog .text_zone.narrator p {
     font-family: B612MonoItalic, Arial, Helvetica, sans-serif;
 }
 
-.dialog .text_zone p:not(.narrator)::before {
+.dialog .text_zone:not(.narrator) p::before {
     content: "« ";
 }
-.dialog .text_zone p:not(.narrator)::after {
+.dialog .text_zone:not(.narrator) p::after {
     content: " »";
 }
 
@@ -85,6 +93,14 @@
     padding: 0.25em 0.75em;
     width: 100%;
     cursor: pointer;
+}
+
+.dialog .text_zone.narrator + .set_buttons button {
+    border-color:rgb(21, 70, 230);
+}
+
+.dialog .text_zone.dog + .set_buttons button {
+    border-color:rgb(201, 68, 7);
 }
 
 .dialog .set_buttons button:hover {

@@ -12,19 +12,132 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.menu .img {
+.menu.opened {
+    width: calc(var(--menu-width) + 16px);
+    transition: width 0.25s;
+}
+.menu:not(.opened) {
+    width: var(--menu-width);
+    transition: width 0.25s;
+}
+
+.menu.opened > *:not(:first-child) {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.menu:not(.opened) > *:not(:first-child) {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.menu.opened > img,
+.menu > img:first-child {
     cursor: pointer;
+}
+
+.menu > * {
+    margin-bottom: 16px;
+}
+
+.menu > div {
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 48px;
+    max-height: 48px;
+    position: relative;
+    color: white;
+    font-size: 10pt;
+}
+
+.menu > div > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.menu > div > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
+}
+
+.menu.opened .hint:hover {
+    animation: swing 3s 0.23s infinite;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(-22deg);
+    }
+    12% {
+        transform: rotate(-22deg);
+    }
+    18% {
+        transform: rotate(22deg);
+    }
+    20% {
+        transform: rotate(22deg);
+    }
+    26% {
+        transform: rotate(-13deg);
+    }
+    28% {
+        transform: rotate(-13deg);
+    }
+    34% {
+        transform: rotate(13deg);
+    }
+    36% {
+        transform: rotate(13deg);
+    }
+    46% {
+        transform: rotate(0deg);
+    }
+}
+
+.inventory {
+    position: absolute;
+    border-radius: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: rgb(255,255,255) 3px solid;
+}
+
+.diary {
+    position: absolute;
+    border-radius: 32px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: rgb(255,255,255) 3px solid;
+    color: white;
+    padding: 32px;
+    cursor: text;
 }
 
 .exit_button {
     position: absolute;
-        
+    fill: rgba(255,255,255,0.5);  
+    stroke: black;
+    stroke-width: 0.5px;  
+    cursor: pointer;
+}
+
+.exit_button,
+.exit_button > * {
     height: var(--menu-width);
     width: var(--menu-width);
+}
 
-    cursor: pointer;
+.exit_button:hover {
+    fill: rgba(255,255,255,0.85);
+    transition: fill 0.25s;
 }

@@ -20,14 +20,20 @@ export default class Item extends React.Component<ItemProps> {
     private drawingProperties: DrawingProperties
     private selected: boolean = false
     private class: string
+    private owned: boolean
 
     constructor(props: ItemProps) {
         super(props)
         this.class = style.item
-        if (this.props.value.collectable === true && !this.props.value.draggable) {
+        
+        this.owned = this.props.value.draggable === false && props.player.owned(props.value)
+        if (this.owned) {
+            this.class += " " + style.deleted
+        }
+        else if (this.props.value.collectable === true && this.props.value.draggable === false) {
             this.class += " " + style.clickable
         }
-        if(!this.props.value.collectable && this.props.value.draggable === true) {
+        else if(this.props.value.collectable === false && this.props.value.draggable === true) {
             this.class += " " + style.draggable
         }
 
@@ -43,22 +49,31 @@ export default class Item extends React.Component<ItemProps> {
         }
     }
 
+    componentDidUpdate = () => {
+        if (this.props.value.collectable === false) {
+            return
+        }
+        this.owned = this.props.value.draggable === false && this.props.player.owned(this.props.value)
+    }
+
     collect = (evt: MouseEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
 
-        this.props.player.collect(this.props.value)
-        this.class += " " + style.deleted
-        if (this.props.value.after_collect !== undefined) {
-            this.props.refresh(this.props.value.after_collect.do(this.props.player))
-        } else {
-            this.setState({})
+        if (this.props.value.collectable === false && this.props.value.draggable === true) {
+            return
         }
+
+        this.props.refresh(this.props.player.collect(this.props.value))
     }
 
     select = (selected:boolean, evt: MouseEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
+        
+        if (this.props.value.collectable === true && this.props.value.draggable === false) {
+            return
+        }
 
         this.selected = selected
         if (selected) {
@@ -94,11 +109,16 @@ export default class Item extends React.Component<ItemProps> {
         }
     }
 
-    componentDidMount = () => {        
-        if (this.props.value.collectable === true && !this.props.value.draggable) {
+    componentDidMount = () => { 
+        if (this.owned) {
+            return
+        }       
+        if (this.props.value.collectable === true && this.props.value.draggable === false) {
+            console.log(this.props.value.img,"est collectable")
             this.self.current.addEventListener("click", this.collect)            
         }
-        if (this.props.value.collectable === false && this.props.value.draggable === true) {
+        else if (this.props.value.collectable === false && this.props.value.draggable === true) {
+            console.log(this.props.value.img,"est draggable")
             this.self.current.addEventListener("mousedown", (e) => this.select(true,e))
             this.self.current.addEventListener("mouseup", (e) => this.select(false,e))
             window.addEventListener("mousemove",this.move)
@@ -106,6 +126,9 @@ export default class Item extends React.Component<ItemProps> {
     }
 
     render = () => {
+        if (this.owned) {
+            return <></>
+        }
         return (
             <div
                 className={this.class}

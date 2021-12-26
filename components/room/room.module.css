@@ -27,9 +27,12 @@
 .room .playground .svg,
 .room .playground .video {
     position: absolute;
+/*  POUR AFFICHER LES ZONES DÉCOMMENTE CE CODE-CI ET COMMENTE LA LIGNE SUIVANTE
     fill: rgba(0,255,0,0.1);
     stroke: rgba(200,55,200,0.5);
     stroke-width: 2px;
+*/
+    fill: transparent;
 }
 
 .room .playground .svg:not(.hover) polygon,

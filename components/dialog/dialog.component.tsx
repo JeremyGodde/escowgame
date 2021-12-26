@@ -2,7 +2,7 @@ import React from 'react'
 import style from './dialog.module.css'
 import DialogStruct from '../../structures/immersion/dialog.structure'
 import DefaultProps from '../../structures/props.structure'
-import { NARRATEUR } from '../../donnees/dialogs.donnee'
+import { CHIEN, NARRATEUR } from '../../donnees/dialogs.donnee'
 import { Choice } from '../../structures/immersion/frame.structure'
 
 /*
@@ -199,13 +199,14 @@ export default class Dialog extends React.Component<DialogProps> {
                             src={current_frame.img}
                         />
                     }
-                    <div className={style.text_zone}>
-                        <p
-                            className={
-                                // si c'est le narrateur qui parle on utilise un style particulier
-                                current_frame.character === NARRATEUR ? style.narrator : ''
-                            }
-                        >
+                    <div className={style.text_zone + (
+                        current_frame.character === NARRATEUR
+                            ? " "+style.narrator
+                            : current_frame.character === CHIEN
+                                ? " " + style.dog
+                                : ""
+                    )}>
+                        <p>
                             {
                                 // dans la zone de texte on affiche le texte de la frame
                                 this.partial_text
