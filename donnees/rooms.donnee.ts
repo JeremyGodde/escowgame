@@ -1,4 +1,5 @@
 import Zones from "../components/zones/zones.component"
+import AfterAskPassword from "../structures/action/after-ask-password.structure"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import AfterPlaySound from "../structures/action/after-play-sound.structure"
@@ -17,7 +18,7 @@ import {
     pistolet_abattage_dialogue,
     bureau_inaccessible,
 } from "./dialogs.donnee"
-import { postit_1, postit_2, postit_3, postit_4, postit_5,fermes_usines,
+import { postit_2, postit_3, postit_4, postit_5,fermes_usines,
     clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille,} from "./items.donnee"
 import {
     NONE,
@@ -30,7 +31,8 @@ import {
     USINE_EXTERIEUR_1bis,
     COULOIR_1_CINEMATIQUE_ENTREE,
     COULOIR_1,
-    BUREAU_8,
+    BUREAU_8_VERROUILLE,
+    BUREAU_8_DEVERROUILLE,
     PORTE_BUREAU_12,
     DIGICODE_BUREAU_12,
     BUREAU_12,
@@ -41,23 +43,19 @@ import {
     BUREAU_13,
     PORTE_BUREAU_13,
     LOCAL_TECHNIQUE,
-    CREDITS_ID,
     BUREAU_INACCESSIBLE,
     BUREAU_INACCESSIBLE_ZOOM, 
     TABLEAU_LIEGE,
-    ORDINATEUR_BUREAU_8,
     TELEPHONE_BUREAU_8,
     LOCAL_AFFICHE_1,
     LOCAL_AFFICHE_2,
     ELEVAGE_1,
-    ELEVAGE_2,
     LOCAL_BOULETTE
 } from "./list_ids_room.donnee"
 
 import {
     exterieur_1_sound, 
     exterieur_3bis_1_sound,
-    usine_exterieur_1_sound,
     couloir_1_entree_sound,
     couloir_1_sound, 
     bureau_8_sound,
@@ -198,7 +196,7 @@ export const all_rooms: Array<Room | Digicode> = [
         sounds:[couloir_1_sound],
         zones: [
             { //porte 1 -> bureau 8
-                click: new AfterMoveToRoom(BUREAU_8),
+                click: new AfterMoveToRoom(BUREAU_8_VERROUILLE),
                 svg: Zones.Rect,
                 pos: {
                     x:258,
@@ -290,11 +288,11 @@ export const all_rooms: Array<Room | Digicode> = [
         ]
     },
     {
-        id: BUREAU_8,
+        id: BUREAU_8_VERROUILLE,
         type: "ROOM",
         name: "Bureau 8",
         id_exit: COULOIR_1,
-        src: "/img/indoor/bureau_8.jpg",
+        src: "/img/indoor/bureau_8_verrouille.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
             return true
@@ -306,7 +304,7 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         zones: [
             {//écran d'ordinateur -> Enigme finale
-                click: new AfterMoveToRoom(ORDINATEUR_BUREAU_8),
+                click: new AfterAskPassword("password",BUREAU_8_VERROUILLE,BUREAU_8_DEVERROUILLE),
                 svg: Zones.Rect,
                 pos: {
                     x:510,
@@ -360,6 +358,100 @@ export const all_rooms: Array<Room | Digicode> = [
                     rotate: '-15deg'
                 },
             },
+            {//lunettes -> Dialogue
+                click: new AfterPlayDialog(lunettes_dialog),
+                svg: Zones.RectRotate,
+                pos: {
+                     x:3815,
+                    y:1170
+                },
+                dim: {
+                     w:290,
+                    h:120
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                    rotate: '7deg'
+                }
+                
+            },
+            {//papiers diversion 1-> Bruit feuilles 
+                hover: new AfterPlaySound(papier1_sound),
+                svg: Zones.Rect,
+                pos: {
+                     x:3160,
+                     y:2300
+                },
+                dim: {
+                     w:360,
+                     h:550
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                }
+                
+            },
+            {//papiers diversion 2-> Bruit feuilles 
+                hover: new AfterPlaySound(papier2_sound),
+                svg: Zones.RectRotate,
+                pos: {
+                     x:3840,
+                     y:1840
+                },
+                dim: {
+                     w:540,
+                     h:720
+                },
+                angulars: {
+                    topLeft: 0.2,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0.3,
+                    rotate: '3deg'
+                }
+                
+            },
+            {//papiers diversion 3-> Bruit feuilles 
+                hover: new AfterPlaySound(papier3_sound),
+                svg: Zones.Rect,
+                pos: {
+                     x:3540,
+                     y:2300
+                },
+                dim: {
+                     w:360,
+                     h:170
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0,
+                }
+                
+            }
+        ]
+    },
+    {
+        id: BUREAU_8_DEVERROUILLE,
+        type: "ROOM",
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_8_deverrouille.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 1277,
+            h: 951
+        },
+        zones: [
             {//lunettes -> Dialogue
                 click: new AfterPlayDialog(lunettes_dialog),
                 svg: Zones.RectRotate,
@@ -890,7 +982,7 @@ export const all_rooms: Array<Room | Digicode> = [
     {
         id: TABLEAU_LIEGE,
         type: "ROOM",
-        id_exit: BUREAU_8,
+        id_exit: BUREAU_8_VERROUILLE,
         src: "/img/indoor/tableau_liège.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -903,24 +995,9 @@ export const all_rooms: Array<Room | Digicode> = [
         items: [fermes_usines,postit_2, postit_3, postit_4, postit_5]
     },
     {
-        id: ORDINATEUR_BUREAU_8,
-        type: "ROOM",
-        id_exit: BUREAU_8,
-        src: "/img/indoor/ordinateur.png",
-        open_if: (player: Player): boolean => {
-            // toujours ouverte
-            return true
-        },
-        dim: {
-            w: 1277,
-            h: 951
-        },
-        /*zones: à ajouter quand on pourra écrire le mdp*/
-    },
-    {
         id: TELEPHONE_BUREAU_8,
         type: "ROOM",
-        id_exit: BUREAU_8,
+        id_exit: BUREAU_8_VERROUILLE,
         src: "/img/indoor/bureau_8_telephone.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte

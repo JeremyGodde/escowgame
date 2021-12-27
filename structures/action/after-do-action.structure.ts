@@ -13,4 +13,4 @@ export default abstract class AfterDoAction {
     }
 }
 
-export type ActionType = 'Sound' | 'Enigma' | 'Dialog' | 'Room' | 'Key'
+export type ActionType = 'Sound' | 'Password' | 'Dialog' | 'Room'
