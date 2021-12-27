@@ -29,7 +29,7 @@ export default class Player {
     private refresh: (p: Player) => void
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
-    private hint: string = undefined
+    private diary: string = undefined
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -60,11 +60,11 @@ export default class Player {
     }
 
     public getDiary = (): string => {
-        return this.hint
+        return this.diary
     }
 
-    public setDiary = (hint:string) => {
-        this.hint = hint
+    public setDiary = (diary:string) => {
+        this.diary = diary
     }
 
     public move = (id_room:number):void =>  { 
