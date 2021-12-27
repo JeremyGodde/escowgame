@@ -4,14 +4,14 @@ import Credits from '../components/credits/credits.component'
 import Player from '../structures/player/player.structure'
 
 /* Données de jeu */
-import { COULOIR_2, CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
+import { CREDITS_ID, HOME_SCREEN_ID } from '../donnees/list_ids_room.donnee'
 
 export default class Index extends React.Component<{},{player: Player},any> {
     constructor(props) {
         super(props)
         this.state = {
             player: new Player(
-                COULOIR_2,                      // identifiant de la salle dans laquelle commencer
+                HOME_SCREEN_ID,                      // identifiant de la salle dans laquelle commencer
                 (p: Player) => this.setState({player: p})
             )
         }

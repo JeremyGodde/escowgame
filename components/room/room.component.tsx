@@ -14,7 +14,7 @@ interface RoomProps extends DefaultProps {
     value: RoomStruct
 }
 
-export default class Room extends React.Component<RoomProps> {
+export default class Room extends React.Component<RoomProps,{loading:boolean}> {
     private after_nodes: React.ReactNode = undefined
     private id: number
     private ratio: number
@@ -25,6 +25,9 @@ export default class Room extends React.Component<RoomProps> {
 
     constructor(props: RoomProps) {
         super(props)
+        this.state = {
+            loading: true
+        }
         this.id = props.value.id
     }
 
@@ -72,6 +75,10 @@ export default class Room extends React.Component<RoomProps> {
         this.setState({})
     }
 
+    show = () => {
+        this.setState({loading:false})
+    }
+
     componentDidMount = () => {
         this.resize()
         window.addEventListener("resize",this.resize)
@@ -80,8 +87,9 @@ export default class Room extends React.Component<RoomProps> {
 
     componentDidUpdate = () => {
         if (this.id !== this.props.value.id) {
-            this.resize()
             this.id = this.props.value.id
+            this.setState({loading:true})
+            this.resize()
         }
     }
 
@@ -91,88 +99,103 @@ export default class Room extends React.Component<RoomProps> {
         }
 
         return (
-            <section className={style.room}>
-                <div
-                    className={style.playground}
-                    style={{backgroundImage: `url('${this.props.value.src}')`}}>
-                    {
-                        this.props.value.dialog !== undefined &&
-                        <Dialog player={this.props.player} value={this.props.value.dialog}/>
-                    }
-                    {
-                        this.offset !== undefined &&
-                        <>{
-                            this.props.value.videos !== undefined &&
-                            this.props.value.videos.length &&
-                            this.props.value.videos.map(video => 
-                                <Video
-                                    player={this.props.player}
-                                    value={video}
-                                    offset={this.offset}
-                                    ratio={this.ratio}
-                                />
-                            )
-                        }
-                        {
-                            this.props.value['zones'] !== undefined &&
-                            this.props.value['zones'].length &&
-                            this.props.value['zones'].map((zone,index) => 
-                                <Zones.Zone
-                                    value={zone}
-                                    player={this.props.player}
-                                    key={`${this.props.value.id}_zone_${index}`}
-                                    refresh={this.refresh}
-                                    ratio={this.ratio}
-                                    offset={this.offset}
-                                />
-                            )
-                        }
-                        {
-                            this.props.value.items !== undefined &&
-                            this.props.value.items.length &&
-                            this.props.value.items.map((item,index) => 
-                                    <Item
-                                        value={item}
-                                        player={this.props.player}
-                                        key={`${this.props.value.id}_item_${index}`}
-                                        refresh={this.refresh}
-                                        ratio={this.ratio}
-                                        offset={this.offset}
-                                    />
-                                )
-                        }
-                        {
-                            this.props.value.id_exit !== NONE &&
-                            this.props.value.id_exit !== HOME_SCREEN_ID &&
-                            this.props.value.name !== undefined &&
-                            <h2
-                                className={style.name}
-                                style={{
-                                    left: `${64 + this.offset.x}px`,
-                                    top: `4px`
-                                }}
-                            >
-                            {this.props.value.name}
-                            </h2>
-                        }
-                        {
-                            <Menu
-                                player={this.props.player}
-                                id_exit={this.props.value.id_exit}
-                                offset={this.offset}
-                                dim={{
-                                    h: document.documentElement.offsetHeight - 2*this.offset.y,
-                                    w: document.documentElement.offsetWidth - 2*this.offset.x
-                                }}
-                            />
-                        }</>
-                    }
-                    {
-                        this.after_nodes !== undefined &&
-                        this.after_nodes
-                    }
-                </div>
-            </section>
+            <>
+            {
+                this.state.loading === true
+                    ?   <img
+                            onLoad={this.show}
+                            style={{
+                                opacity: 0,
+                                height: "calc(100% - 6px)",
+                                width: "100%",
+                                cursor: "wait"
+                            }}
+                            src={this.props.value.src}
+                        />
+                    :   <section className={style.room}>
+                            <div
+                                className={style.playground}
+                                style={{backgroundImage: `url('${this.props.value.src}')`}}>
+                                {
+                                    this.props.value.dialog !== undefined &&
+                                    <Dialog player={this.props.player} value={this.props.value.dialog}/>
+                                }
+                                {
+                                    this.offset !== undefined &&
+                                    <>{
+                                        this.props.value.videos !== undefined &&
+                                        this.props.value.videos.length &&
+                                        this.props.value.videos.map(video => 
+                                            <Video
+                                                player={this.props.player}
+                                                value={video}
+                                                offset={this.offset}
+                                                ratio={this.ratio}
+                                            />
+                                        )
+                                    }
+                                    {
+                                        this.props.value['zones'] !== undefined &&
+                                        this.props.value['zones'].length &&
+                                        this.props.value['zones'].map((zone,index) => 
+                                            <Zones.Zone
+                                                value={zone}
+                                                player={this.props.player}
+                                                key={`${this.props.value.id}_zone_${index}`}
+                                                refresh={this.refresh}
+                                                ratio={this.ratio}
+                                                offset={this.offset}
+                                            />
+                                        )
+                                    }
+                                    {
+                                        this.props.value.items !== undefined &&
+                                        this.props.value.items.length &&
+                                        this.props.value.items.map((item,index) => 
+                                                <Item
+                                                    value={item}
+                                                    player={this.props.player}
+                                                    key={`${this.props.value.id}_item_${index}`}
+                                                    refresh={this.refresh}
+                                                    ratio={this.ratio}
+                                                    offset={this.offset}
+                                                />
+                                            )
+                                    }
+                                    {
+                                        this.props.value.id_exit !== NONE &&
+                                        this.props.value.id_exit !== HOME_SCREEN_ID &&
+                                        this.props.value.name !== undefined &&
+                                        <h2
+                                            className={style.name}
+                                            style={{
+                                                left: `${64 + this.offset.x}px`,
+                                                top: `4px`
+                                            }}
+                                        >
+                                        {this.props.value.name}
+                                        </h2>
+                                    }
+                                    {
+                                        <Menu
+                                            player={this.props.player}
+                                            id_exit={this.props.value.id_exit}
+                                            offset={this.offset}
+                                            dim={{
+                                                h: document.documentElement.offsetHeight - 2*this.offset.y,
+                                                w: document.documentElement.offsetWidth - 2*this.offset.x
+                                            }}
+                                        />
+                                    }</>
+                                }
+                                {
+                                    this.after_nodes !== undefined &&
+                                    this.after_nodes
+                                }
+                            </div>
+                        </section>
+            }
+            </>
         )
     }
 }
