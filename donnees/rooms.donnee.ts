@@ -448,8 +448,8 @@ export const all_rooms: Array<Room | Digicode> = [
             return true
         },
         dim: {
-            w: 1277,
-            h: 951
+            w: 6000,
+            h: 4000
         },
         zones: [
             {//lunettes -> Dialogue

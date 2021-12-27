@@ -11,6 +11,7 @@ interface PasswordProps  extends DefaultProps {
 }
 
 export default class Password extends React.Component<PasswordProps> {
+    private inputRef: React.RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>()
     constructor(props){
         super(props)
     }
@@ -28,8 +29,7 @@ export default class Password extends React.Component<PasswordProps> {
     check = (evt: React.FormEvent) => {
         evt.stopPropagation()
         evt.preventDefault()
-        console.log(evt.currentTarget.nodeValue)
-        if (evt.currentTarget.nodeValue === this.props.value.password) {
+        if (this.inputRef.current.value === this.props.value.password) {
             this.props.player.move(this.props.value.next)
         }
     }
@@ -37,7 +37,7 @@ export default class Password extends React.Component<PasswordProps> {
     render = () => {
         return (
             <div className={style.password}>
-                <input type="password" onChange={this.check}/>
+                <input type="password" ref={this.inputRef} onChange={this.check}/>
                 <button onClick={this.cancel}>Annuler</button>
             </div>
         )
