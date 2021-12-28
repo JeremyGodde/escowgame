@@ -77,5 +77,6 @@ export const papier3_sound: Sound = {
 }
 export const employé_sound: Sound = {
     src: "/sound/Employe.wav",
+    after: new AfterMoveToRoom(COULOIR_1),
     is_loop: false
 }

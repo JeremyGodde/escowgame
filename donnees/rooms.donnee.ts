@@ -31,8 +31,17 @@ import {
     USINE_EXTERIEUR_1bis,
     COULOIR_1_CINEMATIQUE_ENTREE,
     COULOIR_1,
+    COULOIR_1_FLECHE,
     BUREAU_8_VERROUILLE,
     BUREAU_8_DEVERROUILLE,
+    TABLEAU_LIEGE,
+    TELEPHONE_BUREAU_8,
+    LOCAL_TECHNIQUE,
+    BUREAU_INACCESSIBLE,
+    BUREAU_INACCESSIBLE_ZOOM, 
+    LOCAL_AFFICHE_1,
+    LOCAL_AFFICHE_2,
+    LOCAL_BOULETTE,
     PORTE_BUREAU_12,
     DIGICODE_BUREAU_12,
     BUREAU_12,
@@ -42,15 +51,7 @@ import {
     SALLE_5,
     BUREAU_13,
     PORTE_BUREAU_13,
-    LOCAL_TECHNIQUE,
-    BUREAU_INACCESSIBLE,
-    BUREAU_INACCESSIBLE_ZOOM, 
-    TABLEAU_LIEGE,
-    TELEPHONE_BUREAU_8,
-    LOCAL_AFFICHE_1,
-    LOCAL_AFFICHE_2,
-    ELEVAGE_1,
-    LOCAL_BOULETTE
+    ELEVAGE_1
 } from "./list_ids_room.donnee"
 
 import {
@@ -266,6 +267,95 @@ export const all_rooms: Array<Room | Digicode> = [
                     bottomRight: 0.2,
                     topRight: 0.05
                 },
+            },
+        ]
+    },
+    {
+        id: COULOIR_1_FLECHE,
+        type: "ROOM",
+        id_exit: HOME_SCREEN_ID,
+        src: "/img/indoor/couloir_1_fleche.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_1_sound],
+        zones: [
+            { //porte 1 -> bureau 8
+                click: new AfterMoveToRoom(BUREAU_8_VERROUILLE),
+                svg: Zones.Rect,
+                pos: {
+                    x:258,
+                    y:0
+                },
+                dim: {
+                    w:450,
+                    h:2150
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0.19
+                }
+            },
+            { //porte 2 -> local_technique
+                click: new AfterMoveToRoom(LOCAL_TECHNIQUE),
+                svg: Zones.Rect,
+                pos: {
+                    x:3342,
+                    y:0
+                },
+                dim: {
+                    w:670,
+                    h:2500
+                },
+                angulars: {
+                    topLeft: 0.3,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //porte 3 -> bureau 12
+                click: new AfterMoveToRoom(PORTE_BUREAU_12),
+                svg: Zones.Rect,
+                pos: {
+                    x:1442,
+                    y:726
+                },
+                dim: {
+                    w:60,
+                    h:890
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.2,
+                    topRight: 0.05
+                },
+            },
+            { //porte 4 -> bureau inaccessible
+                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE),
+                svg: Zones.Rect,
+                pos: {
+                    x:1690,
+                    y:1000
+                },
+                dim: {
+                    w:50,
+                    h:550
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0.2,
+                    topRight: 0.05
+                },
             },  
             { //flèche -> couloir 2
                 click: new AfterMoveToRoom(COULOIR_2),
@@ -304,7 +394,7 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         zones: [
             {//écran d'ordinateur -> Enigme finale
-                click: new AfterAskPassword("password",BUREAU_8_VERROUILLE,BUREAU_8_DEVERROUILLE),
+                click: new AfterAskPassword("password",BUREAU_8_DEVERROUILLE),
                 svg: Zones.Rect,
                 pos: {
                     x:510,

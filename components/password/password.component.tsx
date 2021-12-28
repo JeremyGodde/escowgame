@@ -5,8 +5,7 @@ import style from './password.module.css'
 interface PasswordProps  extends DefaultProps {
     readonly value: {
         password: string,
-        next: number,
-        prev: number
+        next: number
     }
 }
 
@@ -23,7 +22,7 @@ export default class Password extends React.Component<PasswordProps> {
     }
 
     cancel = () => {
-        this.props.player.move(this.props.value.prev)
+        this.props.player.clearAfter()
     }
     
     check = (evt: React.FormEvent) => {

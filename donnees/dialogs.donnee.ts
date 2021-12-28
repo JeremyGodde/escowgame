@@ -344,4 +344,3 @@ export const exterieur_1_dialog: Dialog = {
         }
     ]
 }
-

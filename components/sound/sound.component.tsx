@@ -26,6 +26,9 @@ export default class Sound extends React.Component<SoundProps> {
         if (this.value.after !== undefined) {
             this.after_nodes = this.value.after.do(this.props.player)
             this.setState({}) // on met à jour l'affichage
+        } else {
+            this.after_nodes = undefined
+            this.props.player.clearAfter()
         }
     }
 
@@ -66,19 +69,26 @@ export default class Sound extends React.Component<SoundProps> {
         if(this.props.value.src !== this.value.src) {
             this.audio.current.removeEventListener("ended",this.end)
             this.audio.current.pause()
+            this.after_nodes = undefined
+            this.audio.current.loop = false
+            this.audio.current.src = ""
             this.load()
         }
     }
 
     render = () => {
         return (
-            <div key={this.value.src}>
-                <audio ref={this.audio} />
+            <>
+                <audio ref={this.audio} key={this.value.src}/>
                 {
                     this.after_nodes !== undefined &&
-                    this.after_nodes
+                    <span className="after">
+                    {
+                        this.after_nodes
+                    }
+                    </span>
                 }
-            </div>
+            </>
         )
     }
 }
