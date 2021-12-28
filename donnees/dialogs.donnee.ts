@@ -17,36 +17,6 @@ export const NARRATEUR = "narrateur"
 export const CHIEN = "Le chien" 
 export const JOUEUR = "Vous"
 
-export const indices: Array<Dialog> = [
-    {   timer:1,
-        frames: [
-            {
-                character: CHIEN,
-                img: "/img/dog/chien_face.png",
-                text: "As-tu bien cherché dans le bureau 8 ? l'employé qui travaille là laisse souvent traîner ses affaires, et il a mauvaise mémoire, je sais qu'il laisse traîner des mots de passe."
-            }
-        ] 
-    },
-    {   timer:1,
-        frames: [
-            {
-                character: CHIEN,
-                img: "/img/dog/chien_face.png",
-                text: "As-tu fait attention au dessin sur le post-it que tu as ramassé ?"
-            }
-        ] 
-    },
-    {   timer:1,
-        frames: [
-            {
-                character: CHIEN,
-                img: "/img/dog/chien_face.png",
-                text: "Tu as vu le tag sur la porte à ouvrir ?"
-            }
-        ]
-    }
-]
-
 export const pistolet_abattage_dialogue: Dialog = {
     frames: [
         {
@@ -311,4 +281,3 @@ export const exterieur_1_dialog: Dialog = {
         }
     ]
 }
-

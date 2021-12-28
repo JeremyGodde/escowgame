@@ -9,8 +9,8 @@ import SoundStruct from '../../structures/immersion/sound.structure'
 /* Données de jeu */
 import { all_rooms } from '../../donnees/rooms.donnee'
 import Dialog from "../../components/dialog/dialog.component"
-import { BUREAU_12, CREDITS_ID, HOME_SCREEN_ID, SALLE_5 } from "../../donnees/list_ids_room.donnee"
-import { portes_fermees, indices } from "../../donnees/dialogs.donnee"
+import { CREDITS_ID, HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
+import { portes_fermees } from "../../donnees/dialogs.donnee"
 import Sound from "../../components/sound/sound.component"
 import Item from "../../components/item/item.component"
 
@@ -30,7 +30,6 @@ export default class Player {
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
-    private advance: number
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -179,21 +178,5 @@ export default class Player {
                 }
             </>
         )
-    }
-    public getAdvance = () =>{
-        if (this.hasOpened(SALLE_5)){
-            this.advance = 3
-        }
-        else if (this.hasOpened(BUREAU_12)){
-            this.advance = 2
-        }
-    }
-    // faire une avancée = 1 si le post-it est dans l'inventaire
-    // sinon avancée = 0
-
-    public getHint = ():void => {
-        this.getAdvance
-        this.after_nodes = <Dialog player={this} value= {indices[this.advance]}/>
-        this.refresh(this)
     }
 }
