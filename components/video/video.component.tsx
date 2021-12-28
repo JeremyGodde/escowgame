@@ -83,6 +83,7 @@ export default class Video extends React.Component<VideoProps> {
             height: `100%`
         }
         this.playing = true
+        this.props.player.setAdvanceResource(this.video.current.src)
         this.setState({})
 
         this.video.current.addEventListener("ended",this.end)

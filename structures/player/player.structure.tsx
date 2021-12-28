@@ -30,7 +30,7 @@ export default class Player {
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
-    private advance: number
+    private advance: number = 0
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -84,6 +84,7 @@ export default class Player {
             if (room.type === "ROOM" && room.open_if(this)) {
                 this.current_room = room
                 this.opened_room.add(id_room)
+                this.setAdvanceRoom(id_room)
                 this.refresh(this)
             } else if (room.type === "ROOM") {
                 const h = Math.floor(Math.random() * portes_fermees.length) 
@@ -104,6 +105,7 @@ export default class Player {
 
     public collect = (item: ItemStruct):React.ReactNode => {
         this.inventory.add(item)
+        this.setAdvanceResource(item.img)
         this.refresh(this)
         if (item.after_collect !== undefined) {
             return item.after_collect.do(this)
@@ -180,19 +182,46 @@ export default class Player {
             </>
         )
     }
-    public getAdvance = () =>{
-        if (this.hasOpened(SALLE_5)){
-            this.advance = 3
-        }
-        else if (this.hasOpened(BUREAU_12)){
-            this.advance = 2
+
+    public clearAfter() {
+        this.after_nodes = undefined
+        this.refresh(this)
+    }
+
+    private incrAdvance(j:number) {
+        this.advance = this.advance === j-1 ? j : this.advance
+    }
+
+    public setAdvanceRoom = (id_room:number) => {
+        switch(id_room) {
+            case SALLE_5:
+                this.incrAdvance(4)
+                break
+            case BUREAU_12:
+                this.incrAdvance(2)
+                break
+            default:
+                break
         }
     }
-    // faire une avancée = 1 si le post-it est dans l'inventaire
-    // sinon avancée = 0
+
+    public setAdvanceResource = (src:string) => {
+        switch(src) {
+            case '/img/items/clef.png':
+                this.incrAdvance(5)
+                break
+            case '/video/cowspiracy.mp4':
+                this.incrAdvance(3)
+                break
+            case '/img/items/post-it_4.png':
+                this.incrAdvance(1)
+                break
+            default:
+                break
+        }
+    }
 
     public getHint = ():void => {
-        this.getAdvance
         this.after_nodes = <Dialog player={this} value= {indices[this.advance]}/>
         this.refresh(this)
     }

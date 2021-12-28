@@ -18,7 +18,8 @@ export const CHIEN = "Le chien"
 export const JOUEUR = "Vous"
 
 export const indices: Array<Dialog> = [
-    {   timer:1,
+    {
+        // 0
         frames: [
             {
                 character: CHIEN,
@@ -27,7 +28,8 @@ export const indices: Array<Dialog> = [
             }
         ] 
     },
-    {   timer:1,
+    {
+        // 1
         frames: [
             {
                 character: CHIEN,
@@ -36,12 +38,43 @@ export const indices: Array<Dialog> = [
             }
         ] 
     },
-    {   timer:1,
+    {
+        // 2
         frames: [
             {
                 character: CHIEN,
                 img: "/img/dog/chien_face.png",
-                text: "Tu as vu le tag sur la porte à ouvrir ?"
+                text: "Il y a une vidéo d'ouverte sur l'ordinateur du bureau"
+            }
+        ]
+    },
+    {
+        // 3
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "La trace d'eau sur cette porte à une forme familière"
+            }
+        ]
+    },
+    {
+        // 4
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "La salle 5 est un débarras, les employés y laissent traîner tout et n'importe quoi"
+            }
+        ]
+    },
+    {
+        // 5
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Qu'est-ce qu'une clef peut bien ouvrir ?"
             }
         ]
     }
