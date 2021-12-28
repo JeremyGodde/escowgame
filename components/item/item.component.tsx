@@ -114,11 +114,9 @@ export default class Item extends React.Component<ItemProps> {
             return
         }       
         if (this.props.value.collectable === true && this.props.value.draggable === false) {
-            console.log(this.props.value.img,"est collectable")
             this.self.current.addEventListener("click", this.collect)            
         }
         else if (this.props.value.collectable === false && this.props.value.draggable === true) {
-            console.log(this.props.value.img,"est draggable")
             this.self.current.addEventListener("mousedown", (e) => this.select(true,e))
             this.self.current.addEventListener("mouseup", (e) => this.select(false,e))
             window.addEventListener("mousemove",this.move)

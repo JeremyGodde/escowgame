@@ -49,6 +49,10 @@ export default class Player {
         this.refresh = refresh
     }
 
+    public save = () => {
+        this.refresh(this)
+    }
+
     public start = () => {
         this.start_time = (new Date()).getTime()
         this.move(1)
@@ -190,7 +194,7 @@ export default class Player {
                 this.sounds = this.current_room.sounds
             }
         }
-        console.log(this.draw,this.toggle_clear)
+
         return (
             <>
                 {

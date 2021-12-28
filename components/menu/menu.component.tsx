@@ -84,6 +84,7 @@ export default class Menu extends React.Component<MenuProps,MenuState> {
         if(!this.state.open) {
             return
         }
+        this.props.player.getHint()
     }
     
     inventory = (evt: React.MouseEvent) => {

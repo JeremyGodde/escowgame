@@ -352,6 +352,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
                             player={this.props.player}
                             id_exit={this.props.value.id_exit}
                             offset={this.offset}
+                            dim={Digicode.dim}
                         />
                         </>)
                     }
