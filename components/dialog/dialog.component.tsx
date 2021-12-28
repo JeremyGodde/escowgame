@@ -112,6 +112,9 @@ export default class Dialog extends React.Component<DialogProps> {
                 this.after_nodes = this.props.value.after.do(this.props.player) // on réalise cette action
                 this.setState({})                                               // on met à jour l'affichage
                 return
+            } else {
+                this.after_nodes = undefined
+                this.props.player.clearAfter()
             }
         } else {                                                                // sinon s'il y a encore des frames
             if (this.props.value.frames[this.current_index_frame]

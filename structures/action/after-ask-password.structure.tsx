@@ -7,18 +7,16 @@ export default class AfterAskPassword extends AfterDoAction {
     private id_next_room: number
     private password: string
 
-    constructor(password: string,id_room:number,id_next_room:number) {
+    constructor(password: string,id_next_room:number) {
         super('Password')
         this.password = password
-        this.id_room = id_room
         this.id_next_room = id_next_room
     }
 
     do = (player: Player):React.ReactNode => {
         return <Password player={player} value={{
             password:this.password,
-            next:this.id_next_room,
-            prev:this.id_room
+            next:this.id_next_room
         }}/>
     }
 }

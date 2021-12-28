@@ -394,7 +394,7 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         zones: [
             {//écran d'ordinateur -> Enigme finale
-                click: new AfterAskPassword("password",BUREAU_8_VERROUILLE,BUREAU_8_DEVERROUILLE),
+                click: new AfterAskPassword("password",BUREAU_8_DEVERROUILLE),
                 svg: Zones.Rect,
                 pos: {
                     x:510,

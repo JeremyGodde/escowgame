@@ -26,6 +26,9 @@ export default class Sound extends React.Component<SoundProps> {
         if (this.value.after !== undefined) {
             this.after_nodes = this.value.after.do(this.props.player)
             this.setState({}) // on met à jour l'affichage
+        } else {
+            this.after_nodes = undefined
+            this.props.player.clearAfter()
         }
     }
 

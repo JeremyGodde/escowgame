@@ -30,7 +30,9 @@ export default class Player {
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
-    private avancement: number = 0
+    private advance: number = 0
+    private toggle_clear: boolean = false
+    private draw: boolean = true
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -69,8 +71,7 @@ export default class Player {
     }
 
     public move = (id_room:number):void =>  { 
-        this.after_nodes = undefined
-        if (id_room === COULOIR_1 && this.avancement > 50) {
+        if (id_room === COULOIR_1 && this.advance > 5) {
             id_room = COULOIR_1_FLECHE
         }
         this.id_room = id_room
@@ -82,13 +83,16 @@ export default class Player {
         
         if (this.hasOpened(this.id_room)) {
             this.current_room = room
+            if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
+                this.toggle_clear = true
+            }
             this.refresh(this)
         } else {
             if (room.type === "ROOM" && room.open_if(this)) {
                 this.current_room = room
                 this.opened_room.add(id_room)
-                if (id_room === BUREAU_INACCESSIBLE_ZOOM) {
-                    this.avancement = 50
+                if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
+                    this.toggle_clear = true
                 }
                 this.refresh(this)
             } else if (room.type === "ROOM") {
@@ -99,6 +103,9 @@ export default class Player {
             } else if (room.type === "DIGICODE") {
                 this.current_room = room
                 this.opened_room.add(id_room)
+                if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
+                    this.toggle_clear = true
+                }
                 this.refresh(this)
             }
         }
@@ -158,24 +165,42 @@ export default class Player {
     }
 
     public renderRoom = ():React.ReactNode => {
-        if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
-            this.sounds=[]
-            this.sounds=this.current_room.sounds
+        if (this.toggle_clear === false) {
+            this.draw = true
         }
+        if (
+            this.current_room.sounds!==undefined &&
+            this.current_room.sounds!== []
+        ) {
+            if (this.toggle_clear === true) {
+                this.toggle_clear = false
+                this.draw = false
+                this.sounds = undefined
+                setTimeout(this.refresh,10,this)
+            } else {
+                this.sounds = this.current_room.sounds
+            }
+        }
+        console.log(this.draw,this.toggle_clear)
         return (
             <>
                 {
-                    (
-                        this.current_room.type === "ROOM" &&
-                        <Room player={this} value={this.current_room}/>
-                    ) || (
-                        this.current_room.type === "DIGICODE" &&
-                        <Digicode player={this} value={this.current_room}/>
-                    )
-                }
-                {
-                    this.after_nodes !== undefined &&
-                    this.after_nodes
+                this.draw === true &&
+                <>
+                    {
+                        (
+                            this.current_room.type === "ROOM" &&
+                            <Room player={this} value={this.current_room}/>
+                        ) || (
+                            this.current_room.type === "DIGICODE" &&
+                            <Digicode player={this} value={this.current_room}/>
+                        )
+                    }
+                    {
+                        this.after_nodes !== undefined &&
+                        this.after_nodes
+                    }
+                </>
                 }
                 {
                     this.sounds !== undefined &&
@@ -186,5 +211,10 @@ export default class Player {
                 }
             </>
         )
+    }
+
+    public clearAfter = () => {
+        this.after_nodes = undefined
+        this.refresh(this)
     }
 }
