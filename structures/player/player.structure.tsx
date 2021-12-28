@@ -9,7 +9,7 @@ import SoundStruct from '../../structures/immersion/sound.structure'
 /* Données de jeu */
 import { all_rooms } from '../../donnees/rooms.donnee'
 import Dialog from "../../components/dialog/dialog.component"
-import { CREDITS_ID, HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
+import { BUREAU_INACCESSIBLE_ZOOM, COULOIR_1, COULOIR_1_FLECHE, CREDITS_ID, HOME_SCREEN_ID } from "../../donnees/list_ids_room.donnee"
 import { portes_fermees } from "../../donnees/dialogs.donnee"
 import Sound from "../../components/sound/sound.component"
 import Item from "../../components/item/item.component"
@@ -30,6 +30,7 @@ export default class Player {
     private after_nodes: React.ReactNode = undefined
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
+    private avancement: number = 0
     
     constructor(start_room: number, refresh:(p: Player) => void) {
         this.current_room = this.findRoom(start_room)
@@ -68,7 +69,10 @@ export default class Player {
     }
 
     public move = (id_room:number):void =>  { 
-        this.after_nodes = undefined       
+        this.after_nodes = undefined
+        if (id_room === COULOIR_1 && this.avancement > 50) {
+            id_room = COULOIR_1_FLECHE
+        }
         this.id_room = id_room
         if (this.id_room === CREDITS_ID || this.id_room === HOME_SCREEN_ID) {
             this.refresh(this)
@@ -83,6 +87,9 @@ export default class Player {
             if (room.type === "ROOM" && room.open_if(this)) {
                 this.current_room = room
                 this.opened_room.add(id_room)
+                if (id_room === BUREAU_INACCESSIBLE_ZOOM) {
+                    this.avancement = 50
+                }
                 this.refresh(this)
             } else if (room.type === "ROOM") {
                 const h = Math.floor(Math.random() * portes_fermees.length) 
@@ -152,6 +159,7 @@ export default class Player {
 
     public renderRoom = ():React.ReactNode => {
         if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
+            this.sounds=[]
             this.sounds=this.current_room.sounds
         }
         return (
