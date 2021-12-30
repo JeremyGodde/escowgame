@@ -3,7 +3,7 @@
     right: 0;
     top: 0;
     height: 100%;
-    width: var(--menu-width);
+    width: calc(var(--menu-width) + 16px);
 
     padding: var(--menu-hz-padding);
 
@@ -16,31 +16,13 @@
     align-items: center;
 }
 
-.menu.opened {
-    width: calc(var(--menu-width) + 16px);
-    transition: width 0.25s;
-}
-.menu:not(.opened) {
-    width: var(--menu-width);
-    transition: width 0.25s;
-}
-
-.menu.opened > *:not(:first-child) {
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-.menu:not(.opened) > *:not(:first-child) {
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
-.menu.opened > img,
-.menu > img:first-child {
+.menu > img {
     cursor: pointer;
 }
 
 .menu > * {
     margin-bottom: 16px;
+    margin-top: 16px;
 }
 
 .menu > div {
@@ -69,7 +51,7 @@
     text-align: center;
 }
 
-.menu.opened .hint:hover {
+.menu .hint:hover {
     animation: swing 3s 0.23s infinite;
 }
 

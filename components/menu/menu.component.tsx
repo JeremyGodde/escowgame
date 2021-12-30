@@ -16,7 +16,6 @@ interface MenuProps extends DefaultProps {
 }
 
 interface MenuState {
-    open:boolean
     inventory: boolean
     diary: boolean
     time: {
@@ -26,14 +25,12 @@ interface MenuState {
 }
 
 export default class Menu extends React.Component<MenuProps,MenuState> {
-    private after_nodes: React.ReactNode = undefined
     private interval: NodeJS.Timer = undefined
     private my_diary: string
 
     constructor(props: MenuProps) {
         super(props)
         this.state = {
-            open: false,
             inventory: false,
             diary: false,
             time: props.player.getTime()
@@ -49,30 +46,18 @@ export default class Menu extends React.Component<MenuProps,MenuState> {
     }
 
     componentDidMount = () => {
-        
+        this.interval = setInterval(()=>this.setState({time: this.props.player.getTime()}),1000)
     }
 
-    setMenu = (evt: React.MouseEvent) => {
-        evt.preventDefault()
-        evt.stopPropagation()
-        
-        const open = !this.state.open
-        if (open) {
-            this.interval = setInterval(()=>this.setState({time: this.props.player.getTime()}),1000)
-        } else {
-            clearInterval(this.interval)
-            this.interval = undefined
-        }
-        this.setState({open,diary:false,inventory:false})
+    componentWillUnmount = () => {
+        clearInterval(this.interval)
     }
+
 
     diary = (evt: React.MouseEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
         
-        if(!this.state.open) {
-            return
-        }
         this.my_diary = this.props.player.getDiary()
         this.setState({diary:!this.state.diary,inventory:false})
     }
@@ -80,10 +65,7 @@ export default class Menu extends React.Component<MenuProps,MenuState> {
     hint = (evt: React.MouseEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
-        
-        if(!this.state.open) {
-            return
-        }
+
         this.props.player.getHint()
     }
     
@@ -91,14 +73,10 @@ export default class Menu extends React.Component<MenuProps,MenuState> {
         evt.preventDefault()
         evt.stopPropagation()
 
-        if(!this.state.open) {
-            return
-        }
-        
         this.setState({diary:false,inventory:!this.state.inventory})
     }
 
-    editHint = (evt: React.KeyboardEvent) => {
+    editDiary = (evt: React.KeyboardEvent) => {
         evt.preventDefault()
         evt.stopPropagation()
 
@@ -155,18 +133,13 @@ export default class Menu extends React.Component<MenuProps,MenuState> {
                             bottom: `${this.props.offset.y + 20}px`
                         }}
                         contentEditable={true}
-                        onKeyUpCapture={this.editHint}
+                        onKeyUpCapture={this.editDiary}
                         dangerouslySetInnerHTML={{__html: this.my_diary}}
                     ></div>
                 }
-                <div className={style.menu + (this.state.open ? " "+style.opened : "")}>
+                <div className={style.menu}>
                     {
                     <>
-                        {
-                            !this.state.open
-                            ? <img src="/img/icons/list.svg" onClick={this.setMenu}/>
-                            : <img src="/img/icons/list-cut.svg" onClick={this.setMenu}/>
-                        }        
                         <div>
                             <img
                                 src="/img/icons/circle.svg"
