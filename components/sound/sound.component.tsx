@@ -56,6 +56,9 @@ export default class Sound extends React.Component<SoundProps> {
         this.value = this.props.value
         this.audio.current.src = this.value.src
         this.audio.current.load()
+        if(this.props.player.setAdvanceResource(this.value.src)) {
+            this.props.player.save()
+        }
         if(this.value.timer === undefined) {
             this.play()
         } else {
@@ -82,11 +85,7 @@ export default class Sound extends React.Component<SoundProps> {
                 <audio ref={this.audio} key={this.value.src}/>
                 {
                     this.after_nodes !== undefined &&
-                    <span className="after">
-                    {
-                        this.after_nodes
-                    }
-                    </span>
+                    this.after_nodes
                 }
             </>
         )

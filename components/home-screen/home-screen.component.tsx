@@ -28,7 +28,11 @@ export default class HomeScreen extends React.Component<DefaultProps> {
                     fragiles. Si vous ne souhaitez pas continuer
                     l’aventure,  ne suivez pas le chien.
                 </p>
-                <button onClick={this.play}>Jouer</button>
+                <div className={style.row}>
+                    <img alt="volume-up" src="/img/icons/volume-up-fill.svg"/>
+                    <button onClick={this.play}>Jouer</button>
+                    <img alt="volume-up" src="/img/icons/volume-up-fill.svg"/>
+                </div>
             </section>
         )
     }

@@ -54,7 +54,7 @@ export const indices: Array<Dialog> = [
             {
                 character: CHIEN,
                 img: "/img/dog/chien_face.png",
-                text: "La trace d'eau sur cette porte à une forme familière"
+                text: "Es-tu sûr d'avoir essayer toutes les portes ?"
             }
         ]
     },
@@ -64,12 +64,42 @@ export const indices: Array<Dialog> = [
             {
                 character: CHIEN,
                 img: "/img/dog/chien_face.png",
-                text: "La salle 5 est un débarras, les employés y laissent traîner tout et n'importe quoi"
+                text: "Si on allait voir au fond du couloir ?"
             }
         ]
     },
     {
         // 5
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Si j'avais des mains je t'aiderai à chercher tu sais"
+            }
+        ]
+    },
+    {
+        // 6
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "La trace d'eau sur cette porte à une forme familière"
+            }
+        ]
+    },
+    {
+        // 7
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "La salle 5 est un débarras, les employés y laissent traîner tout et n'importe quoi"
+            }
+        ]
+    },
+    {
+        // 8
         frames: [
             {
                 character: CHIEN,
@@ -116,7 +146,13 @@ export const code_post_it_dialog: Dialog = {
         {
             character: CHIEN,
             img: "/img/dog/chien_face.png",
-            text: "Cela ne ressemble pas à un mot de passe d'ordinateur, à quoi ce code peut-il bien servir ?"
+            text: "Cela ne ressemble pas à un mot de passe d'ordinateur, à quoi ce code peut-il bien servir ?",
+            choice: [
+                {
+                    proposition: "Bonne question...",
+                    after: new AfterMoveToRoom(COULOIR_1)
+                }
+            ]
         },
     ]
 }

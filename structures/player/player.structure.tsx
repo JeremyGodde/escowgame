@@ -15,7 +15,9 @@ import {
     COULOIR_1,
     COULOIR_1_FLECHE,
     CREDITS_ID,
-    HOME_SCREEN_ID
+    HOME_SCREEN_ID,
+    COULOIR_2,
+    PORTE_SALLE_5
 } from "../../donnees/list_ids_room.donnee"
 import { indices, portes_fermees } from "../../donnees/dialogs.donnee"
 import Sound from "../../components/sound/sound.component"
@@ -82,7 +84,7 @@ export default class Player {
     }
 
     public move = (id_room:number):void =>  { 
-        if (id_room === COULOIR_1 && this.advance > 5) {
+        if (id_room === COULOIR_1 && this.advance >= 4) {
             id_room = COULOIR_1_FLECHE
         }
         this.id_room = id_room
@@ -94,6 +96,7 @@ export default class Player {
         
         if (this.hasOpened(this.id_room)) {
             this.current_room = room
+            this.setAdvanceRoom(id_room)
             if (this.current_room.sounds!==undefined && this.current_room.sounds!== []){
                 this.toggle_clear = true
             }
@@ -129,8 +132,9 @@ export default class Player {
 
     public collect = (item: ItemStruct):React.ReactNode => {
         this.inventory.add(item)
-        this.setAdvanceResource(item.img)
-        this.refresh(this)
+        if (this.setAdvanceResource(item.img)) {
+            this.refresh(this)
+        }
         if (item.after_collect !== undefined) {
             return item.after_collect.do(this)
         }
@@ -238,8 +242,14 @@ export default class Player {
     public setAdvanceRoom = (id_room:number) => {
         switch(id_room) {
             case SALLE_5:
-                this.incrAdvance(4)
+                this.incrAdvance(7)
                 break
+            case PORTE_SALLE_5:
+                this.incrAdvance(6)
+                break
+                case COULOIR_2:
+                this.incrAdvance(5)
+                    break
             case BUREAU_12:
                 this.incrAdvance(2)
                 break
@@ -248,24 +258,30 @@ export default class Player {
         }
     }
 
-    public setAdvanceResource = (src:string) => {
+    public setAdvanceResource = (src:string): boolean => {
         switch(src) {
             case '/img/items/clef.png':
-                this.incrAdvance(5)
-                break
+                this.incrAdvance(8)
+                return true
+            case '/sound/Employe.wav':
+                this.incrAdvance(4)
+                return true
             case '/video/cowspiracy.mp4':
                 this.incrAdvance(3)
-                break
+                return true
             case '/img/items/post-it_4.png':
                 this.incrAdvance(1)
-                break
+                return true
             default:
-                break
+                return false
         }
     }
 
     public getHint = ():void => {
-        this.after_nodes = <Dialog player={this} value= {indices[this.advance]}/>
+        this.after_nodes =
+            this.advance < indices.length
+            ? <Dialog player={this} value= {indices[this.advance]}/>
+            : undefined
         this.refresh(this)
     }
 }

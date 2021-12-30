@@ -66,9 +66,33 @@
     margin: 1.5em 0;
 }
 
-.home button {
+.home .row {
     margin-top: 1.5em;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    min-width: max-content;
+    max-width: max-content;
+
+    animation: button_scale 3s ease 0s infinite;
+}
+
+.home .row img {
+    margin: 0 12px;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 48px;
+    max-height: 48px;
+}
+
+.home .row img:first-child {
+    transform: scale(-1,1);
+}
+
+.home .row button {
     background-color: transparent;
     border: 0.25em var(--home-red) solid;
     border-radius: 0.75em;
@@ -76,8 +100,6 @@
     padding: 0.125em 3.5em;
     
     font-variant-caps: small-caps;
-
-    animation: button_scale 3s ease 0s infinite;
 
     cursor: pointer;
 }
