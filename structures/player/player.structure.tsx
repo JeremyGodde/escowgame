@@ -40,6 +40,7 @@ export default class Player {
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
     private advance: number = 0
+    private listenEmployee: boolean = true
     private toggle_clear: boolean = false
     private draw: boolean = true
     
@@ -265,9 +266,13 @@ export default class Player {
                 return true
             case '/sound/Employe.wav':
                 this.incrAdvance(4)
+                this.listenEmployee = true
                 return true
             case '/video/cowspiracy.mp4':
                 this.incrAdvance(3)
+                if (this.listenEmployee) {
+                    this.incrAdvance(4)
+                }
                 return true
             case '/img/items/post-it_4.png':
                 this.incrAdvance(1)

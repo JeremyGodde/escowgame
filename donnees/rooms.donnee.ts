@@ -869,8 +869,7 @@ export const all_rooms: Array<Room | Digicode> = [
         name: "Bureau 13",
         src: "/img/indoor/bureau_13.jpg",
         open_if: (player: Player): boolean => {
-            // toujours ouverte, à changer, il y aura la clef
-            return true
+            return player.owned(clef)
         },
         sounds: [bureau_13_sound],
         dim: {
