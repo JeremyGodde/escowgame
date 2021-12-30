@@ -152,6 +152,18 @@ export default class Dialog extends React.Component<DialogProps> {
         }
     }
 
+    componentDidUpdate = (prevProps: Readonly<DialogProps>) => {
+        if(this.props.value === prevProps.value) {
+            return
+        }
+        if(this.props.value.timer === undefined) {  // si le dialogue n'attent aucun délai
+            this.start() // on commence le dialogue
+        } else {
+            // sinon on attent le délai demander pour commencer le dialogue
+            setTimeout(this.start,this.props.value.timer * 1000)
+        }
+    }
+
     // nécessaire
     /*
         Cette fonction renvoie le HTML correspond au composent.

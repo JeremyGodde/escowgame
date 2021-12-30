@@ -1,5 +1,4 @@
 import Zones from "../components/zones/zones.component"
-import AfterAskPassword from "../structures/action/after-ask-password.structure"
 import AfterMoveToRoom from "../structures/action/after-move-to-room.structure"
 import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import AfterPlaySound from "../structures/action/after-play-sound.structure"
@@ -14,12 +13,26 @@ import {
     usine_exterieur_1_dialog,
     usine_exterieur_1bis_dialog,
     couloir_1_cinematique_entree_dialogue,
-    lunettes_dialog,
     pistolet_abattage_dialogue,
     bureau_inaccessible,
+    dialog_final,
 } from "./dialogs.donnee"
-import { postit_2, postit_3, postit_4, postit_5,fermes_usines,
-    clef, lait, lait2, pelle, carton, échelle, rateau, grille, paille,} from "./items.donnee"
+import {
+    postit_2,
+    postit_3,
+    postit_4,
+    postit_5,
+    fermes_usines,
+    clef,
+    lait,
+    lait2,
+    pelle,
+    carton,
+    échelle,
+    rateau,
+    grille,
+    paille
+} from "./items.donnee"
 import {
     NONE,
     HOME_SCREEN_ID,
@@ -34,6 +47,8 @@ import {
     COULOIR_1_FLECHE,
     BUREAU_8_VERROUILLE,
     BUREAU_8_DEVERROUILLE,
+    BUREAU_8_BOITE_MAIL,
+    BUREAU_8_MAIL,
     TABLEAU_LIEGE,
     TELEPHONE_BUREAU_8,
     LOCAL_TECHNIQUE,
@@ -66,10 +81,29 @@ import {
     salle_5_sound,
     bureau_13_sound,
     message_telephone_sound,
-    papier1_sound,
-    papier2_sound,
-    papier3_sound
 } from "./sounds.donnee"
+import {
+    bureau_8_enigme,
+    bureau_8_fermer_fenetre,
+    bureau_8_icone_mail,
+    bureau_8_liege,
+    bureau_8_lunettes,
+    bureau_8_mails_recus,
+    bureau_8_nouv_mail,
+    bureau_8_papier_1,
+    bureau_8_papier_2,
+    bureau_8_papier_3,
+    bureau_8_telephone,
+    couloir_1_fleche,
+    couloir_1_porte_bureau_12,
+    couloir_1_porte_bureau_8,
+    couloir_1_porte_bureau_inaccessible,
+    couloir_1_porte_local_technique,
+    couloir_2_fleche,
+    couloir_2_porte_bureau_13,
+    couloir_2_porte_elevage,
+    couloir_2_porte_salle_5
+} from "./zones.donnee"
 
 
 export const all_rooms: Array<Room | Digicode> = [
@@ -196,78 +230,10 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         sounds:[couloir_1_sound],
         zones: [
-            { //porte 1 -> bureau 8
-                click: new AfterMoveToRoom(BUREAU_8_VERROUILLE),
-                svg: Zones.Rect,
-                pos: {
-                    x:258,
-                    y:0
-                },
-                dim: {
-                    w:450,
-                    h:2150
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0.19
-                }
-            },
-            { //porte 2 -> local_technique
-                click: new AfterMoveToRoom(LOCAL_TECHNIQUE),
-                svg: Zones.Rect,
-                pos: {
-                    x:3342,
-                    y:0
-                },
-                dim: {
-                    w:670,
-                    h:2500
-                },
-                angulars: {
-                    topLeft: 0.3,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-            { //porte 3 -> bureau 12
-                click: new AfterMoveToRoom(PORTE_BUREAU_12),
-                svg: Zones.Rect,
-                pos: {
-                    x:1442,
-                    y:726
-                },
-                dim: {
-                    w:60,
-                    h:890
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.2,
-                    topRight: 0.05
-                },
-            },
-            { //porte 4 -> bureau inaccessible
-                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE),
-                svg: Zones.Rect,
-                pos: {
-                    x:1690,
-                    y:1000
-                },
-                dim: {
-                    w:50,
-                    h:550
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.2,
-                    topRight: 0.05
-                },
-            },
+            couloir_1_porte_bureau_8,
+            couloir_1_porte_local_technique,
+            couloir_1_porte_bureau_12,
+            couloir_1_porte_bureau_inaccessible
         ]
     },
     {
@@ -284,97 +250,12 @@ export const all_rooms: Array<Room | Digicode> = [
             h: 2796
         },
         sounds:[couloir_1_sound],
-        zones: [
-            { //porte 1 -> bureau 8
-                click: new AfterMoveToRoom(BUREAU_8_VERROUILLE),
-                svg: Zones.Rect,
-                pos: {
-                    x:258,
-                    y:0
-                },
-                dim: {
-                    w:450,
-                    h:2150
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0.19
-                }
-            },
-            { //porte 2 -> local_technique
-                click: new AfterMoveToRoom(LOCAL_TECHNIQUE),
-                svg: Zones.Rect,
-                pos: {
-                    x:3342,
-                    y:0
-                },
-                dim: {
-                    w:670,
-                    h:2500
-                },
-                angulars: {
-                    topLeft: 0.3,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-            { //porte 3 -> bureau 12
-                click: new AfterMoveToRoom(PORTE_BUREAU_12),
-                svg: Zones.Rect,
-                pos: {
-                    x:1442,
-                    y:726
-                },
-                dim: {
-                    w:60,
-                    h:890
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.2,
-                    topRight: 0.05
-                },
-            },
-            { //porte 4 -> bureau inaccessible
-                click: new AfterMoveToRoom(BUREAU_INACCESSIBLE),
-                svg: Zones.Rect,
-                pos: {
-                    x:1690,
-                    y:1000
-                },
-                dim: {
-                    w:50,
-                    h:550
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.2,
-                    topRight: 0.05
-                },
-            },  
-            { //flèche -> couloir 2
-                click: new AfterMoveToRoom(COULOIR_2),
-                svg: Zones.Rect,
-                pos: {
-                    x:1975,
-                    y:1145
-                },
-                dim: {
-                    w:55,
-                    h:110
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
+        zones:  [
+            couloir_1_porte_bureau_8,
+            couloir_1_porte_local_technique,
+            couloir_1_porte_bureau_12,
+            couloir_1_porte_bureau_inaccessible,
+            couloir_1_fleche
         ]
     },
     {
@@ -393,139 +274,13 @@ export const all_rooms: Array<Room | Digicode> = [
             h: 4000
         },
         zones: [
-            {//écran d'ordinateur -> Enigme finale
-                click: new AfterAskPassword("password",BUREAU_8_DEVERROUILLE),
-                svg: Zones.Rect,
-                pos: {
-                    x:510,
-                    y:1200
-                },
-                dim: {
-                    w:2565,
-                    h:1700
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.21,
-                    topRight: 0.215
-                }
-            },
-            {//tableau de liège -> Enigme 1
-                click: new AfterMoveToRoom(TABLEAU_LIEGE),
-                svg: Zones.Rect,
-                pos: {
-                    x:3100,
-                    y:1200
-                },
-                dim: {
-                    w:700,
-                    h:1050
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.17,
-                    topRight: 0.015
-                },
-            },
-            {//téléphone -> Message
-                click: new AfterMoveToRoom(TELEPHONE_BUREAU_8),
-                svg: Zones.RectRotate,
-                pos: {
-                    x:3625,
-                    y:815
-                },
-                dim: {
-                    w:505,
-                    h:205
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 1.25,
-                    bottomRight: 0,
-                    topRight: 1.25,
-                    rotate: '-15deg'
-                },
-            },
-            {//lunettes -> Dialogue
-                click: new AfterPlayDialog(lunettes_dialog),
-                svg: Zones.RectRotate,
-                pos: {
-                     x:3815,
-                    y:1170
-                },
-                dim: {
-                     w:290,
-                    h:120
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                    rotate: '7deg'
-                }
-                
-            },
-            {//papiers diversion 1-> Bruit feuilles 
-                hover: new AfterPlaySound(papier1_sound),
-                svg: Zones.Rect,
-                pos: {
-                     x:3160,
-                     y:2300
-                },
-                dim: {
-                     w:360,
-                     h:550
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                }
-                
-            },
-            {//papiers diversion 2-> Bruit feuilles 
-                hover: new AfterPlaySound(papier2_sound),
-                svg: Zones.RectRotate,
-                pos: {
-                     x:3840,
-                     y:1840
-                },
-                dim: {
-                     w:540,
-                     h:720
-                },
-                angulars: {
-                    topLeft: 0.2,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0.3,
-                    rotate: '3deg'
-                }
-                
-            },
-            {//papiers diversion 3-> Bruit feuilles 
-                hover: new AfterPlaySound(papier3_sound),
-                svg: Zones.Rect,
-                pos: {
-                     x:3540,
-                     y:2300
-                },
-                dim: {
-                     w:360,
-                     h:170
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                }
-                
-            }
+            bureau_8_enigme,
+            bureau_8_liege,
+            bureau_8_telephone,
+            bureau_8_lunettes,
+            bureau_8_papier_1,
+            bureau_8_papier_2,
+            bureau_8_papier_3
         ]
     },
     {
@@ -542,84 +297,56 @@ export const all_rooms: Array<Room | Digicode> = [
             h: 4000
         },
         zones: [
-            {//lunettes -> Dialogue
-                click: new AfterPlayDialog(lunettes_dialog),
-                svg: Zones.RectRotate,
-                pos: {
-                     x:3815,
-                    y:1170
-                },
-                dim: {
-                     w:290,
-                    h:120
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                    rotate: '7deg'
-                }
-                
-            },
-            {//papiers diversion 1-> Bruit feuilles 
-                hover: new AfterPlaySound(papier1_sound),
-                svg: Zones.Rect,
-                pos: {
-                     x:3160,
-                     y:2300
-                },
-                dim: {
-                     w:360,
-                     h:550
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                }
-                
-            },
-            {//papiers diversion 2-> Bruit feuilles 
-                hover: new AfterPlaySound(papier2_sound),
-                svg: Zones.RectRotate,
-                pos: {
-                     x:3840,
-                     y:1840
-                },
-                dim: {
-                     w:540,
-                     h:720
-                },
-                angulars: {
-                    topLeft: 0.2,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0.3,
-                    rotate: '3deg'
-                }
-                
-            },
-            {//papiers diversion 3-> Bruit feuilles 
-                hover: new AfterPlaySound(papier3_sound),
-                svg: Zones.Rect,
-                pos: {
-                     x:3540,
-                     y:2300
-                },
-                dim: {
-                     w:360,
-                     h:170
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0,
-                }
-                
-            }
+            bureau_8_icone_mail,
+            bureau_8_lunettes,
+            bureau_8_papier_1,
+            bureau_8_papier_2,
+            bureau_8_papier_3
+        ]
+    },
+    {
+        id: BUREAU_8_BOITE_MAIL,
+        type: "ROOM",
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_8_boite_mail.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 6000,
+            h: 4000
+        },
+        zones: [
+            bureau_8_fermer_fenetre,
+            bureau_8_nouv_mail,
+            bureau_8_mails_recus,
+            bureau_8_lunettes,
+            bureau_8_papier_1,
+            bureau_8_papier_2,
+            bureau_8_papier_3
+        ]
+    },
+    {
+        id: BUREAU_8_MAIL,
+        type: "ROOM",
+        id_exit: COULOIR_1,
+        src: "/img/indoor/bureau_8_mail.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 6000,
+            h: 4000
+        },
+        dialog: dialog_final,
+        zones: [
+            bureau_8_fermer_fenetre,
+            bureau_8_lunettes,
+            bureau_8_papier_1,
+            bureau_8_papier_2,
+            bureau_8_papier_3
         ]
     },
     {
@@ -629,7 +356,7 @@ export const all_rooms: Array<Room | Digicode> = [
         name: "Bureau 12",
         src: "/img/indoor/bureau_12.jpg",
         open_if: (player: Player): boolean => {
-            // toujours ouverte (A CHANGER)
+            // toujours ouverte
             return true
         },
         sounds: [bureau_12_sound],
@@ -709,78 +436,10 @@ export const all_rooms: Array<Room | Digicode> = [
         },
         sounds:[couloir_2_sound],
         zones: [
-            { //porte 1 -> salle 5
-                click: new AfterMoveToRoom(PORTE_SALLE_5),
-                svg: Zones.Rect,
-                pos: {
-                    x:240,
-                    y:0
-                },
-                dim: {
-                    w:460,
-                    h:2140
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0.19
-                }
-            },
-            { //porte 2 -> élevage
-                click: new AfterMoveToRoom(ELEVAGE_1),
-                svg: Zones.Rect,
-                pos: {
-                    x:3400,
-                    y:0
-                },
-                dim: {
-                    w:670,
-                    h:2500
-                },
-                angulars: {
-                    topLeft: 0.3,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-            { //porte 3 -> bureau 13
-                click: new AfterMoveToRoom(PORTE_BUREAU_13),
-                svg: Zones.Rect,
-                pos: {
-                    x:1442,
-                    y:726
-                },
-                dim: {
-                    w:60,
-                    h:890
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0.2,
-                    topRight: 0.05
-                }
-            },
-            { //flèche -> couloir 1
-                click: new AfterMoveToRoom(COULOIR_1),
-                svg: Zones.Rect,
-                pos: {
-                    x:1925,
-                    y:110
-                },
-                dim: {
-                    w:90,
-                    h:150
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
+            couloir_2_porte_salle_5,
+            couloir_2_porte_elevage,
+            couloir_2_porte_bureau_13,
+            couloir_2_fleche
         ]
     },
     {

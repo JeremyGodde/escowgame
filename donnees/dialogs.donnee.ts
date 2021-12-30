@@ -380,3 +380,274 @@ export const exterieur_1_dialog: Dialog = {
         }
     ]
 }
+
+export const dialog_mail_fournisseurs:Dialog = {
+    frames: [
+        {
+            character:NARRATEUR,
+            text:"Bonjour, N'ayant pas de réponse de la part de la coopérative qui nous livre habituellement, nous allons être obligés de réduire la portion de foin jusqu'à l'obtention d'un contrat plus avantageux avec une autre société. Cordialement, Mme. Martine, Directrice de l'élevage de Crouez-lès-Caut"
+        }
+    ]
+}
+
+export const dialog_mail_controle:Dialog = {
+    frames: [
+        {
+            character:NARRATEUR,
+            text:"Bonjour à tous, je vous transmets ci-joint les informations concernant ma visite prochainement dans votre établissement. Suite à ma visite de l'année dernière, un premier blâme vous avez été adressé. Un second équivaudrait à une fermeture définitive de votre établissement. Je vous préviens, je serai intransigeant, notamment au regard de la récente nouvelle législation. Cordialement, Kévin Dupont, Inspecteur sanitaire"
+        }
+    ]    
+}
+
+export const dialog_mail_reunion:Dialog = {
+    frames: [
+        {
+            character:NARRATEUR,
+            text: "Ci-joint le CR"
+        }
+    ]    
+}
+
+export const dialog_mail_legislation:Dialog = {
+    frames: [
+        {
+            character:NARRATEUR,
+            text: "Bonjour, Je vous transmets les nouvelles normes qui entreront en vigueur le 1er janvier. Lisez-les attentivement, nous allons devoir les appliquer pour la prochaine visite sanitaire. En effet, l'inspecteur qui nous a été attribués serait apparemment le même que l'an passé. Si tel est bien le cas, nous ne pouvons pas compter sur les pots-de-vins habituels. Sincèrement vôtre, Pascal Clément, Sous-Directeur de l'élevage de Crouez-lès-Caut"
+        }
+    ]
+}
+
+export const dialog_mails_recus: Dialog = {
+    frames: [
+        {
+            character: NARRATEUR,
+            text: "L'employé a reçu quatre mails. Lequel aimeriez-vous lire ?",
+            choice: [
+                {
+                    proposition: "Mme. Martine, \"Re: Informations fournisseurs\"",
+                    after: new AfterPlayDialog(dialog_mail_fournisseurs)
+                },
+                {
+                    proposition: "M. Dupont, \"URGENT visite contrôle sanitaire !!\"",
+                    after: new AfterPlayDialog(dialog_mail_controle)
+                },
+                {
+                    proposition: "Clinique vétérinaire, \"Réunion 20/12/2021 compte rendu\"",
+                    after: new AfterPlayDialog(dialog_mail_reunion)
+                },
+                {
+                    proposition: "M. Clément, \"IMPORTANT: Update législation\"",
+                    after: new AfterPlayDialog(dialog_mail_legislation)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_fin_C: Dialog = {
+    frames: [
+        {
+            character: NARRATEUR,
+            text: "Vous écrivez votre mail..."
+        },
+        {
+            character: NARRATEUR,
+            text: "Et vous l'envoyez !"
+        },
+        {
+            character: CHIEN,
+            text:"Merci d'avoir au moins prévenue la police. Peut-être qu'en venant te chercher ils découvriront ce qu'il se passe ici.",
+        },
+        {
+            character: CHIEN,
+            text: "Je te raccompagne jusqu'à l'entrée, ils ne devraient pas trop tarder."
+        }
+    ]
+}
+
+export const dialog_fin_B: Dialog = {
+    frames: [
+        {
+            character: NARRATEUR,
+            text: "Vous écrivez votre mail..."
+        },
+        {
+            character: NARRATEUR,
+            text: "Et vous l'envoyez !"
+        },
+        {
+            character: CHIEN,
+            text:"Je suis désolé de t'avoir entraîner là-dedans. J'espère que tu ne te fera pas trop punir.",
+        },
+        {
+            character: CHIEN,
+            text: "On devrait attendre tes parents à l'entrée, ils ne devraient pas trop tarder."
+        }
+    ]
+}
+
+export const dialog_fin_A: Dialog = {
+    frames: [
+        {
+            character: NARRATEUR,
+            text: "Vous écrivez votre mail..."
+        },
+        {
+            character: NARRATEUR,
+            text: "Et vous l'envoyez !"
+        },
+        {
+            character: CHIEN,
+            text:"Merci beaucoup, ton témoignage pourra sauver mes amies.",
+        },
+        {
+            character: CHIEN,
+            text: "Tu devrais écirre à tes parents, nous retournerons ensuite à l'entrée."
+        }
+    ]
+}
+
+export const dialog_final_1_1: Dialog = { // -> rentrer -> parent
+    frames: [
+        {
+            character: NARRATEUR,
+            text:"Au secours ! Je rentrais du collège quand j'ai croisé un chien qui m'a emmené jusqu'à l'élevage de Crouez-lès-Caut et la porte s'est refermée derrière-moi j'ai pas de réseau s'il vous plaît venez me chercher j'ai peur",
+        }
+    ],
+    after: new AfterPlayDialog(dialog_fin_B)
+}
+
+export const dialog_final_1_2: Dialog = { // -> rentrer -> police
+    frames: [
+        {
+            character: NARRATEUR,
+            text:"Bonsoir Madame la policière, Monsieur le policier, Je rentrais du collège quand j'ai croisé un chien. Je l'ai suivi jusqu'à l'élevage de Crouez-lès-Caut et là la porte s'est refermée derrière-moi. Je sais, j'aurais pas dû entrer mais je voulais juste rendre le chien à ses maîtres. Maintenant je ne peux plus sortir et j'ai peur. S'il vous plaît venez m'aider",
+        }
+    ],
+    after: new AfterPlayDialog(dialog_fin_C)
+}
+
+
+export const dialog_final_1: Dialog = { // -> rentrer 
+    frames: [
+        {
+            character: JOUEUR,
+            text:"Je vais envoyer un message à...",
+            choice: [
+                {
+                    proposition: "mes parents, pour qu'ils viennent me chercher",
+                    after: new AfterPlayDialog(dialog_final_1_1)
+                },
+                {
+                    proposition: "la police, pour sortir d'ici",
+                    after: new AfterPlayDialog(dialog_final_1_2)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_final_3_1: Dialog = { // -> alerter -> anciens employés
+    frames: [
+        {
+            character: JOUEUR,
+            text:"...et notamment...",
+            choice: [
+                {
+                    proposition: "celui d'un employé qui serait prêt à témoigner",
+                    after: new AfterPlayDialog(dialog_fin_A)
+                },
+                {
+                    proposition: "un morceau de lettre d'un ancien employé",
+                    after: new AfterPlayDialog(dialog_fin_A)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_final_3_2: Dialog = { // -> alerter -> dirigeants
+    frames: [
+        {
+            character: JOUEUR,
+            text:"...et notamment...",
+            choice: [
+                {
+                    proposition: "un mail concerant des pots-de-vins",
+                    after: new AfterPlayDialog(dialog_fin_A)
+                },
+                {
+                    proposition: "un mail sur la réduction de foin pour les vaches",
+                    after: new AfterPlayDialog(dialog_fin_A)
+                },
+                {
+                    proposition: "un message vocal de la directrice de l'établissement",
+                    after: new AfterPlayDialog(dialog_fin_A)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_final_3: Dialog = { // -> alerter 
+    frames: [
+        {
+            character: JOUEUR,
+            text:"De plus j'ai lu des documents...",
+            choice: [
+                {
+                    proposition: "d'anciens employés dénonçant le traitement des animaux",
+                    after: new AfterPlayDialog(dialog_final_3_1)
+                },
+                {
+                    proposition: "des dirigeants n'ayant que faire des animaux",
+                    after: new AfterPlayDialog(dialog_final_3_2)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_final_2: Dialog = { // -> alerter 
+    frames: [
+        {
+            character: JOUEUR,
+            text:"Avant de prévenir mes parents, je vais envoyer un message à l'ONG L214 pour relayer mon témoignage",
+        },
+        {
+            character: JOUEUR,
+            text:"J'ai été témoin de...",
+            choice: [
+                {
+                    proposition: "locaux insalubres et inadaptés",
+                    after: new AfterPlayDialog(dialog_final_3)
+                },
+                {
+                    proposition: "la surpopulation animal dans l'élevage",
+                    after: new AfterPlayDialog(dialog_final_3)
+                }
+            ]
+        }
+    ]
+}
+
+export const dialog_final: Dialog = {
+    timer:0.25,
+    frames: [
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text:"Que vas-tu faire ?",
+            choice: [
+                {
+                    proposition: "Je veux rentrer chez moi",
+                    after: new AfterPlayDialog(dialog_final_1)
+                },
+                {
+                    proposition: "Je veux alerter sur ce qui se passe ici",
+                    after: new AfterPlayDialog(dialog_final_2)
+                }
+            ]
+        }
+    ]
+}
