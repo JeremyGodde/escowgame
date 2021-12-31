@@ -16,6 +16,13 @@ import {
     pistolet_abattage_dialogue,
     bureau_inaccessible,
     dialog_final,
+    dialog_cinematique_fin_couloir_A,
+    dialog_cinematique_fin_couloir_B,
+    dialog_cinematique_fin_couloir_C,
+    dialog_exterieur_A,
+    dialog_exterieur_C,
+    dialog_maison_A_C,
+    dialog_maison_B,
 } from "./dialogs.donnee"
 import {
     postit_2,
@@ -45,6 +52,9 @@ import {
     COULOIR_1_CINEMATIQUE_ENTREE,
     COULOIR_1,
     COULOIR_1_FLECHE,
+    COULOIR_1_FIN_A,
+    COULOIR_1_FIN_B,
+    COULOIR_1_FIN_C,
     BUREAU_8_VERROUILLE,
     BUREAU_8_DEVERROUILLE,
     BUREAU_8_BOITE_MAIL,
@@ -66,7 +76,11 @@ import {
     SALLE_5,
     BUREAU_13,
     PORTE_BUREAU_13,
-    ELEVAGE_1
+    ELEVAGE_1,
+    EXTERIEUR_A,
+    EXTERIEUR_C,
+    MAISON_A_C,
+    MAISON_B
 } from "./list_ids_room.donnee"
 
 import {
@@ -200,6 +214,66 @@ export const all_rooms: Array<Room | Digicode> = [
         }
     },
     {
+        id: EXTERIEUR_A,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/outdoor/Usine.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: dialog_exterieur_A,
+        dim: {
+            w: 5184,
+            h: 3456
+        }
+    },
+    {
+        id: EXTERIEUR_C,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/outdoor/Usine.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: dialog_exterieur_C,
+        dim: {
+            w: 5184,
+            h: 3456
+        }
+    },
+    {
+        id: MAISON_A_C,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/maison_tv.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: dialog_maison_A_C,
+        dim: {
+            w: 5629,
+            h: 3753
+        }
+    },
+    {
+        id: MAISON_B,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/maison.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dialog: dialog_maison_B,
+        dim: {
+            w: 5629,
+            h: 3753
+        }
+    },
+    {
         id: COULOIR_1_CINEMATIQUE_ENTREE,
         type: "ROOM",
         id_exit: NONE,
@@ -257,6 +331,54 @@ export const all_rooms: Array<Room | Digicode> = [
             couloir_1_porte_bureau_inaccessible,
             couloir_1_fleche
         ]
+    },
+    {
+        id: COULOIR_1_FIN_A,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/couloir_1.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_1_sound],
+        dialog: dialog_cinematique_fin_couloir_A
+    },
+    {
+        id: COULOIR_1_FIN_B,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/couloir_1.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_1_sound],
+        dialog: dialog_cinematique_fin_couloir_B
+    },
+    {
+        id: COULOIR_1_FIN_C,
+        type: "ROOM",
+        id_exit: NONE,
+        src: "/img/indoor/couloir_1.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 4000,
+            h: 2796
+        },
+        sounds:[couloir_1_sound],
+        dialog: dialog_cinematique_fin_couloir_C
     },
     {
         id: BUREAU_8_VERROUILLE,

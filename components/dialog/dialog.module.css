@@ -76,6 +76,7 @@
 
 .dialog .set_buttons {
     position: absolute;
+    z-index: 502;
     left: 2.5rem;
     display: flex;
     flex-direction: row;
