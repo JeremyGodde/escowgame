@@ -41,7 +41,7 @@ import {
     grille,
     paille,
     étiquette,
-    étiquette_zoom
+    étiquette_zoom,
 } from "./items.donnee"
 import {
     NONE,
@@ -85,11 +85,15 @@ import {
     MAISON_A_C,
     MAISON_B,
     ELEVAGE_2,
+    ELEVAGE_2_2,
     ELEVAGE_ZOOM_1,
     ELEVAGE_ZOOM_5,
     ELEVAGE_ZOOM_4,
     ELEVAGE_ZOOM_3,
-    ELEVAGE_ZOOM_2
+    ELEVAGE_ZOOM_2,
+    ELEVAGE_ZOOM_6,
+    ELEVAGE_ZOOM_7,
+    ELEVAGE_ZOOM_8,
 } from "./list_ids_room.donnee"
 
 import {
@@ -491,7 +495,6 @@ export const all_rooms: Array<Room | Digicode> = [
             // toujours ouverte
             return true
         },
-        sounds: [bureau_12_sound],
         videos: [
             {
                 src: "/video/cowspiracy.mp4",
@@ -613,7 +616,7 @@ export const all_rooms: Array<Room | Digicode> = [
         type: "DIGICODE",
         id_exit: PORTE_SALLE_5,
         id_entrance: SALLE_5,
-        code: 17062,
+        code: 45135,
     },
     {
         id: SALLE_5,
@@ -975,7 +978,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 svg: Zones.Rect,
                 pos: {
                     x:2405,
-                    y:640
+                    y:700
                 },
                 dim: {
                     w:45,
@@ -992,7 +995,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 click: new AfterMoveToRoom(ELEVAGE_ZOOM_4),
                 svg: Zones.Rect,
                 pos: {
-                    x:523,
+                    x:514,
                     y:60
                 },
                 dim: {
@@ -1010,25 +1013,7 @@ export const all_rooms: Array<Room | Digicode> = [
                 click: new AfterMoveToRoom(ELEVAGE_ZOOM_3),
                 svg: Zones.Rect,
                 pos: {
-                    x:228,
-                    y:120
-                },
-                dim: {
-                    w:30,
-                    h:30
-                },
-                angulars: {
-                    topLeft: 0,
-                    bottomLeft: 0,
-                    bottomRight: 0,
-                    topRight: 0
-                }
-            },
-            { //vache à gauche
-                click: new AfterMoveToRoom(ELEVAGE_ZOOM_2),
-                svg: Zones.Rect,
-                pos: {
-                    x:840,
+                    x:839,
                     y:300
                 },
                 dim: {
@@ -1042,13 +1027,247 @@ export const all_rooms: Array<Room | Digicode> = [
                     topRight: 0
                 }
             },
+            { //vache à gauche
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_2),
+                svg: Zones.Rect,
+                pos: {
+                    x:222,
+                    y:1115
+                },
+                dim: {
+                    w:40,
+                    h:40
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec noir derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_6),
+                svg: Zones.Rect,
+                pos: {
+                    x:876,
+                    y:830
+                },
+                dim: {
+                    w:50,
+                    h:50
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec marron derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_7),
+                svg: Zones.Rect,
+                pos: {
+                    x:1530,
+                    y:1320
+                },
+                dim: {
+                    w:20,
+                    h:20
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec marron clair derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_8),
+                svg: Zones.Rect,
+                pos: {
+                    x:2312,
+                    y:1280
+                },
+                dim: {
+                    w:30,
+                    h:30
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
         ],
         sounds: [elevage_sound]
     },
     {
+        id: ELEVAGE_2_2,
+        type: "ROOM",
+        id_exit: COULOIR_2,
+        src: "/img/indoor/Elevage.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 2475,
+            h: 1650
+        },
+        items: [étiquette],
+        zones: [
+            { //vache avec étiquette
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_1),
+                svg: Zones.Rect,
+                pos: {
+                    x:1487,
+                    y:1000
+                },
+                dim: {
+                    w:45,
+                    h:30
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache tout à droite
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_5),
+                svg: Zones.Rect,
+                pos: {
+                    x:2405,
+                    y:700
+                },
+                dim: {
+                    w:45,
+                    h:30
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache tout devant
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_4),
+                svg: Zones.Rect,
+                pos: {
+                    x:514,
+                    y:60
+                },
+                dim: {
+                    w:65,
+                    h:60
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache devant
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_3),
+                svg: Zones.Rect,
+                pos: {
+                    x:839,
+                    y:300
+                },
+                dim: {
+                    w:60,
+                    h:60
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache à gauche
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_2),
+                svg: Zones.Rect,
+                pos: {
+                    x:222,
+                    y:1115
+                },
+                dim: {
+                    w:40,
+                    h:40
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec noir derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_6),
+                svg: Zones.Rect,
+                pos: {
+                    x:876,
+                    y:830
+                },
+                dim: {
+                    w:50,
+                    h:50
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec marron derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_7),
+                svg: Zones.Rect,
+                pos: {
+                    x:1530,
+                    y:1320
+                },
+                dim: {
+                    w:20,
+                    h:20
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            { //vache blanche avec marron clair derrière
+                click: new AfterMoveToRoom(ELEVAGE_ZOOM_8),
+                svg: Zones.Rect,
+                pos: {
+                    x:2312,
+                    y:1280
+                },
+                dim: {
+                    w:30,
+                    h:30
+                },
+                angulars: {
+                    topLeft: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0,
+                    topRight: 0
+                }
+            },
+            
+        ],  
+    },
+    {
         id: ELEVAGE_ZOOM_1,
         type: "ROOM",
-        id_exit: ELEVAGE_2,
+        id_exit: ELEVAGE_2_2,
         src: "/img/indoor/Elevage_zoom_1.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -1063,7 +1282,7 @@ export const all_rooms: Array<Room | Digicode> = [
     {
         id: ELEVAGE_ZOOM_2,
         type: "ROOM",
-        id_exit: ELEVAGE_2,
+        id_exit: ELEVAGE_2_2,
         src: "/img/indoor/Elevage_zoom_2.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -1073,12 +1292,11 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 215,
             h: 235
         },
-        items:[étiquette_zoom]
     },
     {
         id: ELEVAGE_ZOOM_3,
         type: "ROOM",
-        id_exit: ELEVAGE_2,
+        id_exit: ELEVAGE_2_2,
         src: "/img/indoor/Elevage_zoom_3.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -1088,12 +1306,11 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 164,
             h: 162
         },
-        items:[étiquette_zoom]
     },
     {
         id: ELEVAGE_ZOOM_4,
         type: "ROOM",
-        id_exit: ELEVAGE_2,
+        id_exit: ELEVAGE_2_2,
         src: "/img/indoor/Elevage_zoom_4.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -1103,12 +1320,11 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 229,
             h: 203
         },
-        items:[étiquette_zoom]
     },
     {
         id: ELEVAGE_ZOOM_5,
         type: "ROOM",
-        id_exit: ELEVAGE_2,
+        id_exit: ELEVAGE_2_2,
         src: "/img/indoor/Elevage_zoom_4.jpg",
         open_if: (player: Player): boolean => {
             // toujours ouverte
@@ -1118,6 +1334,62 @@ export const all_rooms: Array<Room | Digicode> = [
             w: 126,
             h: 179
         },
+    },
+    {
+        id: ELEVAGE_ZOOM_1,
+        type: "ROOM",
+        id_exit: ELEVAGE_2_2,
+        src: "/img/indoor/Elevage_zoom_1.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 190,
+            h: 205
+        },
         items:[étiquette_zoom]
+    },
+    {
+        id: ELEVAGE_ZOOM_6,
+        type: "ROOM",
+        id_exit: ELEVAGE_2_2,
+        src: "/img/indoor/Elevage_zoom_6.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 114,
+            h: 119
+        },
+    },
+    {
+        id: ELEVAGE_ZOOM_7,
+        type: "ROOM",
+        id_exit: ELEVAGE_2_2,
+        src: "/img/indoor/Elevage_zoom_7.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 119,
+            h: 121
+        },
+    },
+    {
+        id: ELEVAGE_ZOOM_8,
+        type: "ROOM",
+        id_exit: ELEVAGE_2_2,
+        src: "/img/indoor/Elevage_zoom_8.jpg",
+        open_if: (player: Player): boolean => {
+            // toujours ouverte
+            return true
+        },
+        dim: {
+            w: 119,
+            h: 121
+        },
     },
 ]

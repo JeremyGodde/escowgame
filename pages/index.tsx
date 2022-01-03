@@ -5,6 +5,7 @@ import Player from '../structures/player/player.structure'
 
 /* Données de jeu */
 import {CREDITS_ID, HOME_SCREEN_ID} from '../donnees/list_ids_room.donnee'
+import { couloir_1_fleche } from '../donnees/zones.donnee'
 
 export default class Index extends React.Component<{},{player: Player},any> {
     constructor(props) {

@@ -183,7 +183,7 @@ export const couloir_2_fleche: Zone = {
 }
 
 export const bureau_8_enigme: Zone = {
-    click: new AfterAskPassword("password",BUREAU_8_DEVERROUILLE),
+    click: new AfterAskPassword("11034BCA",BUREAU_8_DEVERROUILLE),
     svg: Zones.Rect,
     pos: {
         x:510,
