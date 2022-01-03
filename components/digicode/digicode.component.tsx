@@ -47,7 +47,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.reset()),
             pos: {
-                x: 77,
+                x: 72,
                 y: 100
             },
             dim: {
@@ -59,7 +59,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPlayDialog(digicode_broken_key_B_dialog),
             pos: {
-                x: 169,
+                x: 164,
                 y: 100
             },
             dim: {
@@ -72,7 +72,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(0)),
             pos: {
-                x: 123,
+                x: 118,
                 y: 100
             },
             dim: {
@@ -84,7 +84,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(1)),
             pos: {
-                x: 77,
+                x: 72,
                 y: 240
             },
             dim: {
@@ -96,7 +96,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(2)),
             pos: {
-                x: 123,
+                x: 118,
                 y: 240
             },
             dim: {
@@ -108,7 +108,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(3)),
             pos: {
-                x: 169,
+                x: 164,
                 y: 240
             },
             dim: {
@@ -120,7 +120,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(4)),
             pos: {
-                x: 77,
+                x: 72,
                 y: 193
             },
             dim: {
@@ -132,7 +132,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(5)),
             pos: {
-                x: 123,
+                x: 118,
                 y: 193
             },
             dim: {
@@ -144,7 +144,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(6)),
             pos: {
-                x: 169,
+                x: 164,
                 y: 193
             },
             dim: {
@@ -156,7 +156,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(7)),
             pos: {
-                x: 77,
+                x: 72,
                 y: 147
             },
             dim: {
@@ -168,7 +168,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(8)),
             pos: {
-                x: 123,
+                x: 118,
                 y: 147
             },
             dim: {
@@ -180,7 +180,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
             svg: Zones.Circ,
             click: new AfterPushKey(() => this.addNumber(9)),
             pos: {
-                x: 169,
+                x: 164,
                 y: 147
             },
             dim: {
@@ -314,7 +314,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
                                 style={{
                                     width: `${9* this.ratio}px`,
                                     height: `${9* this.ratio}px`,
-                                    left: `${108.5* this.ratio + this.offset.x}px`,
+                                    left: `${103.5* this.ratio + this.offset.x}px`,
                                     bottom: `${288.5* this.ratio + this.offset.y}px`,
                                     fill: "rgba(20,200,10,0.5)"
                                 }}
@@ -335,7 +335,7 @@ export default class Digicode extends React.Component<DigicodeProps> {
                                 style={{
                                     width: `${9* this.ratio}px`,
                                     height: `${9* this.ratio}px`,
-                                    left: `${167.5* this.ratio + this.offset.x}px`,
+                                    left: `${162.5* this.ratio + this.offset.x}px`,
                                     bottom: `${288.5* this.ratio + this.offset.y}px`,
                                     fill: "rgba(200,20,10,0.5)"
                                 }}
