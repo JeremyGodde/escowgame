@@ -2,8 +2,35 @@ import AfterPlayDialog from "../structures/action/after-play-dialog.structure"
 import Items from "../structures/game/item.structure"
 import { code_post_it_dialog} from "./dialogs.donnee"
 
+export const étiquette_zoom: Items ={
+    pos: {
+        x: 40,
+        y: 2
 
-export const postit_1: Items = {
+    },
+    dim: {
+        w:152,
+        h:160
+    },
+    img: "/img/items/Etiquettebas.png",
+    collectable: false, 
+    draggable: true 
+}
+export const étiquette: Items ={
+        pos: {
+            x: 0,
+            y: 400
+
+        },
+        dim: {
+            w:150,
+            h:100
+        },
+        img: "/img/items/Etiquettebas.png",
+        collectable: false, 
+        draggable: true 
+    }
+    export const postit_1: Items = {
         pos: {
             x: 30,
             y: 162

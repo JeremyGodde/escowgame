@@ -3,6 +3,10 @@ import AfterPlaySound from "../structures/action/after-play-sound.structure"
 import Sound from "../structures/immersion/sound.structure"
 import { COULOIR_1 } from "./list_ids_room.donnee"
 
+export const elevage_sound: Sound = {
+    src: "/sound/Elevage.wav", 
+    is_loop: true
+}
 export const bureau_13_sound: Sound = {
     src: "/sound/Bureau_13.wav", 
     is_loop: true

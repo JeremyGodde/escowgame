@@ -116,7 +116,15 @@ export const indices: Array<Dialog> = [
         ]
     }
 ]
-
+export const elevage_2_dialog: Dialog = {
+    frames: [
+        {
+            character: CHIEN,
+            img: "/img/dog/chien_face.png",
+            text: "Regarde ! J'ai trouvé un bout d'étiquette par terre. Cela peut peut-être nous aider"
+        },
+    ]
+}
 export const pistolet_abattage_dialogue: Dialog = {
     frames: [
         {
