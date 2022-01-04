@@ -114,6 +114,36 @@ export const indices: Array<Dialog> = [
                 text: "Qu'est-ce qu'une clef peut bien ouvrir ?"
             }
         ]
+    },
+    {
+        // 9
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Où peut bien être l'autre moitié ?"
+            }
+        ]
+    },
+    {
+        // 10
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Cette étiquette est bien différente des autres"
+            }
+        ]
+    },
+    {
+        // 11
+        frames: [
+            {
+                character: CHIEN,
+                img: "/img/dog/chien_face.png",
+                text: "Tu vas pouvoir prévenir l'extérieur de ce qu'il se passe ici !"
+            }
+        ]
     }
 ]
 export const elevage_2_dialog: Dialog = {
@@ -650,7 +680,7 @@ export const dialog_fin_B: Dialog = {
         {
             character: CHIEN,
             img: "/img/dog/chien_face.png",
-            text:"Je suis désolé de t'avoir entraîner là-dedans. J'espère que tu ne te feras pas trop punir.",
+            text:"Je suis désolé de t'avoir entraîné là-dedans. J'espère que tu ne te feras pas trop punir.",
         },
         {
             character: CHIEN,

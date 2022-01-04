@@ -83,7 +83,6 @@ export default class Video extends React.Component<VideoProps> {
             height: `100%`
         }
         this.playing = true
-        console.log(this.props.value.src)
         this.props.player.setAdvanceResource(this.props.value.src)
         this.props.player.save()
 

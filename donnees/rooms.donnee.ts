@@ -663,7 +663,7 @@ export const all_rooms: Array<Room | Digicode> = [
         name: "Bureau 13",
         src: "/img/indoor/bureau_13.jpg",
         open_if: (player: Player): boolean => {
-            return player.owned(clef)
+            return true
         },
         sounds: [bureau_13_sound],
         dim: {
@@ -678,7 +678,6 @@ export const all_rooms: Array<Room | Digicode> = [
         name: "Bureau 13",
         src: "/img/indoor/Porte_bureau_13.jpg",
         open_if: (player: Player): boolean => {
-            // toujours ouverte, à changer, il y aura la clef
             return true
         },
         dim: {
@@ -917,8 +916,7 @@ export const all_rooms: Array<Room | Digicode> = [
         id_exit: COULOIR_2,
         src: "/img/indoor/Elevage.jpg",
         open_if: (player: Player): boolean => {
-            // toujours ouverte
-            return true
+            return player.owned(clef)
         },
         dim: {
             w: 2475,
@@ -932,8 +930,8 @@ export const all_rooms: Array<Room | Digicode> = [
                     y:0
                 },
                 dim: {
-                    w:5000,
-                    h:3000
+                    w:2475,
+                    h:1650
                 },
                 after: new AfterMoveToRoom(ELEVAGE_2)
             }

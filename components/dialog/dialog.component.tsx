@@ -108,14 +108,12 @@ export default class Dialog extends React.Component<DialogProps> {
         this.current_index_frame ++                                             // on passe à la frame suivante
         if (this.current_index_frame >= this.props.value.frames.length) {       // s'il n'y a plus d'autres frames alors on a fini
             this.current_index_frame = undefined
-            if (this.props.value.after !== undefined) {                         // si la fin du dialogue doit déclencher une action
+            if (this.props.value.after !== undefined) {                         // si la fin du dialogue doit déclencher une action 
+                this.after_nodes = undefined
                 this.after_nodes = this.props.value.after.do(this.props.player) // on réalise cette action
-                this.setState({})                                               // on met à jour l'affichage
-                return
             } else {
                 this.after_nodes = undefined
-                this.props.player.clearAfter() // la méthode fait un refresh global
-                return
+                this.props.player.clearAfter()
             }
         } else {                                                                // sinon s'il y a encore des frames
             if (this.props.value.frames[this.current_index_frame]

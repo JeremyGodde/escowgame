@@ -17,7 +17,9 @@ import {
     CREDITS_ID,
     HOME_SCREEN_ID,
     COULOIR_2,
-    PORTE_SALLE_5
+    PORTE_SALLE_5,
+    ELEVAGE_2,
+    BUREAU_8_DEVERROUILLE
 } from "../../donnees/list_ids_room.donnee"
 import { indices, portes_fermees } from "../../donnees/dialogs.donnee"
 import Sound from "../../components/sound/sound.component"
@@ -40,7 +42,7 @@ export default class Player {
     private sounds: Array<SoundStruct> = undefined
     private diary: string = undefined
     private advance: number = 0
-    private listenEmployee: boolean = true
+    private listenEmployee: boolean = false
     private toggle_clear: boolean = false
     private draw: boolean = true
     
@@ -242,6 +244,10 @@ export default class Player {
 
     public setAdvanceRoom = (id_room:number) => {
         switch(id_room) {
+            case BUREAU_8_DEVERROUILLE:
+                this.incrAdvance(11)
+            case ELEVAGE_2:
+                this.incrAdvance(9)
             case SALLE_5:
                 this.incrAdvance(7)
                 break
@@ -261,6 +267,9 @@ export default class Player {
 
     public setAdvanceResource = (src:string): boolean => {
         switch(src) {
+            case '/video/elevage.mp4':
+                this.incrAdvance(10)
+                return true
             case '/img/items/clef.png':
                 this.incrAdvance(8)
                 return true
